@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour {
 	public float moveSpeedFoward = 6.0f;
 	public float moveSpeedSides  = 6.0f;
 	public float turnSpeedX = 60.0f;
-	public float turnSpeedY = 60.0f;
+	//public float turnSpeedY = 60.0f;
 
 	private int mouseInvertX = 1;
 	private int mouseInvertY = -1;

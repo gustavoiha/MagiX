@@ -40,29 +40,33 @@ public class CameraBehaviour : MonoBehaviour {
 		updateCameraCoordinatesRegular ();
 	}
 
+	/// <summary>
+	/// Regular update the camera's coordinates.
+	/// </summary>
 	private void updateCameraCoordinatesRegular (){
 
 		float turnY = Input.GetAxis ("Mouse Y") * Mathf.Sign(mouseInvertY) + Input.GetAxis ("VerticalRotation");
 
-		float camPosY = CameraPivot + CameraDistance * Mathf.Sin(camera.rotation.eulerAngles.x * Mathf.Deg2Rad) * Mathf.Cos(camera.rotation.eulerAngles.z * Mathf.Deg2Rad);
-		float camPosZ = -CameraDistance * Mathf.Cos(camera.rotation.eulerAngles.x * Mathf.Deg2Rad) * Mathf.Cos(camera.rotation.eulerAngles.z * Mathf.Deg2Rad);;
-
 		camera.Rotate (turnY * turnSpeedY * Time.deltaTime, 0, 0);
-		camera.localPosition = new Vector3 (0, camPosY, camPosZ);
-
-		//Debug.Log (camera.localRotation.eulerAngles);
 
 		// Angle to limit the camera's rotation
 		float newCamAngleX;
 
-		if (camera.rotation.eulerAngles.x <= 180)
+		if (camera.localRotation.eulerAngles.x <= 180)
 			newCamAngleX = Mathf.Min (camera.localRotation.eulerAngles.x, CameraAngleLimitUpper);
 		else
 			newCamAngleX = Mathf.Max (camera.localRotation.eulerAngles.x, 360 + CameraAngleLimitLower);
 
-		Quaternion quaternion = new Quaternion ();
+		Quaternion quaternion  = new Quaternion ();
 		quaternion.eulerAngles = new Vector3 (newCamAngleX, 0, 0);
-		camera.localRotation = quaternion;
+		camera.localRotation   = quaternion;
+
+		float camPosY = CameraPivot + CameraDistance * Mathf.Sin(camera.localRotation.eulerAngles.x * Mathf.Deg2Rad);
+		float camPosZ = -CameraDistance * Mathf.Cos(camera.localRotation.eulerAngles.x * Mathf.Deg2Rad);
+
+		//Debug.Log (camera.localRotation.eulerAngles);
+
+		camera.localPosition = new Vector3 (0, camPosY, camPosZ);
 	}
 
 	/**
