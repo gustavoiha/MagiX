@@ -52,7 +52,7 @@ public class MainMenuGUI : MonoBehaviour {
 		buildWindow ();
 
 		if (GUILayout.Button ("Play Game"))
-			GameController.startPhase1();
+			GameController.startPhase("RebelVillage");
 
 		if (GUILayout.Button ("Settings")) {
 			currentMenu = Menu.Settings;

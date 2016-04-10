@@ -66,6 +66,7 @@
      <Compile Include="Assets\Scripts\MainMenu\MainMenuGUI.cs" />
      <Compile Include="Assets\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\PortalBehaviour.cs" />
      <None Include="Assets\ImportedAssets\Rocks Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\ImportedAssets\Rocks Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\NoiseEffectShaderRGB.shader" />
      <None Include="Assets\ImportedAssets\Rocks Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />
