@@ -12,13 +12,17 @@ public class PortalBehaviour : MonoBehaviour {
 	/// True = toggle active
 	/// False = toggle inactive
 	/// </summary>
-	public bool enabled = true;
+	public bool portalEnabled = true;
 
 	/// <summary>
 	/// The name of the phase to be loaded when player crosses portal.
 	/// Don't forget to set it in the prefab's inspector
 	/// </summary>
 	public string phaseToLoad = "";
+
+	void Start(){
+		setActive(true);
+	}
 
 	/// <summary>
 	/// Raises the trigger enter event to check if player touched portal
@@ -41,5 +45,15 @@ public class PortalBehaviour : MonoBehaviour {
 	/// <param name="state">If set to <c>true</c> state.</param>
 	public void setActive(bool state){
 		this.enabled = state;
+
+		GameObject portalParticleActive   = gameObject.transform.FindChild ("PortalParticleActive")  .gameObject;
+		GameObject portalParticleInactive = gameObject.transform.FindChild ("PortalParticleInactive").gameObject;
+
+		var activeEmission   = portalParticleActive  .GetComponent<ParticleSystem>().emission;
+		var inactiveEmission = portalParticleInactive.GetComponent<ParticleSystem>().emission;
+
+		activeEmission  .enabled = state;
+		inactiveEmission.enabled = !state;
+
 	}
 }
