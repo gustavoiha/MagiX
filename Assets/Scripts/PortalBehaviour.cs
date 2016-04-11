@@ -21,7 +21,11 @@ public class PortalBehaviour : MonoBehaviour {
 	public string phaseToLoad = "";
 
 	void Start(){
-		setActive(true);
+		
+	}
+
+	void Awake(){
+		setActive(portalEnabled);
 	}
 
 	/// <summary>
