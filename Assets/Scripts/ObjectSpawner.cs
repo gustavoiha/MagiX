@@ -75,6 +75,12 @@ public class EnemySpawnerBehaviour : MonoBehaviour {
 	}
 
 	private void spawnPosition(){
-		float random
+		
+		float spawnAngle = Random.value * 360.0f;
+
+		Vector3 spawnPosition = gameObject.transform.position;
+
+		Vector3 incrementPosition = Vector3.zero;
+
 	}
 }
