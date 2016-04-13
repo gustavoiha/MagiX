@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PortalBehaviour.cs">
     <Files>
-      <File FileName="Assets\Scripts\PortalBehaviour.cs" Line="31" Column="15" />
+      <File FileName="Assets\Scripts\PortalBehaviour.cs" Line="10" Column="15" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
