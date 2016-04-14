@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\ImportedAssets\Campfire\Script\FireLightScript.cs" />
      <Compile Include="Assets\ImportedAssets\Rocks Pack\Standard Assets\Image Effects (Pro Only)\BlurEffect.cs" />
      <Compile Include="Assets\ImportedAssets\Rocks Pack\Standard Assets\Image Effects (Pro Only)\ColorCorrectionEffect.cs" />
      <Compile Include="Assets\ImportedAssets\Rocks Pack\Standard Assets\Image Effects (Pro Only)\ContrastStretchEffect.cs" />
@@ -72,6 +73,7 @@
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PortalBehaviour.cs" />
      <Compile Include="Assets\Scripts\SkillsController.cs" />
+     <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\ImportedAssets\Rocks Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\ImportedAssets\Rocks Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\NoiseEffectShaderRGB.shader" />
      <None Include="Assets\ImportedAssets\Rocks Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />
@@ -124,6 +126,7 @@
      <None Include="Assets\ImportedAssets\Rocks Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\SimpleClear.shader" />
      <None Include="Assets\ImportedAssets\Rocks Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\EdgeDetectX.shader" />
      <None Include="Assets\ImportedAssets\Rocks Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAAPreset2.shader" />
+     <None Include="Assets\ImportedAssets\Campfire\License.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

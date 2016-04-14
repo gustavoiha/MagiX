@@ -62,6 +62,7 @@
      <Compile Include="Assets\ImportedAssets\Rocks Pack\Standard Assets\Image Effects (Pro Only)\TiltShift.js" />
      <Compile Include="Assets\ImportedAssets\Rocks Pack\Standard Assets\Image Effects (Pro Only)\Triangles.js" />
      <Compile Include="Assets\ImportedAssets\Rocks Pack\Standard Assets\Image Effects (Pro Only)\Vignetting.js" />
+     <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\ImportedAssets\Rocks Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\ImportedAssets\Rocks Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\NoiseEffectShaderRGB.shader" />
      <None Include="Assets\ImportedAssets\Rocks Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />
@@ -114,6 +115,7 @@
      <None Include="Assets\ImportedAssets\Rocks Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\SimpleClear.shader" />
      <None Include="Assets\ImportedAssets\Rocks Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\EdgeDetectX.shader" />
      <None Include="Assets\ImportedAssets\Rocks Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAAPreset2.shader" />
+     <None Include="Assets\ImportedAssets\Campfire\License.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
