@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SkillsController : MonoBehaviour {
+public class MagicUser : MonoBehaviour {
 
     public GameObject lightArrow; //Prefab da flecha de luz
     public GameObject lightBall; //Prefab da bola de luz
@@ -12,16 +12,14 @@ public class SkillsController : MonoBehaviour {
     Vector3 direction; //Direção em q o mouse aponta
     Vector3 location; //localização temporária para atirar magia(colocar a mão/cajado aqui futuramente)
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        location = transform.position + Vector3.forward * 3; //Coloca a posição um pouco a frente
+	// Use this for initialization
+	void Start () {
+	    
+	}
+	
+	// Update is called once per frame
+	void Update () {
+        location = transform.position + Vector3.forward*3; //Coloca a posição um pouco a frente
         var worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z)); //Calcula local do mouse em relação a tela
         direction = worldPosition - transform.position; //Calcula direção baseada entre o personagem e o mouse
         direction.Normalize();//Normaliza o vetor
@@ -31,7 +29,7 @@ public class SkillsController : MonoBehaviour {
             UseLightBall();
 
         //Seria bom colocar um static pra quando coletar os outros amuletos destrancar as magias
-    }
+	}
 
     void UseLightArrow()
     {
