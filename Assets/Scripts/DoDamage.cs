@@ -14,26 +14,38 @@ public class DoDamage : MonoBehaviour {
 	/// In this case, this script will try to acess a method called TakeDamage(float damage) in
 	/// an script called HealthController in the enemy.
 	/// </summary>
-	public string tagsToReceiveDamage = "";
+	public string tagsToReceiveDamage = "Enemy";
 
 	/// <summary>
 	/// Checks if collided with an enemy
 	/// </summary>
-	public bool collisionEnemy = false;
+	private bool collisionEnemy = false;
 
 	/// <summary>
 	/// Detects collision and do damage
 	/// </summary>
 	/// <param name="other">Other.</param>
-	void OnCollisionEnter(Collision collision) {
+	void OnTriggerEnter(Collider collider) {
 
 		// Checks if tagsToReceiveDamage has tag of the object that collided
-		if(tagsToReceiveDamage.Contains(collision.collider.gameObject.tag))
+		if(tagsToReceiveDamage.Contains(collider.gameObject.tag) && collider.gameObject.tag != "")
 		{
 			this.collisionEnemy = true;
-			HealthController enemy = collision.collider.GetComponent<HealthController>() as HealthController;
+			HealthController enemy = collider.GetComponent<HealthController>() as HealthController;
 			enemy.TakeDamage(damageOnHit);
 			Destroy(gameObject);
+		}
+	}
+
+	/// <summary>
+	/// Checks if stopped colliding enemy
+	/// </summary>
+	/// <param name="collider">Collider.</param>
+	void OnTriggerExit(Collider collider){
+		// Checks if tagsToReceiveDamage has tag of the object that collided
+		if(tagsToReceiveDamage.Contains(collider.gameObject.tag) && collider.gameObject.tag != "")
+		{
+			this.collisionEnemy = false;
 		}
 	}
 
@@ -43,5 +55,9 @@ public class DoDamage : MonoBehaviour {
 	/// <param name="newDamage">New damage.</param>
 	public void setDamageOnHit(float newDamage){
 		this.damageOnHit = newDamage;
+	}
+
+	public bool collidedEnemy(){
+		return collisionEnemy;
 	}
 }

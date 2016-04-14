@@ -49,6 +49,6 @@ public class LightBallBehaviour : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
 		//Ao tocar algo, ela explode
-        detonation = true;
+        //detonation = true;
     }
 }
