@@ -32,18 +32,23 @@ public class LightBallBehaviour : MonoBehaviour {
                 if (col.GetComponent<Rigidbody>() != null) //Se o objeto puder ser empurrado, ele será
                     col.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, radius, 0, forceMode);
             }
+
             Destroy(gameObject);//Destrói a esfera
+
         }
         else {
+			
             transform.localScale = Vector3.one * scale; //Faz a esfera crescer de acordo com o scale
             particleS.transform.localScale = Vector3.one * scale; //E as particulas tbm
             scale += growthRate * Time.deltaTime; //Aumenta o scale conforme o tempo passa
             radius = 2 * particleS.transform.localScale.x;//Aumenta o raio conforme aumenta a esfera
+
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        detonation = true;//Ao tocar algo, ela explode
+		//Ao tocar algo, ela explode
+        detonation = true;
     }
 }

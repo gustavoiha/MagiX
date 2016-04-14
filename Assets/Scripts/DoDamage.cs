@@ -9,15 +9,30 @@ public class DoDamage : MonoBehaviour {
 	public float damageOnHit;
 
 	/// <summary>
+	/// String that contains every gameobject tag you wish to take damage.
+	/// An example: "enemy1, enemy2, boss"
+	/// In this case, this script will try to acess a method called TakeDamage(float damage) in
+	/// an script called HealthController in the enemy.
+	/// </summary>
+	public string tagsToReceiveDamage = "";
+
+	/// <summary>
+	/// Checks if collided with an enemy
+	/// </summary>
+	public bool collisionEnemy = false;
+
+	/// <summary>
 	/// Detects collision and do damage
 	/// </summary>
 	/// <param name="other">Other.</param>
-	void OnTriggerEnter(Collider collider)
-	{
-		//if(collider.gameObject.tag == "Enemy")
+	void OnCollisionEnter(Collision collision) {
+
+		// Checks if tagsToReceiveDamage has tag of the object that collided
+		if(tagsToReceiveDamage.Contains(collision.collider.gameObject.tag))
 		{
-			//Mob enemy = other.GetComponent<Mob>();
-			//enemy.TakeDamage(damage);
+			this.collisionEnemy = true;
+			HealthController enemy = collision.collider.GetComponent<HealthController>() as HealthController;
+			enemy.TakeDamage(damageOnHit);
 			Destroy(gameObject);
 		}
 	}

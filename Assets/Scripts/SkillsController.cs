@@ -3,15 +3,18 @@ using System.Collections;
 
 public class SkillsController : MonoBehaviour {
 
-<<<<<<< Updated upstream
-    public GameObject lightArrow; //Prefab da flecha de luz
-    public GameObject lightBall; //Prefab da bola de luz
+	public GameObject lightArrow;
+	public GameObject lightBall;
 
-    public float lightArrowForce = 100.0f; //Força aplicada na flecha
-    public float lightBallForce = 50.0f; // Força aplicada na esfera
+	public float lightArrowForce = 100.0f;
+	public float lightBallForce  = 50.0f;
+	public float angleX = 90.0f;
+	public float angleY = 0.0f;
+	public float angleZ = 180.0f;
 
-    Vector3 direction; //Direção em q o mouse aponta
-    Vector3 location; //localização temporária para atirar magia(colocar a mão/cajado aqui futuramente)
+	private Vector3 direction;
+
+	private Vector3 location;
 
     // Use this for initialization
     void Start()
@@ -19,33 +22,6 @@ public class SkillsController : MonoBehaviour {
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        location = transform.position + Vector3.forward * 3; //Coloca a posição um pouco a frente
-        var worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z)); //Calcula local do mouse em relação a tela
-        direction = worldPosition - transform.position; //Calcula direção baseada entre o personagem e o mouse
-        direction.Normalize();//Normaliza o vetor
-        if (Input.GetKey(KeyCode.Alpha1)) //Ao apertar o botão 1, usa a primeira magia
-=======
-	public GameObject lightArrow;
-	public GameObject lightBall;
-
-    public float lightArrowForce = 100.0f;
-    public float lightBallForce  = 50.0f;
-    public float angleX = 90.0f;
-    public float angleY = 0.0f;
-    public float angleZ = 180.0f;
-
-    private Vector3 direction;
-
-    private Vector3 location;
-
-	// Use this for initialization
-	void Start () {
-	    
-	}
-	
 	// Update is called once per frame
 	void Update () {
 		
@@ -54,7 +30,6 @@ public class SkillsController : MonoBehaviour {
         direction = worldPosition - transform.position;
         direction.Normalize();
         if (Input.GetKey(KeyCode.Alpha1))
->>>>>>> Stashed changes
             UseLightArrow();
         if (Input.GetKeyDown(KeyCode.Alpha2))//Ao apertar o botão 2, usa a segunda
             UseLightBall();
@@ -69,6 +44,7 @@ public class SkillsController : MonoBehaviour {
         projectile.GetComponent<Rigidbody>().useGravity = false; //Evita a gravidade
         projectile.GetComponent<Rigidbody>().AddForce(direction * lightArrowForce); //Coloca uma força para arremessar a magia
     }
+
     void UseLightBall()
     {
         //Mesma coisa acima, sem o ajuste, já q se trata de uma esfera

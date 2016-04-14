@@ -65,8 +65,10 @@
      <Compile Include="Assets\Scripts\DoDamage.cs" />
      <Compile Include="Assets\Scripts\FadeEffect.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\HealthController.cs" />
      <Compile Include="Assets\Scripts\LightArrowBehaviour.cs" />
      <Compile Include="Assets\Scripts\LightBallBehaviour.cs" />
+     <Compile Include="Assets\Scripts\MagicUser.cs" />
      <Compile Include="Assets\Scripts\MainMenu\MainMenuGUI.cs" />
      <Compile Include="Assets\Scripts\ObjectSpawner.cs" />
      <Compile Include="Assets\Scripts\PauseMenu.cs" />
