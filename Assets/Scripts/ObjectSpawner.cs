@@ -31,7 +31,7 @@ public class EnemySpawnerBehaviour : MonoBehaviour {
 	/// <summary>
 	/// If true, random distance (randomIncrementInSpawnRange) will be added to the spawn range at every spawn.
 	/// </summary>
-	public float enableRandomRange;
+	public bool enableRandomRange;
 
 	/// <summary>
 	///  A random value smaller than this variable (inclusive) will increment the spawn range in each spawn.
@@ -47,7 +47,7 @@ public class EnemySpawnerBehaviour : MonoBehaviour {
 		spawnInterval = 2.0f;
 		SpawnRange 	  = 10.0f;
 		enableRandomInterval = true;
-		enableRandomRange    = true;
+		enableRandomRange = true;
 		randomIncrementInSpawnInterval = 1.0f;
 		randomIncrementInSpawnRange    = SpawnRange / 4.0f;
 
@@ -65,7 +65,7 @@ public class EnemySpawnerBehaviour : MonoBehaviour {
 		} 
 		else {
 			// Spawn object
-			Transform newObject = Instantiate(objectToSpawn, spawnPosition, gameObject.transform.rotation) as Transform;
+			//Transform newObject = Instantiate(objectToSpawn, spawnPosition, gameObject.transform.rotation) as Transform;
 		}
 
 	}
@@ -74,7 +74,7 @@ public class EnemySpawnerBehaviour : MonoBehaviour {
 		timeFromLastSpawn = spawnInterval + Random.value * randomIncrementInSpawnInterval;
 	}
 
-	private void spawnPosition(){
+	private void SpawnPosition(){
 		
 		float spawnAngle = Random.value * 360.0f;
 
