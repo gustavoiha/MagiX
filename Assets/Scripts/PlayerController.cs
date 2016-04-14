@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour {
 			PauseMenu.isPaused = !PauseMenu.isPaused;
 
 		if (Input.GetKeyDown ("space"))
-			gameObject.GetComponent<Rigidbody> ().AddForce (new Vector3(0,500.0f,0));
+			gameObject.GetComponent<Rigidbody> ().AddForce (new Vector3(0,800.0f,0));
 
 		doTranslation ();
 		doRotation ();
