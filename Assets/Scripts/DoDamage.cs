@@ -3,13 +3,30 @@ using System.Collections;
 
 public class DoDamage : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
+	/// <summary>
+	/// The damage on hit.
+	/// </summary>
+	public float damageOnHit;
+
+	/// <summary>
+	/// Detects collision and do damage
+	/// </summary>
+	/// <param name="other">Other.</param>
+	void OnTriggerEnter(Collider collider)
+	{
+		//if(collider.gameObject.tag == "Enemy")
+		{
+			//Mob enemy = other.GetComponent<Mob>();
+			//enemy.TakeDamage(damage);
+			Destroy(gameObject);
+		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	/// <summary>
+	/// Sets the damage on hit.
+	/// </summary>
+	/// <param name="newDamage">New damage.</param>
+	public void setDamageOnHit(float newDamage){
+		this.damageOnHit = newDamage;
 	}
 }

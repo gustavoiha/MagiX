@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemySpawnerBehaviour : MonoBehaviour {
+public class ObjectSpawner : MonoBehaviour {
 
 	/// <summary>
 	/// State of the spawner (enabled or stopped)
