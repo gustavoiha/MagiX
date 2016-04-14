@@ -61,13 +61,17 @@
      <Compile Include="Assets\ImportedAssets\Rocks Pack\Standard Assets\Image Effects (Pro Only)\VortexEffect.cs" />
      <Compile Include="Assets\Scripts\CameraBehaviour.cs" />
      <Compile Include="Assets\Scripts\ClearGame.cs" />
+     <Compile Include="Assets\Scripts\DoDamage.cs" />
      <Compile Include="Assets\Scripts\FadeEffect.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\LightArrowBehaviour.cs" />
+     <Compile Include="Assets\Scripts\LightBallBehaviour.cs" />
      <Compile Include="Assets\Scripts\MainMenu\MainMenuGUI.cs" />
      <Compile Include="Assets\Scripts\ObjectSpawner.cs" />
      <Compile Include="Assets\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PortalBehaviour.cs" />
+     <Compile Include="Assets\Scripts\SkillsController.cs" />
      <None Include="Assets\ImportedAssets\Rocks Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\ImportedAssets\Rocks Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\NoiseEffectShaderRGB.shader" />
      <None Include="Assets\ImportedAssets\Rocks Pack\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />

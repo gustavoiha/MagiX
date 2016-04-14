@@ -1,9 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ObjectSpawner.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SkillsController.cs">
     <Files>
+      <File FileName="Assets\Scripts\ObjectSpawner.cs" Line="29" Column="46" />
       <File FileName="Assets\Scripts\PortalBehaviour.cs" Line="10" Column="15" />
-      <File FileName="Assets\Scripts\ObjectSpawner.cs" Line="84" Column="3" />
+      <File FileName="Assets\Scripts\DoDamage.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SkillsController.cs" Line="26" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

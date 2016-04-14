@@ -4,6 +4,11 @@ using System.Collections;
 public class EnemySpawnerBehaviour : MonoBehaviour {
 
 	/// <summary>
+	/// State of the spawner (enabled or stopped)
+	/// </summary>
+	private bool spawnEnabled = true;
+
+	/// <summary>
 	/// The object to spawn. An enemy prefab, for example
 	/// </summary>
 	public Transform objectToSpawn;
@@ -42,12 +47,12 @@ public class EnemySpawnerBehaviour : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+
 		// Standard values
 		spawnInterval = 2.0f;
-		SpawnRange 	  = 10.0f;
+		SpawnRange    = 10.0f;
 		enableRandomInterval = true;
-		enableRandomRange = true;
+		enableRandomRange    = true;
 		randomIncrementInSpawnInterval = 1.0f;
 		randomIncrementInSpawnRange    = SpawnRange / 4.0f;
 
@@ -55,32 +60,53 @@ public class EnemySpawnerBehaviour : MonoBehaviour {
 		timeFromLastSpawn = spawnInterval;
 
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 
 		if (timeFromLastSpawn > 0.0f) {
 			timeFromLastSpawn -= Time.deltaTime;
 			return;
-		} 
-		else {
-			// Spawn object
-			//Transform newObject = Instantiate(objectToSpawn, spawnPosition, gameObject.transform.rotation) as Transform;
 		}
 
+		if (spawnEnabled && objectToSpawn != null){
+			// Spawn object
+			Transform newObject = Instantiate(objectToSpawn, SpawnPosition(), gameObject.transform.rotation) as Transform;
+		}
+
+		UpdateSpawnTimeCounter();
 	}
 
-	private void updateSpawnTimeCounter(){
-		timeFromLastSpawn = spawnInterval + Random.value * randomIncrementInSpawnInterval;
+	// Use this to set spawn enabled (true) or stopped (false)
+	public void setEnabled(bool newState){
+		this.spawnEnabled = newState;
 	}
 
-	private void SpawnPosition(){
-		
+	private void UpdateSpawnTimeCounter(){
+		timeFromLastSpawn = spawnInterval + ((enableRandomInterval) ? 1: 0) * Random.value * randomIncrementInSpawnInterval;
+	}
+
+	private Vector3 SpawnPosition(){
+
+		// Spawn angle
 		float spawnAngle = Random.value * 360.0f;
 
+		// Spawn distance
+		float spawnDistance = SpawnRange + ((enableRandomRange) ? 1: 0) * Random.value * randomIncrementInSpawnRange;
+
+		// Parent position
 		Vector3 spawnPosition = gameObject.transform.position;
 
-		Vector3 incrementPosition = Vector3.zero;
+		// Equivalent to local position relative to parent object
+		Vector3 deltaPosition = Vector3.zero;
 
+		deltaPosition.x = spawnDistance * Mathf.Sin(spawnAngle * Mathf.Deg2Rad);
+		deltaPosition.z = spawnDistance * Mathf.Cos(spawnAngle * Mathf.Deg2Rad);
+
+		spawnPosition.x += deltaPosition.x;
+		spawnPosition.y += deltaPosition.y;
+		spawnPosition.z += deltaPosition.z;
+
+		return spawnPosition;
 	}
 }
