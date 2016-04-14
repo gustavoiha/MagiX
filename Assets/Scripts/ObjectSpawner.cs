@@ -2,6 +2,11 @@
 using System.Collections;
 
 public class EnemySpawnerBehaviour : MonoBehaviour {
+	
+	/// <summary>
+	/// State of the spawner (enabled or stopped)
+	/// </summary>
+	private bool spawnEnabled = true;
 
 	/// <summary>
 	/// The object to spawn. An enemy prefab, for example
@@ -45,7 +50,7 @@ public class EnemySpawnerBehaviour : MonoBehaviour {
 		
 		// Standard values
 		spawnInterval = 2.0f;
-		SpawnRange 	  = 10.0f;
+		SpawnRange    = 10.0f;
 		enableRandomInterval = true;
 		enableRandomRange    = true;
 		randomIncrementInSpawnInterval = 1.0f;
@@ -62,25 +67,46 @@ public class EnemySpawnerBehaviour : MonoBehaviour {
 		if (timeFromLastSpawn > 0.0f) {
 			timeFromLastSpawn -= Time.deltaTime;
 			return;
-		} 
-		else {
-			// Spawn object
-			Transform newObject = Instantiate(objectToSpawn, spawnPosition, gameObject.transform.rotation) as Transform;
 		}
-
-	}
-
-	private void updateSpawnTimeCounter(){
-		timeFromLastSpawn = spawnInterval + Random.value * randomIncrementInSpawnInterval;
-	}
-
-	private void spawnPosition(){
 		
+		if (spawnEnabled && objectToSpawn != null){
+			// Spawn object
+			Transform newObject = Instantiate(objectToSpawn, SpawnPosition(), gameObject.transform.rotation) as Transform;
+		}
+		
+		UpdateSpawnTimeCounter();
+	}
+	
+	// Use this to set spawn enabled (true) or stopped (false)
+	public void setEnabled(bool newState){
+		this.spawnEnabled = newState;
+	}
+
+	private void UpdateSpawnTimeCounter(){
+		timeFromLastSpawn = spawnInterval + Convert.ToInt32(enableRandomInterval) * Random.value * randomIncrementInSpawnInterval;
+	}
+
+	private Vector3 SpawnPosition(){
+		
+		// Spawn angle
 		float spawnAngle = Random.value * 360.0f;
+		
+		// Spawn distance
+		float spawnDistance = SpawnRange + Convert.ToInt32(enableRandomRange) * Random.value * randomIncrementInSpawnRange;
 
+		// Parent position
 		Vector3 spawnPosition = gameObject.transform.position;
-
-		Vector3 incrementPosition = Vector3.zero;
-
+		
+		// Equivalent to local position relative to parent object
+		Vector3 deltaPosition = Vector3.zero;
+		
+		deltaPosition.x = spawnDistance * Mathf.Sin(spawnAngle * Mathf.Deg2Rad);
+		deltaPosition.z = spawnDistance * Mathf.Cos(spawnAngle * Mathf.Deg2Rad);
+		
+		spawnPosition.x += deltaPosition.x;
+		spawnPosition.y += deltaPosition.y;
+		spawnPosition.z += deltaPosition.z;
+		
+		return spawnPosition;
 	}
 }
