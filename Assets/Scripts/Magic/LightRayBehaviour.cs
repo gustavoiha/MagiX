@@ -19,12 +19,4 @@ public class LightRayBehaviour : MonoBehaviour {
         yScale *= growth; //Aumenta esse float de acordo com a constante
         transform.localScale = new Vector3(0,1,0) * yScale + scale; //Nova escala será a parte y somado com a parte antiga
 	}
-
-    void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "Player") //Ao colidir com o player, irá curá-lo
-        {
-            //Cura aqui
-        }
-    }
 }

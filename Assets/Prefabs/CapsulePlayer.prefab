@@ -51,7 +51,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191080}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 420.65005, y: 137.55753, z: 432.09637}
+  m_LocalPosition: {x: 515.7219, y: 140.3346, z: 511.18802}
   m_LocalScale: {x: 1, y: 3, z: 1}
   m_Children:
   - {fileID: 487390}
@@ -238,6 +238,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4b155968a40d44a9903baa0257472b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magicOne: 49
+  magicTwo: 50
+  magicThree: 51
   lightArrow: {fileID: 148554, guid: 99fe8b462bbe60744a9660e9b6d864b3, type: 2}
   lightBall: {fileID: 120464, guid: be93328743a74124086b74c2df63951d, type: 2}
   lightCross: {fileID: 117088, guid: 6bcf621b48befb1429ee4711d062510f, type: 2}

@@ -3,6 +3,11 @@ using System.Collections;
 
 public class SkillsController : MonoBehaviour {
 
+    public KeyCode magicOne;//Botões
+    public KeyCode magicTwo;
+    public KeyCode magicThree;
+    public KeyCode magicFour;
+
 	public GameObject lightArrow; //Prefab da flecha de luz
     public GameObject lightBall; //Prefab da bola de luz
     public GameObject lightCross; //Prefab da LightCross
@@ -25,15 +30,17 @@ public class SkillsController : MonoBehaviour {
         var worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z)); //Calcula local do mouse em relação a tela
         direction = worldPosition - transform.position; //Calcula direção baseada entre o personagem e o mouse
         direction.Normalize();//Normaliza o vetor
-        if (Input.GetKey(KeyCode.Alpha1)) //Ao apertar o botão 1, usa a primeira magia
+        if (Input.GetKey(magicOne)) //Ao apertar o botão 1, usa a primeira magia
             UseLightArrow();
-        if (Input.GetKeyDown(KeyCode.Alpha2))//Ao apertar o botão 2, usa a segunda
+        if (Input.GetKeyDown(magicTwo))//Ao apertar o botão 2, usa a segunda
             UseLightBall();
-        if (Input.GetKeyDown(KeyCode.Alpha3))//Ao apertar o botão 3, usa a terceira
+        if (Input.GetKeyDown(magicThree))//Ao apertar o botão 3, usa a terceira
             UseLightCross();
+        if (Input.GetKeyDown(magicFour))//Ao apertar o botão 4, acionamosu desativamo santuário
+            LightSanctuaryBehaviour.toogleSanctuary = !LightSanctuaryBehaviour.toogleSanctuary;
 
         //Seria bom colocar um static pra quando coletar os outros amuletos destrancar as magias
-	}
+    }
 
     void UseLightArrow()
     {
@@ -51,6 +58,7 @@ public class SkillsController : MonoBehaviour {
     }
     void UseLightCross()
     {
+        //Cura aqui
        Instantiate(lightCross, transform.position, Quaternion.LookRotation(direction)); //Cria uma LightCross no local do player
     }
 }
