@@ -68,6 +68,8 @@
      <Compile Include="Assets\Scripts\HealthController.cs" />
      <Compile Include="Assets\Scripts\LightArrowBehaviour.cs" />
      <Compile Include="Assets\Scripts\LightBallBehaviour.cs" />
+     <Compile Include="Assets\Scripts\LightCrossBehaviour.cs" />
+     <Compile Include="Assets\Scripts\LightRayBehaviour.cs" />
      <Compile Include="Assets\Scripts\MagicUser.cs" />
      <Compile Include="Assets\Scripts\MainMenu\MainMenuGUI.cs" />
      <Compile Include="Assets\Scripts\ObjectSpawner.cs" />
