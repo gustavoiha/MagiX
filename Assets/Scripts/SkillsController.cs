@@ -3,21 +3,42 @@ using System.Collections;
 
 public class SkillsController : MonoBehaviour {
 
-    public KeyCode magicOne;//Botões
+	//Botões
+    public KeyCode magicOne;
     public KeyCode magicTwo;
     public KeyCode magicThree;
     public KeyCode magicFour;
 
-	public GameObject lightArrow; //Prefab da flecha de luz
-    public GameObject lightBall; //Prefab da bola de luz
-    public GameObject lightCross; //Prefab da LightCross
+	///
+	/// Skills' prefabs
+	///
 
-    public float lightArrowForce = 100.0f; //Força aplicada na flecha
-    public float lightBallForce = 50.0f; // Força aplicada na esfera
+	//Prefab da flecha de luz
+	public GameObject lightArrow; 
+	//Prefab da bola de luz
+    public GameObject lightBall;
+	//Prefab da LightCross
+    public GameObject lightCross; 
+
+	// Skills' id's. Pass them as arguments int UseSkill() method
+	public static string LIGHT_ARROW = "lightArrow";
+	public static string LIGHT_BALL  = "lightBall";
+	public static string LIGHT_CROSS = "lightArrow";
+
+	//Força aplicada na flecha
+    public float lightArrowForce = 100.0f; 
+
+	// Força aplicada na esfera
+    public float lightBallForce = 50.0f; 
+
+	// Força aplicada no raio
     public float lightCrossForce = 10.0f;
 
-    Vector3 direction; //Direção em q o mouse aponta
-    Vector3 location; //localização temporária para atirar magia(colocar a mão/cajado aqui futuramente)
+	//Direção em q o mouse aponta
+    Vector3 direction; 
+
+	//localização temporária para atirar magia(colocar a mão/cajado aqui futuramente)
+    Vector3 location; 
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +47,7 @@ public class SkillsController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
         location = transform.position + Vector3.forward*3; //Coloca a posição um pouco a frente
         var worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z)); //Calcula local do mouse em relação a tela
         direction = worldPosition - transform.position; //Calcula direção baseada entre o personagem e o mouse
@@ -42,22 +64,46 @@ public class SkillsController : MonoBehaviour {
         //Seria bom colocar um static pra quando coletar os outros amuletos destrancar as magias
     }
 
-    void UseLightArrow()
-    {
+	/// <summary>
+	/// Call his method to use a desired skill
+	/// </summary>
+	/// <param name="skill">Skill.</param>
+	public void UseSkill (string skillID){
+
+		// Check if null or empty to continue
+		if (string.IsNullOrEmpty(skillID))
+			return;
+
+		switch (skillID) {
+
+		case LIGHT_ARROW:
+			UseLightArrow ();
+			break;
+		case LIGHT_BALL:
+			UseLightBall ();
+			break;
+		case LIGHT_CROSS:
+			UseLightCross ();
+			break;
+		}
+
+	}
+
+    private void UseLightArrow() {
         //Instantiate novos projéteis (Euler foi necessário para endireitar o prefab)
         GameObject projectile = Instantiate(lightArrow, location, Quaternion.LookRotation(direction) * Quaternion.Euler(90, 0, 180)) as GameObject;
         projectile.GetComponent<Rigidbody>().useGravity = false; //Evita a gravidade
         projectile.GetComponent<Rigidbody>().AddForce(direction * lightArrowForce); //Coloca uma força para arremessar a magia
     }
-    void UseLightBall()
-    {
+
+	private void UseLightBall() {
         //Mesma coisa acima, sem o ajuste, já q se trata de uma esfera
         GameObject projectile = Instantiate(lightBall, location, Quaternion.LookRotation(direction)) as GameObject;
         projectile.GetComponent<Rigidbody>().useGravity = false;
         projectile.GetComponent<Rigidbody>().AddForce(direction * lightBallForce);
     }
-    void UseLightCross()
-    {
+
+	private void UseLightCross() {
         //Cura aqui
        Instantiate(lightCross, transform.position, Quaternion.LookRotation(direction)); //Cria uma LightCross no local do player
     }
