@@ -16,7 +16,7 @@ public class LightBallBehaviour : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        Destroy(gameObject, 10.0f);//Auto detonação
+        Destroy(gameObject, 20.0f);//Auto detonação
         detonation = false;//Começa falso e fica verdadeiro quanto toca algo
     }
 
@@ -49,6 +49,6 @@ public class LightBallBehaviour : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
 		//Ao tocar algo, ela explode
-        //detonation = true;
+        detonation = true;
     }
 }

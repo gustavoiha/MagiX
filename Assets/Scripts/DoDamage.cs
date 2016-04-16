@@ -33,7 +33,6 @@ public class DoDamage : MonoBehaviour {
 			this.collisionEnemy = true;
 			HealthController enemy = collider.GetComponent<HealthController>() as HealthController;
 			enemy.TakeDamage(damageOnHit);
-			Destroy(gameObject);
 		}
 	}
 
