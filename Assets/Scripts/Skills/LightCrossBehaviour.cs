@@ -19,7 +19,7 @@ public class LightCrossBehaviour : MonoBehaviour {
         Quaternion rotation = Quaternion.LookRotation(new Vector3(player.position.x, 0, player.position.z), Vector3.forward); 
 
 		//Cria os raios a partir da rotação do player
-        CreateLightRay(rotation);
+		CreateLightRay(rotation, fireAngle);
 
 		//Destroi esfera
         Destroy(gameObject); 
