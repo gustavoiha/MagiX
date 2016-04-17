@@ -21,9 +21,9 @@ public class SkillsController : MonoBehaviour {
     public GameObject lightCross; 
 
 	// Skills' id's. Pass them as arguments int UseSkill() method
-	public static string LIGHT_ARROW = "lightArrow";
-	public static string LIGHT_BALL  = "lightBall";
-	public static string LIGHT_CROSS = "lightArrow";
+	public const string LIGHT_ARROW = "lightArrow";
+	public const static string LIGHT_BALL  = "lightBall";
+	public const static string LIGHT_CROSS = "lightArrow";
 
 	//Força aplicada na flecha
     public float lightArrowForce = 100.0f; 
@@ -73,7 +73,7 @@ public class SkillsController : MonoBehaviour {
 		// Check if null or empty to continue
 		if (string.IsNullOrEmpty(skillID))
 			return;
-
+		
 		switch (skillID) {
 
 		case LIGHT_ARROW:
