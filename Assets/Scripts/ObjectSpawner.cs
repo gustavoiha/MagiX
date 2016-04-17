@@ -71,7 +71,7 @@ public class ObjectSpawner : MonoBehaviour {
 
 		if (spawnEnabled && objectToSpawn != null){
 			// Spawn object
-			Transform newObject = Instantiate(objectToSpawn, SpawnPosition(), gameObject.transform.rotation) as Transform;
+			/*Transform newObject = */Instantiate(objectToSpawn, SpawnPosition(), gameObject.transform.rotation) /*as Transform*/;
 		}
 
 		UpdateSpawnTimeCounter();
