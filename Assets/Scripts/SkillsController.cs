@@ -22,8 +22,8 @@ public class SkillsController : MonoBehaviour {
 
 	// Skills' id's. Pass them as arguments int UseSkill() method
 	public const string LIGHT_ARROW = "lightArrow";
-	public const static string LIGHT_BALL  = "lightBall";
-	public const static string LIGHT_CROSS = "lightArrow";
+	public const string LIGHT_BALL  = "lightBall";
+	public const string LIGHT_CROSS = "lightArrow";
 
 	//Força aplicada na flecha
     public float lightArrowForce = 100.0f; 
