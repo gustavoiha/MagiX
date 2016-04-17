@@ -1,20 +1,26 @@
 # =============== #
 # Unity generated #
 # =============== #
-Temp/
-Library/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild
+[Ll]ibrary/
+sysinfo.txt
+*.stackdump
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
-ExportedObj/
+[Ee]xported[Oo]bj/
+.vs/
 obj/
 *.svd
 *.userprefs
 /*.csproj
 *.pidb
+*.pidb.meta
 *.suo
-/*.sln
+/*.sln*
 *.user
 *.unityproj
 *.booproj
@@ -28,4 +34,4 @@ obj/
 .Spotlight-V100
 .Trashes
 ehthumbs.db
-Thumbs.db
+[Tt]humbs.db
