@@ -14,12 +14,15 @@ public class LightSanctuaryBehaviour : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+        //Identifica o player e se "acopla" a ele
+        player = GameObject.FindGameObjectWithTag("Player").transform;
 		
 		//Santuário começa desativado
         toogleSanctuary = false;
 
 		// Alcance terá mesma distância do Círculo de partículas
-        range = GetComponent<ParticleSystem>().transform.localScale.x;
+        range = 20*GetComponent<ParticleSystem>().transform.localScale.x;
 	}
 	
 	// Update is called once per frame
@@ -39,7 +42,7 @@ public class LightSanctuaryBehaviour : MonoBehaviour {
             {
                 if (col.tag == "Enemy")//Inimigos levarão dano
                 {
-
+                    Debug.Log("Enemy hit");
                 }
                 if (col.tag == "Player")//E o jogador será curado
                 {
