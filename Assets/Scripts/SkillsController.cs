@@ -8,6 +8,7 @@ public class SkillsController : MonoBehaviour {
     public KeyCode magicTwo;
     public KeyCode magicThree;
     public KeyCode magicFour;
+    public KeyCode magicFive;
 
     //Target acquired at ENEMY BEHAVIOUR script
     public GameObject target;
@@ -21,7 +22,9 @@ public class SkillsController : MonoBehaviour {
 	//Prefab da bola de luz
     public GameObject lightBall;
 	//Prefab da LightCross
-    public GameObject lightCross; 
+    public GameObject lightCross;
+    //Prefab EssenceStealer
+    public GameObject essenceStealer;
 
 	// Skills' id's. Pass them as arguments int UseSkill() method
 	public const string LIGHT_ARROW = "lightArrow";
@@ -76,6 +79,13 @@ public class SkillsController : MonoBehaviour {
             UseLightCross();
         if (Input.GetKeyDown(magicFour))//Ao apertar o botão 4, acionamosu desativamo santuário
             LightSanctuaryBehaviour.toogleSanctuary = !LightSanctuaryBehaviour.toogleSanctuary;
+        if (Input.GetKeyDown(magicFive))
+        {
+            if (target == null)
+                print("No target!");
+            else
+                UseEssenceStealer();
+        }
 
         //Seria bom colocar um static pra quando coletar os outros amuletos destrancar as magias
     }
@@ -122,5 +132,14 @@ public class SkillsController : MonoBehaviour {
 	private void UseLightCross() {
         //Cura aqui
        Instantiate(lightCross, transform.position, Quaternion.LookRotation(direction)); //Cria uma LightCross no local do player
+    }
+
+    private void UseEssenceStealer()
+    {
+            essenceStealer.transform.position = target.transform.position;
+            if (!essenceStealer.GetComponent<ParticleSystem>().isPlaying)
+                essenceStealer.GetComponent<ParticleSystem>().Play();
+            if(Input.GetKeyUp(magicFive))
+                essenceStealer.GetComponent<ParticleSystem>().Stop();
     }
 }

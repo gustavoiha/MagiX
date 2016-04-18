@@ -51,7 +51,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191080}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 515.7219, y: 140.3346, z: 511.18802}
+  m_LocalPosition: {x: 317.39716, y: 143.02165, z: 339.6162}
   m_LocalScale: {x: 1, y: 3, z: 1}
   m_Children:
   - {fileID: 487390}
@@ -241,9 +241,13 @@ MonoBehaviour:
   magicOne: 49
   magicTwo: 50
   magicThree: 51
+  magicFour: 52
+  magicFive: 53
+  target: {fileID: 0}
   lightArrow: {fileID: 148554, guid: 99fe8b462bbe60744a9660e9b6d864b3, type: 2}
   lightBall: {fileID: 120464, guid: be93328743a74124086b74c2df63951d, type: 2}
   lightCross: {fileID: 117088, guid: 6bcf621b48befb1429ee4711d062510f, type: 2}
+  essenceStealer: {fileID: 176514, guid: 5d1755c832a4fd94bb6bf4e566ccdfbe, type: 2}
   lightArrowForce: 1000
   lightBallForce: 200
   lightCrossForce: 10

@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b09f2e88aa87364eab2eadd8a801fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageOnHit: 3
+  damageOnHit: 0.15
   tagsToReceiveDamage: Enemy
 --- !u!114 &11439814
 MonoBehaviour:
