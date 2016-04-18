@@ -8,6 +8,8 @@ public class LightSanctuaryBehaviour : MonoBehaviour {
 
 	//Distância do círculo
     public float range;
+    //dano causado por segundo
+    public float damage;
 
 	//Ativar ou desativar santuário
     public static bool toogleSanctuary;
@@ -42,6 +44,7 @@ public class LightSanctuaryBehaviour : MonoBehaviour {
             {
                 if (col.tag == "Enemy")//Inimigos levarão dano
                 {
+                    col.GetComponent<HealthController>().TakeDamage(damage);
                     Debug.Log("Enemy hit");
                 }
                 if (col.tag == "Player")//E o jogador será curado

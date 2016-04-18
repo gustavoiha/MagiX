@@ -9,6 +9,9 @@ public class SkillsController : MonoBehaviour {
     public KeyCode magicThree;
     public KeyCode magicFour;
 
+    //Target acquired at ENEMY BEHAVIOUR script
+    public GameObject target;
+
 	///
 	/// Skills' prefabs
 	///
@@ -44,14 +47,27 @@ public class SkillsController : MonoBehaviour {
 	void Start () {
 	    
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-        location = transform.position + Vector3.forward*3; //Coloca a posição um pouco a frente
-        var worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z)); //Calcula local do mouse em relação a tela
-        direction = worldPosition - transform.position; //Calcula direção baseada entre o personagem e o mouse
-        direction.Normalize();//Normaliza o vetor
+
+    // Update is called once per frame
+    void Update() {
+
+        //If enemy has no health, the target will become null
+        if(target != null)
+            if (target.GetComponent<HealthController>().health <= 0)
+                target = null;
+
+        location = transform.position + Vector3.forward * 3; //Coloca a posição um pouco a frente
+
+        if (target == null) //If there is no target at all, calculations will be based on the mouse position
+        {
+            var worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z)); //Calcula local do mouse em relação a tela
+            direction = worldPosition - transform.position; //Calcula direção baseada entre o personagem e o mouse
+            direction.Normalize();//Normaliza o vetor
+        } else //If there is a target, calculations will be based on the target's position
+        {
+            direction = target.transform.position - location;
+            direction.Normalize();
+        }
         if (Input.GetKey(magicOne)) //Ao apertar o botão 1, usa a primeira magia
             UseLightArrow();
         if (Input.GetKeyDown(magicTwo))//Ao apertar o botão 2, usa a segunda

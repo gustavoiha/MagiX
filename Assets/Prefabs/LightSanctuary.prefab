@@ -43,6 +43,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 414952, guid: 44afbcb7f6e92f94b957ceaeea306846, type: 2}
   range: 20
+  damage: 0.025
 --- !u!198 &19820476
 ParticleSystem:
   m_ObjectHideFlags: 1
