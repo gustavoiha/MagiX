@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 450956}
   - 198: {fileID: 19832872}
   - 199: {fileID: 19975796}
+  - 114: {fileID: 11411664}
   m_Layer: 0
   m_Name: EssenceStealer
   m_TagString: Untagged
@@ -24,11 +25,23 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 176514}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 231.79857, y: 142.88228, z: 374.7152}
+  m_LocalPosition: {x: 299.56192, y: 148.95131, z: 308.96884}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11411664
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64f7c183d4fdff749abe3d50836a0422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0.05
 --- !u!198 &19832872
 ParticleSystem:
   m_ObjectHideFlags: 1
