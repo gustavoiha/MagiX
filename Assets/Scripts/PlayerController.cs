@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour {
 
 	//public Transform Saber;
 
-	//private Animator animator;
+	private Animator animator;
 	private Rigidbody rigidBody;
 
 	public float moveSpeedFoward = 6.0f;
@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//animator  = gameObject.GetComponentInChildren<Animator> ();
+		animator  = gameObject.GetComponentInChildren<Animator> ();
 		rigidBody = gameObject.GetComponent<Rigidbody> ();
 	}
 
@@ -36,9 +36,13 @@ public class PlayerController : MonoBehaviour {
 		/**
 		 * Movement animations
 		 */
-		//if (Input.GetKeyUp("w")){
-		//	animator.SetInteger ("AnimParam", 0);
-		//}
+		if (Input.GetKeyDown("w")){
+			animator.SetBool("isWalking",true);
+		}
+
+		if (Input.GetKeyUp("w")){
+			animator.SetBool("isWalking",false);
+		}
 		//else if (Input.GetKeyUp("s"){
 		// walk backwards
 		//}
