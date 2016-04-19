@@ -87,12 +87,10 @@ public class PlayerController : MonoBehaviour {
 		transform.Rotate (0, turnX * turnSpeedX * Time.deltaTime, 0);
 	}
 
-	// returns true if player is in walking or running animation
+	// Returns true if player is in walking or running animation
 	//private bool shouldMove(){
-	//	return animator.GetCurrentAnimatorStateInfo (0).IsName ("walking") ||
-	//		animator.GetCurrentAnimatorStateInfo (0).IsName ("running") ||
-	//		animator.GetCurrentAnimatorStateInfo (0).IsName ("walkingSaber") ||
-	//		animator.GetCurrentAnimatorStateInfo (0).IsName ("runningSaber");
+	//	return animator.GetCurrentAnimatorStateInfo (0).IsName ("Walking") ||
+	//		   animator.GetCurrentAnimatorStateInfo (0).IsName ("Running");
 	//}
 
 	/**
