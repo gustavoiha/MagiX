@@ -49,7 +49,7 @@ public class LightSanctuaryBehaviour : MonoBehaviour {
                 }
                 if (col.tag == "Player")//E o jogador será curado
                 {
-
+                    //Cura aqui
                 }
             }
         }

@@ -77,12 +77,14 @@ public class SkillsController : MonoBehaviour {
             UseLightBall();
         if (Input.GetKeyDown(magicThree))//Ao apertar o botão 3, usa a terceira
             UseLightCross();
-        if (Input.GetKeyDown(magicFour))//Ao apertar o botão 4, acionamosu desativamo santuário
+        if (Input.GetKeyDown(magicFour))//Ao apertar o botão 4, acionamos ou desativamos santuário
             LightSanctuaryBehaviour.toogleSanctuary = !LightSanctuaryBehaviour.toogleSanctuary;
-        if (Input.GetKeyDown(magicFive))
+        if (Input.GetKeyDown(magicFive))//Ao apertar o botão 5, acionamos EssenceStealer
         {
+            //If there is no target, it's impossible to use EssenceStealer
             if (target == null)
                 print("No target!");
+            //Else, we use it
             else
                 UseEssenceStealer();
         }
@@ -134,12 +136,7 @@ public class SkillsController : MonoBehaviour {
        Instantiate(lightCross, transform.position, Quaternion.LookRotation(direction)); //Cria uma LightCross no local do player
     }
 
-    private void UseEssenceStealer()
-    {
-            essenceStealer.transform.position = target.transform.position;
-            if (!essenceStealer.GetComponent<ParticleSystem>().isPlaying)
-                essenceStealer.GetComponent<ParticleSystem>().Play();
-            if(Input.GetKeyUp(magicFive))
-                essenceStealer.GetComponent<ParticleSystem>().Stop();
+    private void UseEssenceStealer() {
+        GameObject essence = Instantiate(essenceStealer, target.transform.position, Quaternion.LookRotation(-direction)) as GameObject;
     }
 }
