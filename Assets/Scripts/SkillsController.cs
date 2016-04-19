@@ -40,15 +40,35 @@ public class SkillsController : MonoBehaviour {
 	// Força aplicada no raio
     public float lightCrossForce = 10.0f;
 
+    // Radius to search for a target (in case none is selected)
+    public float radius = 0.5f;
+    //Maximum for radius to reach
+    public float radiusMax = 100;
+
 	//Direção em q o mouse aponta
     Vector3 direction; 
 
 	//localização temporária para atirar magia(colocar a mão/cajado aqui futuramente)
-    Vector3 location; 
+    Vector3 location;
 
-	// Use this for initialization
-	void Start () {
-	    
+    // Skills cooldowns
+    public float[] timeTilNext;
+    public float[] cd;
+
+    // Use this for initialization
+    void Start () {
+        //Define each cooldown
+        timeTilNext = new float[5];
+        cd = new float[5];
+        cd[0] = 0.5f; 
+        cd[1] = 2.0f;
+        cd[2] = 3.0f;
+        cd[3] = 2.0f;
+        cd[4] = 5.0f;
+        for(int i=0; i>5; i++)
+        {
+            timeTilNext[i] = 0;
+        }
 	}
 
     // Update is called once per frame
@@ -71,22 +91,51 @@ public class SkillsController : MonoBehaviour {
             direction = target.transform.position - location;
             direction.Normalize();
         }
-        if (Input.GetKey(magicOne)) //Ao apertar o botão 1, usa a primeira magia
-            UseLightArrow();
-        if (Input.GetKeyDown(magicTwo))//Ao apertar o botão 2, usa a segunda
-            UseLightBall();
-        if (Input.GetKeyDown(magicThree))//Ao apertar o botão 3, usa a terceira
-            UseLightCross();
-        if (Input.GetKeyDown(magicFour))//Ao apertar o botão 4, acionamos ou desativamos santuário
-            LightSanctuaryBehaviour.toogleSanctuary = !LightSanctuaryBehaviour.toogleSanctuary;
-        if (Input.GetKeyDown(magicFive))//Ao apertar o botão 5, acionamos EssenceStealer
+        if (Input.GetKey(magicOne) && timeTilNext[0] <= 0) //Ao apertar o botão 1, usa a primeira magia
         {
-            //If there is no target, it's impossible to use EssenceStealer
+            UseLightArrow();
+            timeTilNext[0] = cd[0];
+        }
+        if (Input.GetKeyDown(magicTwo) && timeTilNext[1] <= 0)//Ao apertar o botão 2, usa a segunda
+        {
+            UseLightBall();
+            timeTilNext[1] = cd[1];
+        }
+        if (Input.GetKeyDown(magicThree) && timeTilNext[2] <=0)//Ao apertar o botão 3, usa a terceira
+        {
+            UseLightCross();
+            timeTilNext[2] = cd[2];
+        }
+        if (Input.GetKeyDown(magicFour) && timeTilNext[3] <=0)//Ao apertar o botão 4, acionamos ou desativamos santuário
+        {
+            LightSanctuaryBehaviour.toogleSanctuary = !LightSanctuaryBehaviour.toogleSanctuary;
+            timeTilNext[3] = cd[3];
+        }
+        if (Input.GetKeyDown(magicFive) && timeTilNext[4]<=0)//Ao apertar o botão 5, acionamos EssenceStealer
+        {
+            //If there is no target, we'll pick the closest one
             if (target == null)
-                print("No target!");
-            //Else, we use it
-            else
-                UseEssenceStealer();
+                while (target == null)
+                {
+                    //Create a globe around the character
+                    foreach (Collider col in Physics.OverlapSphere(transform.position, radius))
+                    {
+                        if (col.tag == "Enemy") // If there's an enemy around, we'll pick them as a target
+                            target = col.gameObject;
+                        radius += 0.1f;// Otherwise, we'll increase the globe until we find one.
+                    }
+                    if (radius > radiusMax) //If no enemy is found in 1000 units, we'll break the while loop
+                    {
+                        print("No enemy around");
+                        return;
+                    }
+                }
+            UseEssenceStealer();
+            timeTilNext[4] = cd[4];
+        }
+        for(int i = 0; i<5; i++)
+        {
+            timeTilNext[i] -= Time.deltaTime;
         }
 
         //Seria bom colocar um static pra quando coletar os outros amuletos destrancar as magias

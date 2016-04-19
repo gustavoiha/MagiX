@@ -7,4 +7,11 @@ public class LightArrowBehaviour : MonoBehaviour {
 	void Start () {
         Destroy(gameObject, 5.0f);
 	}
+
+    void onTriggerEnter(Collider col)
+    {
+        print("hit");
+        if(col.tag == "Enemy")
+            Destroy(gameObject);
+    }
 }

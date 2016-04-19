@@ -7,6 +7,7 @@ public class LightBallBehaviour : MonoBehaviour {
     public float growthRate = 1.0f; //Taxa em q a esfera cresce
     public float radius = 1;//Raio da explosão
     public float explosionForce = 100.0f; //Força da explosão
+    public float damage = 3.0f;
 
     public ParticleSystem particleS; //Particulas
     public ForceMode forceMode;//Tipo de força que será aplicada
@@ -31,6 +32,8 @@ public class LightBallBehaviour : MonoBehaviour {
                 //Coloquei a parte de empurrão como teste, vai ter empurrão ou só dano?
                 if (col.GetComponent<Rigidbody>() != null) //Se o objeto puder ser empurrado, ele será
                     col.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, radius, 0, forceMode);
+                if (col.tag == "Enemy")
+                    col.GetComponent<HealthController>().TakeDamage(damage);
             }
 
             Destroy(gameObject);//Destrói a esfera

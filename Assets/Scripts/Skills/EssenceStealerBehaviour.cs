@@ -10,7 +10,7 @@ public class EssenceStealerBehaviour : MonoBehaviour {
     GameObject player;
     GameObject target;
 
-    public float damage = 0.05f; //Damage
+    public float damage = 5f; //Damage
 
 	// Use this for initialization
 	void Start () {
@@ -33,7 +33,7 @@ public class EssenceStealerBehaviour : MonoBehaviour {
             return;
         }
         //Damages the target.
-        target.GetComponent<HealthController>().TakeDamage(damage);
+        target.GetComponent<HealthController>().TakeDamage(damage * Time.deltaTime);
         //Cura aqui
 
         //Updates new Rotation to face the player
