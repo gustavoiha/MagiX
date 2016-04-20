@@ -13,7 +13,6 @@ GameObject:
   - 23: {fileID: 2336568}
   - 54: {fileID: 5433294}
   - 114: {fileID: 11434090}
-  - 114: {fileID: 11422632}
   m_Layer: 0
   m_Name: LightBall1
   m_TagString: Untagged
@@ -111,19 +110,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &11422632
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 120464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b09f2e88aa87364eab2eadd8a801fa8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageOnHit: 3
-  tagsToReceiveDamage: Enemy
 --- !u!114 &11434090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,6 +125,7 @@ MonoBehaviour:
   growthRate: 1
   radius: 1
   explosionForce: 100
+  damage: 5
   particleS: {fileID: 19833692}
   forceMode: 1
 --- !u!135 &13500210
