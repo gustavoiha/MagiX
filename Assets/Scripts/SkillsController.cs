@@ -9,16 +9,21 @@ public class SkillsController : MonoBehaviour {
     public KeyCode magicThree;
     public KeyCode magicFour;
     public KeyCode magicFive;
+    public KeyCode targetSwitch;
 
     //Target acquired at ENEMY BEHAVIOUR script
     public GameObject target;
+    //Array with all enemies around
+    GameObject[] targets;
+    //Variable to switch between enemies
+    public int switchT = 0;
 
-	///
-	/// Skills' prefabs
-	///
+    ///
+    /// Skills' prefabs
+    ///
 
-	//Prefab da flecha de luz
-	public GameObject lightArrow; 
+    //Prefab da flecha de luz
+    public GameObject lightArrow; 
 	//Prefab da bola de luz
     public GameObject lightBall;
 	//Prefab da LightCross
@@ -57,10 +62,11 @@ public class SkillsController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        targetSwitch = KeyCode.Tab;
         //Define each cooldown
         timeTilNext = new float[5];
         cd = new float[5];
-        cd[0] = 0.5f; 
+        cd[0] = 1.0f; 
         cd[1] = 2.0f;
         cd[2] = 3.0f;
         cd[3] = 2.0f;
@@ -75,7 +81,7 @@ public class SkillsController : MonoBehaviour {
     void Update() {
 
         //If enemy has no health, the target will become null
-        if(target != null)
+        if (target != null)
             if (target.GetComponent<HealthController>().health <= 0)
                 target = null;
 
@@ -137,6 +143,19 @@ public class SkillsController : MonoBehaviour {
         {
             timeTilNext[i] -= Time.deltaTime;
         }
+
+        if (Input.GetKeyDown(targetSwitch))
+        {
+            print(targets.Length);
+            target = targets[switchT];
+            if (switchT >= targets.Length - 1)
+            {
+                switchT = 0;
+            } else
+                switchT++;
+        }
+
+        targets = GameObject.FindGameObjectsWithTag("Enemy");
 
         //Seria bom colocar um static pra quando coletar os outros amuletos destrancar as magias
     }
