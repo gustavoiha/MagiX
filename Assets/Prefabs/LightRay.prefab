@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be05350ef7f7cef47b3d6f1586701b2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growth: 1.1
+  growth: 0.6
   player: {fileID: 191080, guid: 44afbcb7f6e92f94b957ceaeea306846, type: 2}
 --- !u!136 &13629204
 CapsuleCollider:
@@ -110,7 +110,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: growth
+      value: 0.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 179504}
