@@ -65,7 +65,7 @@ public class SkillsController : MonoBehaviour {
         cd[2] = 3.0f;
         cd[3] = 2.0f;
         cd[4] = 5.0f;
-        for(int i=0; i>5; i++)
+        for(int i=0; i<5; i++)
         {
             timeTilNext[i] = 0;
         }
