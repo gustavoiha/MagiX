@@ -38,7 +38,7 @@ public class LightCrossBehaviour : MonoBehaviour {
 		// Angle to fire
 		float angle = 0.0f;
 
-		while (angle <= 360.0f) {
+		while (angle <= 165.0f) {
 			Instantiate (lightRay, transform.position, rotation * Quaternion.Euler (angle, 0, 0));
 			angle += angleInterval;
 		}

@@ -6,15 +6,12 @@ public class LightRayBehaviour : MonoBehaviour {
     public float growth = 1.1f; //Constante em que o raio crescerá
 
     public GameObject player; //Localização do Player
-
-    private Vector3 scale; //Vetor para a escala atual do raio
-
-	private Vector3 originalPosition;
-
-	private float originalLength;
+    Vector3 scale; //Vetor para a escala atual do raio
+    public float damage = 0.5f;
 
 	// Use this for initialization
 	void Start () {
+        player = GameObject.FindGameObjectWithTag("Player");
         Destroy(gameObject, 1.0f); //Auto-destruição
         scale = transform.localScale; //Escala atual do raio
 
@@ -41,4 +38,11 @@ public class LightRayBehaviour : MonoBehaviour {
 
 	}
 
+    void OnTriggerEnter(Collider collider)
+    {
+        if(collider.tag == "Enemy")
+        {
+            collider.GetComponent<HealthController>().TakeDamage(damage);
+        }
+    }
 }
