@@ -155,7 +155,7 @@ public class SkillsController : MonoBehaviour {
                 switchT++;
         }
 
-        targets = GameObject.FindGameObjectsWithTag("Enemy");
+        //targets = GameObject.FindGameObjectsWithTag("Enemy");
 
         //Seria bom colocar um static pra quando coletar os outros amuletos destrancar as magias
     }

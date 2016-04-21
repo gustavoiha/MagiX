@@ -6,8 +6,20 @@ public class LightRayBehaviour : MonoBehaviour {
     public float growth = 1.1f; //Constante em que o raio crescerá
 
     public GameObject player; //Localização do Player
-    Vector3 scale; //Vetor para a escala atual do raio
-    public float damage = 0.5f;
+
+    private Vector3 scale; //Vetor para a escala atual do raio
+
+	private Vector3 originalPosition;
+
+	private float originalLength;
+
+    
+
+
+
+
+
+	public float damage = 0.5f;
 
 	// Use this for initialization
 	void Start () {
