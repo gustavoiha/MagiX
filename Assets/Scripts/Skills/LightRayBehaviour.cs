@@ -42,9 +42,9 @@ public class LightRayBehaviour : MonoBehaviour {
 		//Increases the local dimension y of the game object and moves it forward to avoid duplicate objects in same space 
 		//gameObject.transform.position += transform.forward * gameObject.GetComponent<Renderer>().bounds.size.y * (growth - 1.0f)/2.0f;
 
-		float deltaLength = gameObject.GetComponent<Renderer> ().bounds.size.z - originalLength;
+		//float deltaLength = gameObject.GetComponent<Renderer> ().bounds.size.z - originalLength;
 
-		gameObject.transform.position = originalPosition - deltaLength * transform.forward / 2.0f;
+		//gameObject.transform.position = originalPosition - deltaLength * transform.forward / 2.0f;
 
         transform.localScale = new Vector3(0,1,0) * yScale + scale; //Nova escala será a parte y somado com a parte antiga
 

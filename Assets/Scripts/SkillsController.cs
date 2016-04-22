@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class SkillsController : MonoBehaviour {
 
@@ -14,7 +15,7 @@ public class SkillsController : MonoBehaviour {
     //Target acquired at ENEMY BEHAVIOUR script
     public GameObject target;
     //Array with all enemies around
-    GameObject[] targets;
+    GameObject[] targets = null;
     //Variable to switch between enemies
     public int switchT = 0;
 
@@ -139,24 +140,58 @@ public class SkillsController : MonoBehaviour {
             UseEssenceStealer();
             timeTilNext[4] = cd[4];
         }
-        for(int i = 0; i<5; i++)
-        {
+        for(int i = 0; i<5; i++) {
+            //Resets cooldowns
             timeTilNext[i] -= Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(targetSwitch))
-        {
+        if (Input.GetKeyDown(targetSwitch)) {
+            //In case we kill too many enemies and the current int is bigger than the new array, we reset it
+            if (switchT >= targets.Length)
+                switchT = 0;
+            //When we press the key, we will change targets according to the array we created
             print(targets.Length);
             target = targets[switchT];
+            //If we reach the maximum of the array, we reset the int
             if (switchT >= targets.Length - 1)
             {
                 switchT = 0;
-            } else
+            } else //If we don't reach the end, we add one to it
                 switchT++;
         }
 
-        //targets = GameObject.FindGameObjectsWithTag("Enemy");
-
+        //Creates an array with all enemies
+        targets = GameObject.FindGameObjectsWithTag("Enemy");
+        //Creates an array for close objects
+        Collider[] colTargets = Physics.OverlapSphere(transform.position, radiusMax);
+        //Compare enemies to close objects
+        for (int i = 0; i < targets.Length; i++) {
+            bool same = false;
+            for (int o = 0; o < colTargets.Length; o++) {
+                //If there's a match, same becomes true
+                if (targets[i] == colTargets[o].gameObject) {
+                    same = true;
+                    break;
+                }
+            }
+            //If there's no match, the enemy is removed from the array
+            if (!same)
+                targets[i] = null;
+        }
+        //Here we resize the enemy array, removing the null ones
+        for(int i = 0; i < targets.Length; i++) {
+            //If there's a null space
+            if(targets[i] == null) {
+                //We remove it by pulling all the array back by 1
+                for (int a = i; a < targets.Length - 1; a++) {
+                    targets[a] = targets[a + 1];
+                }
+                //When it ends, we reduce its size by one
+                Array.Resize<GameObject>(ref targets, targets.Length - 1);
+                //Check if the new one is also null;
+                i--;
+            }
+        }
         //Seria bom colocar um static pra quando coletar os outros amuletos destrancar as magias
     }
 
