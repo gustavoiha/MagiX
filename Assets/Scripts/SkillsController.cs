@@ -24,13 +24,13 @@ public class SkillsController : MonoBehaviour {
     ///
 
     //Prefab da flecha de luz
-    public GameObject lightArrow; 
+	public GameObject lightArrow; 
 	//Prefab da bola de luz
-    public GameObject lightBall;
+	public GameObject lightBall;
 	//Prefab da LightCross
-    public GameObject lightCross;
+	public GameObject lightCross;
     //Prefab EssenceStealer
-    public GameObject essenceStealer;
+	public GameObject essenceStealer;
 
 	// Skills' id's. Pass them as arguments int UseSkill() method
 	public const string LIGHT_ARROW = "lightArrow";
@@ -235,8 +235,9 @@ public class SkillsController : MonoBehaviour {
     }
 
 	private void UseLightCross() {
-        //Cura aqui
-       Instantiate(lightCross, transform.position, Quaternion.LookRotation(direction)); //Cria uma LightCross no local do player
+		//Cria uma LightCross no local do player
+		GameObject newLightCross = Instantiate(lightCross, transform.position, transform.rotation) as GameObject;
+		newLightCross.transform.parent = gameObject.transform;
     }
 
     private void UseEssenceStealer() {

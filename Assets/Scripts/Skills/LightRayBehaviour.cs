@@ -3,39 +3,59 @@ using System.Collections;
 
 public class LightRayBehaviour : MonoBehaviour {
 
-    public float growth = 1.1f; //Constante em que o raio crescerá
+	// Scale to multiply per second
+    public float growthRate = 200.0f;
 
-    public GameObject player; //Localização do Player
+	// max scale permitted
+	public float maxScale = 200.0f;
 
-    private Vector3 scale; //Vetor para a escala atual do raio
+	// Starting scale
+    private Vector3 startingScale;
 
-	public float damage = 0.5f;
+	// Starting length
+	private float startingLength;
+
+	// Starting position
+	private Vector3 startingPosition;
+
+	//public float damage = 0.5f;
 
 	// Use this for initialization
 	void Start () {
-        player = GameObject.FindGameObjectWithTag("Player");
-        Destroy(gameObject, 1.0f); //Auto-destruição
-        scale = transform.localScale; //Escala atual do raio
+        //player = GameObject.FindGameObjectWithTag("Player");
 
+		//Destroy(gameObject, 1.0f); //Auto-destruição -- Update: lightRay is child of LightCross now, which already self-destructs.
+
+		startingScale    = transform.localScale; //Escala atual local do raio
+		startingLength   = gameObject.GetComponent<MeshRenderer>().bounds.size.z;
+		startingPosition = gameObject.transform.localPosition;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		//Cria um float para segurar a posição Y que fará o raio crescer
-        float yScale = transform.localScale.y;
+		if (transform.localScale.y >= maxScale)
+			return;
 
-        yScale *= growth; //Aumenta esse float de acordo com a constante
+		Vector3 newScale = startingScale;
+		newScale.y = transform.localScale.y + growthRate * Time.deltaTime;
 
-        transform.localScale = new Vector3(0,1,0) * yScale + scale; //Nova escala será a parte y somado com a parte antiga
+		transform.localScale = newScale; //Aumenta esse float de acordo com a constante
+
+		// Move object so it doesn't cross player when scaling
+		//transform.localPosition = startingPosition + (getLength() - startingLength) / 2.0f * transform.up;
 
 	}
 
-    void OnTriggerEnter(Collider collider)
+    /*void OnTriggerEnter(Collider collider)
     {
         if(collider.tag == "Enemy")
         {
             collider.GetComponent<HealthController>().TakeDamage(damage);
         }
-    }
+    }*/
+
+	private float getLength(){
+		return gameObject.GetComponent<MeshRenderer>().bounds.size.z;
+	}
 }

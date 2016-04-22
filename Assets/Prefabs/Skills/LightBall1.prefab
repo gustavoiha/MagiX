@@ -13,7 +13,7 @@ GameObject:
   - 23: {fileID: 2336568}
   - 54: {fileID: 5433294}
   - 114: {fileID: 11434090}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: LightBall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ GameObject:
   - 4: {fileID: 442708}
   - 198: {fileID: 19833692}
   - 199: {fileID: 19913396}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1684,6 +1684,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: tagsToReceiveDamage
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
