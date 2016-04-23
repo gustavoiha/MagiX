@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 410852}
   - 33: {fileID: 3385624}
   - 23: {fileID: 2379254}
-  - 64: {fileID: 6455004}
+  - 65: {fileID: 6563540}
   m_Layer: 0
   m_Name: Crate_1A2
   m_TagString: Untagged
@@ -63,8 +63,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 147188}
   m_Mesh: {fileID: 4300014, guid: 2112854f9c1e1bd4abf766d44f57f570, type: 3}
---- !u!64 &6455004
-MeshCollider:
+--- !u!65 &6563540
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -73,8 +73,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300014, guid: 2112854f9c1e1bd4abf766d44f57f570, type: 3}
+  m_Size: {x: 0.75, y: 0.7500001, z: 0.7500001}
+  m_Center: {x: 0, y: -0.06999998, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

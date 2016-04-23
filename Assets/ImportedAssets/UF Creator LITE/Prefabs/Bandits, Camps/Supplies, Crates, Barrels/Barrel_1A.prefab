@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 495198}
   - 33: {fileID: 3360510}
   - 23: {fileID: 2367512}
-  - 64: {fileID: 6457046}
+  - 65: {fileID: 6553892}
   m_Layer: 0
   m_Name: Barrel_1A
   m_TagString: Untagged
@@ -63,8 +63,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193030}
   m_Mesh: {fileID: 4300018, guid: 2112854f9c1e1bd4abf766d44f57f570, type: 3}
---- !u!64 &6457046
-MeshCollider:
+--- !u!65 &6553892
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -73,8 +73,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300018, guid: 2112854f9c1e1bd4abf766d44f57f570, type: 3}
+  m_Size: {x: 0.9019996, y: 1, z: 0.9019997}
+  m_Center: {x: 0, y: -0.000000074505806, z: 0.000000014901161}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

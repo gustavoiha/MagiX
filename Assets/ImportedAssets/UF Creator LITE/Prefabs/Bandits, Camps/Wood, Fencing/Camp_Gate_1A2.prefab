@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 447622}
   - 33: {fileID: 3337070}
   - 23: {fileID: 2370860}
-  - 64: {fileID: 6417636}
+  - 65: {fileID: 6596150}
   m_Layer: 0
   m_Name: Camp_Gate_1A2
   m_TagString: Untagged
@@ -63,8 +63,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126002}
   m_Mesh: {fileID: 4300016, guid: 0b66ab6aecd92f3478a1b78050c6727c, type: 3}
---- !u!64 &6417636
-MeshCollider:
+--- !u!65 &6596150
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -73,15 +73,19 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300016, guid: 0b66ab6aecd92f3478a1b78050c6727c, type: 3}
+  m_Size: {x: 1.272274, y: 7.2829857, z: 5.4069133}
+  m_Center: {x: 0.15277885, y: 0.5416273, z: -0.023376703}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 126002}

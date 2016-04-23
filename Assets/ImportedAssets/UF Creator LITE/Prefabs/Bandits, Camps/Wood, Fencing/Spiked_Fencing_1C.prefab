@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 480846}
   - 33: {fileID: 3307136}
   - 23: {fileID: 2353624}
-  - 64: {fileID: 6432606}
+  - 65: {fileID: 6540478}
   m_Layer: 0
   m_Name: Spiked_Fencing_1C
   m_TagString: Untagged
@@ -63,8 +63,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 137366}
   m_Mesh: {fileID: 4300010, guid: e4be008ca8623b247bb13fe3c0cc4120, type: 3}
---- !u!64 &6432606
-MeshCollider:
+--- !u!65 &6540478
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -73,8 +73,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300010, guid: e4be008ca8623b247bb13fe3c0cc4120, type: 3}
+  m_Size: {x: 0.850211, y: 2.25, z: 2.82055}
+  m_Center: {x: -0.0025668293, y: 0.20577353, z: 0.06157303}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
