@@ -38,5 +38,7 @@ public class EssenceStealerBehaviour : MonoBehaviour {
 
         //Updates new Rotation to face the player
         transform.rotation = Quaternion.LookRotation(player.transform.position-target.transform.position);
+        //Updates location of the target
+        transform.position = target.transform.position;
 	}
 }

@@ -13,11 +13,9 @@ public class SkillsController : MonoBehaviour {
     public KeyCode targetSwitch;
 
     //Target acquired at ENEMY BEHAVIOUR script
-    public GameObject target;
+    public GameObject target = null;
     //Array with all enemies around
     GameObject[] targets = null;
-    //Variable to switch between enemies
-    public int switchT = 0;
 
     ///
     /// Skills' prefabs
@@ -81,117 +79,63 @@ public class SkillsController : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
+        target = GetComponent<TargetController>().GetTarget();
+
         //If enemy has no health, the target will become null
-        if (target != null)
-            if (target.GetComponent<HealthController>().health <= 0)
+        if (GetComponent<TargetController>().TargetIsDead())
                 target = null;
 
         location = transform.position + Vector3.forward * 3; //Coloca a posição um pouco a frente
 
-        if (target == null) //If there is no target at all, calculations will be based on the mouse position
-        {
+        if (!GetComponent<TargetController>().HasTarget()) { //If there is no target at all, calculations will be based on the mouse position
             var worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z)); //Calcula local do mouse em relação a tela
             direction = worldPosition - transform.position; //Calcula direção baseada entre o personagem e o mouse
             direction.Normalize();//Normaliza o vetor
-        } else //If there is a target, calculations will be based on the target's position
-        {
+        } else { //If there is a target, calculations will be based on the target's position
             direction = target.transform.position - location;
             direction.Normalize();
         }
-        if (Input.GetKey(magicOne) && timeTilNext[0] <= 0) //Ao apertar o botão 1, usa a primeira magia
-        {
+
+        if (Input.GetKey(magicOne) && timeTilNext[0] <= 0) { //Ao apertar o botão 1, usa a primeira magia
             UseLightArrow();
             timeTilNext[0] = cd[0];
         }
-        if (Input.GetKeyDown(magicTwo) && timeTilNext[1] <= 0)//Ao apertar o botão 2, usa a segunda
-        {
+
+        if (Input.GetKeyDown(magicTwo) && timeTilNext[1] <= 0) {//Ao apertar o botão 2, usa a segunda
             UseLightBall();
             timeTilNext[1] = cd[1];
         }
-        if (Input.GetKeyDown(magicThree) && timeTilNext[2] <=0)//Ao apertar o botão 3, usa a terceira
-        {
+
+        if (Input.GetKeyDown(magicThree) && timeTilNext[2] <=0) {//Ao apertar o botão 3, usa a terceira
             UseLightCross();
             timeTilNext[2] = cd[2];
         }
-        if (Input.GetKeyDown(magicFour) && timeTilNext[3] <=0)//Ao apertar o botão 4, acionamos ou desativamos santuário
-        {
+
+        if (Input.GetKeyDown(magicFour) && timeTilNext[3] <=0) {//Ao apertar o botão 4, acionamos ou desativamos santuário
             LightSanctuaryBehaviour.toogleSanctuary = !LightSanctuaryBehaviour.toogleSanctuary;
             timeTilNext[3] = cd[3];
         }
-        if (Input.GetKeyDown(magicFive) && timeTilNext[4]<=0)//Ao apertar o botão 5, acionamos EssenceStealer
-        {
+
+        if (Input.GetKeyDown(magicFive) && timeTilNext[4]<=0) {//Ao apertar o botão 5, acionamos EssenceStealer
             //If there is no target, we'll pick the closest one
-            if (target == null)
-                while (target == null)
-                {
-                    //Create a globe around the character
-                    foreach (Collider col in Physics.OverlapSphere(transform.position, radius))
-                    {
-                        if (col.tag == "Enemy") // If there's an enemy around, we'll pick them as a target
-                            target = col.gameObject;
-                        radius += 0.1f;// Otherwise, we'll increase the globe until we find one.
-                    }
-                    if (radius > radiusMax) //If no enemy is found in 1000 units, we'll break the while loop
-                    {
-                        print("No enemy around");
-                        return;
-                    }
-                }
+            target = GetComponent<TargetController>().FindNearTarget(radius, radiusMax);
             UseEssenceStealer();
             timeTilNext[4] = cd[4];
         }
+
         for(int i = 0; i<5; i++) {
             //Resets cooldowns
             timeTilNext[i] -= Time.deltaTime;
         }
 
         if (Input.GetKeyDown(targetSwitch)) {
-            //In case we kill too many enemies and the current int is bigger than the new array, we reset it
-            if (switchT >= targets.Length)
-                switchT = 0;
-            //When we press the key, we will change targets according to the array we created
-            print(targets.Length);
-            target = targets[switchT];
-            //If we reach the maximum of the array, we reset the int
-            if (switchT >= targets.Length - 1)
-            {
-                switchT = 0;
-            } else //If we don't reach the end, we add one to it
-                switchT++;
+            GetComponent<TargetController>().SwitchTarget(targets);
         }
 
         //Creates an array with all enemies
-        targets = GameObject.FindGameObjectsWithTag("Enemy");
-        //Creates an array for close objects
-        Collider[] colTargets = Physics.OverlapSphere(transform.position, radiusMax);
-        //Compare enemies to close objects
-        for (int i = 0; i < targets.Length; i++) {
-            bool same = false;
-            for (int o = 0; o < colTargets.Length; o++) {
-                //If there's a match, same becomes true
-                if (targets[i] == colTargets[o].gameObject) {
-                    same = true;
-                    break;
-                }
-            }
-            //If there's no match, the enemy is removed from the array
-            if (!same)
-                targets[i] = null;
-        }
-        //Here we resize the enemy array, removing the null ones
-        for(int i = 0; i < targets.Length; i++) {
-            //If there's a null space
-            if(targets[i] == null) {
-                //We remove it by pulling all the array back by 1
-                for (int a = i; a < targets.Length - 1; a++) {
-                    targets[a] = targets[a + 1];
-                }
-                //When it ends, we reduce its size by one
-                Array.Resize<GameObject>(ref targets, targets.Length - 1);
-                //Check if the new one is also null;
-                i--;
-            }
-        }
+        targets = GetComponent<TargetController>().PickNearbyTarget(radiusMax);
+        print(targets.Length);
+
         //Seria bom colocar um static pra quando coletar os outros amuletos destrancar as magias
     }
 
