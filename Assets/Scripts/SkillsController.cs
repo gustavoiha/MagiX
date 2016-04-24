@@ -83,7 +83,7 @@ public class SkillsController : MonoBehaviour {
 
         //If enemy has no health, the target will become null
         if (GetComponent<TargetController>().TargetIsDead())
-                target = null;
+        	target = null;
 
         location = transform.position + Vector3.forward * 3; //Coloca a posição um pouco a frente
 
@@ -134,7 +134,7 @@ public class SkillsController : MonoBehaviour {
 
         //Creates an array with all enemies
         targets = GetComponent<TargetController>().PickNearbyTarget(radiusMax);
-        print(targets.Length);
+        //print(targets.Length);
 
         //Seria bom colocar um static pra quando coletar os outros amuletos destrancar as magias
     }
