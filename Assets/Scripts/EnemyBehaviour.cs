@@ -11,7 +11,7 @@ public class EnemyBehaviour : MonoBehaviour {
 		Die,
 	}
 
-	public State state;
+	private State state;
 
 	//Objeto que o inimigo irá seguir
 	public Transform target;
@@ -95,6 +95,11 @@ public class EnemyBehaviour : MonoBehaviour {
 		Destroy(this.gameObject);
 		yield return 0;
 	}
+
+	/*IEnumerator AttackingState(){
+		// Attack
+		GoToNextState ();
+	}*/
 
 	void Start()
 	{
