@@ -56,6 +56,9 @@ ModelImporter:
     4300008: Ombro
     7400000: Default Take
     7400002: Waiting_To_Kill_em_All
+    7400004: Hit
+    7400006: Idle
+    7400008: Walk
     9500000: //RootNode
     13700000: Corpo_MeshPart0
     13700002: Corpo_MeshPart1
@@ -82,7 +85,223 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Hit
+      takeName: Hit
+      firstFrame: 0
+      lastFrame: 14
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Torso
+        weight: 1
+      - path: Armature/Torso/Chest
+        weight: 1
+      - path: Armature/Torso/Chest/Head
+        weight: 1
+      - path: Armature/Torso/Chest/Upper_Arm_L
+        weight: 1
+      - path: Armature/Torso/Chest/Upper_Arm_L/Lower_Arm_L
+        weight: 1
+      - path: Armature/Torso/Chest/Upper_Arm_R
+        weight: 1
+      - path: Armature/Torso/Chest/Upper_Arm_R/Lower_Arm_R
+        weight: 1
+      - path: Armature/Torso/Chest/Upper_Arm_R/Lower_Arm_R/Lower_Arm_R_001
+        weight: 1
+      - path: Armature/Torso/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso/Upper_Leg_L/Lower_Leg_L/Lower_Leg_L_001
+        weight: 1
+      - path: Armature/Torso/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso/Upper_Leg_R/Lower_Leg_R/Lower_Leg_R_001
+        weight: 1
+      - path: Corpo
+        weight: 1
+      - path: Corpo/Corpo_MeshPart0
+        weight: 1
+      - path: Corpo/Corpo_MeshPart1
+        weight: 1
+      - path: Ombro
+        weight: 1
+      - path: Saia
+        weight: 1
+      - path: Tacape
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle
+      takeName: Parado
+      firstFrame: -1
+      lastFrame: 15
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Torso
+        weight: 1
+      - path: Armature/Torso/Chest
+        weight: 1
+      - path: Armature/Torso/Chest/Head
+        weight: 1
+      - path: Armature/Torso/Chest/Upper_Arm_L
+        weight: 1
+      - path: Armature/Torso/Chest/Upper_Arm_L/Lower_Arm_L
+        weight: 1
+      - path: Armature/Torso/Chest/Upper_Arm_R
+        weight: 1
+      - path: Armature/Torso/Chest/Upper_Arm_R/Lower_Arm_R
+        weight: 1
+      - path: Armature/Torso/Chest/Upper_Arm_R/Lower_Arm_R/Lower_Arm_R_001
+        weight: 1
+      - path: Armature/Torso/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso/Upper_Leg_L/Lower_Leg_L/Lower_Leg_L_001
+        weight: 1
+      - path: Armature/Torso/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso/Upper_Leg_R/Lower_Leg_R/Lower_Leg_R_001
+        weight: 1
+      - path: Corpo
+        weight: 1
+      - path: Corpo/Corpo_MeshPart0
+        weight: 1
+      - path: Corpo/Corpo_MeshPart1
+        weight: 1
+      - path: Ombro
+        weight: 1
+      - path: Saia
+        weight: 1
+      - path: Tacape
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Walk
+      takeName: Walk
+      firstFrame: 0
+      lastFrame: 14
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Torso
+        weight: 1
+      - path: Armature/Torso/Chest
+        weight: 1
+      - path: Armature/Torso/Chest/Head
+        weight: 1
+      - path: Armature/Torso/Chest/Upper_Arm_L
+        weight: 1
+      - path: Armature/Torso/Chest/Upper_Arm_L/Lower_Arm_L
+        weight: 1
+      - path: Armature/Torso/Chest/Upper_Arm_R
+        weight: 1
+      - path: Armature/Torso/Chest/Upper_Arm_R/Lower_Arm_R
+        weight: 1
+      - path: Armature/Torso/Chest/Upper_Arm_R/Lower_Arm_R/Lower_Arm_R_001
+        weight: 1
+      - path: Armature/Torso/Upper_Leg_L
+        weight: 1
+      - path: Armature/Torso/Upper_Leg_L/Lower_Leg_L
+        weight: 1
+      - path: Armature/Torso/Upper_Leg_L/Lower_Leg_L/Lower_Leg_L_001
+        weight: 1
+      - path: Armature/Torso/Upper_Leg_R
+        weight: 1
+      - path: Armature/Torso/Upper_Leg_R/Lower_Leg_R
+        weight: 1
+      - path: Armature/Torso/Upper_Leg_R/Lower_Leg_R/Lower_Leg_R_001
+        weight: 1
+      - path: Corpo
+        weight: 1
+      - path: Corpo/Corpo_MeshPart0
+        weight: 1
+      - path: Corpo/Corpo_MeshPart1
+        weight: 1
+      - path: Ombro
+        weight: 1
+      - path: Saia
+        weight: 1
+      - path: Tacape
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

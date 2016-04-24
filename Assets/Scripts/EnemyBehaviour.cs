@@ -13,6 +13,9 @@ public class EnemyBehaviour : MonoBehaviour {
 
 	private State state;
 
+	private Animator animator;
+	private Rigidbody rigidBody;
+
 	//Objeto que o inimigo irá seguir
 	public Transform target;
 
@@ -61,31 +64,49 @@ public class EnemyBehaviour : MonoBehaviour {
 
 	IEnumerator IdleState()
 	{
-		//OnEnter
+		
 		Debug.Log("Ta em idle");
+
+		animator.SetInteger ("State", 0);
+
 		while(state == State.Idle)
 		{
 			//OnUpdate
+
+			MakePerpendicular ();
+
 			if (GetDistance () < followRange)
 				state = State.Follow;
+			
 			yield return 0;
 		}
+
 		Debug.Log ("Saiu do idle");
+
 		GoToNextState ();
 	}
 
 	IEnumerator FollowState()
 	{
 		Debug.Log ("Começou o Follow");
+
+		animator.SetInteger ("State", 1);
+
 		while (state == State.Follow)
 		{
 			transform.position = Vector3.MoveTowards (transform.position, target.position, Time.deltaTime * moveSpeed);
+
+			MakePerpendicular ();
+
 			RotateTowardsTarget ();
+
 			if (GetDistance () > idleRange)
 				state = State.Idle;
 			yield return 0;
 		}
+
 		Debug.Log ("Saiu do follow");
+
 		GoToNextState ();
 	}
 
@@ -97,18 +118,24 @@ public class EnemyBehaviour : MonoBehaviour {
 	}
 
 	/*IEnumerator AttackingState(){
+
+		animator.SetInteger ("State", 2);
+
 		// Attack
+
 		GoToNextState ();
 	}*/
 
 	void Start()
 	{
+		
+		animator  = gameObject.GetComponent<Animator> ();
+		rigidBody = gameObject.GetComponent<Rigidbody> ();
+
 		GoToNextState ();
 		currentHealth = health;
 		giveDamage = maxHit;
 	}
-
-
 
 	void GoToNextState ()
 	{
@@ -127,6 +154,15 @@ public class EnemyBehaviour : MonoBehaviour {
 	{
 		transform.rotation = Quaternion.Slerp (transform.rotation,
 			Quaternion.LookRotation (target.position - transform.position), rotateSpeed * Time.deltaTime);
+	}
+
+	private void MakePerpendicular(){
+		// Stoping object from rotating automatially because of the rigdbody component
+		rigidBody.angularVelocity = new Vector3(0,0,0);
+
+		// Making sure the object is always perpendicular
+		Quaternion quaternion  = new Quaternion ();
+		quaternion.eulerAngles = new Vector3 (0, gameObject.transform.rotation.eulerAngles.y, 0);
 	}
 
 }
