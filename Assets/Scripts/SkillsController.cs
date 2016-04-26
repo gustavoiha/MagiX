@@ -147,7 +147,8 @@ public class SkillsController : MonoBehaviour {
 	/// <param name="skill">Skill.</param>
 	public void UseSkill (string skillID){
 
-		targetController.UpdateTarget ();
+		if (!targetController.HasTarget())
+			targetController.UpdateTarget ();
 
 		target = targetController.GetTargetTransform();
 

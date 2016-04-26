@@ -39,9 +39,12 @@ public class EssenceStealerBehaviour : MonoBehaviour {
             Destroy(gameObject, 2.0f);
             return;
         }
+
         //Damages the target.
         target.gameObject.GetComponent<HealthController>().TakeDamage(damage * Time.deltaTime);
+
         //Cura aqui
+		player.GetComponent<HealthController> ().TakeDamage(-damage * Time.deltaTime);
 
         //Updates new Rotation to face the player
         transform.rotation = Quaternion.LookRotation(player.transform.position-target.position);

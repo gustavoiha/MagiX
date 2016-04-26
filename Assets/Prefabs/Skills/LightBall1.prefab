@@ -123,9 +123,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scale: 1
   growthRate: 1
-  radius: 1
-  explosionForce: 100
-  damage: 5
+  radius: 5
+  explosionForce: 50
+  damage: 3
   particleS: {fileID: 19833692}
   forceMode: 1
 --- !u!135 &13500210
@@ -1688,6 +1688,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Layer
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: explosionForce
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: radius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damage
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

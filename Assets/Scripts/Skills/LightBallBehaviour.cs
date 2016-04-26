@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class LightBallBehaviour : MonoBehaviour {
@@ -13,45 +13,58 @@ public class LightBallBehaviour : MonoBehaviour {
     public ForceMode forceMode;//Tipo de força que será aplicada
 
     bool detonation;//A esfera detona quando toca algo
+	private float explosionRadius;
 
     // Use this for initialization
     void Start()
     {
+		explosionRadius = radius;
         Destroy(gameObject, 20.0f);//Auto detonação
         detonation = false;//Começa falso e fica verdadeiro quanto toca algo
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (detonation)
-        {
-            //Cria uma esfera que afetará quem estiver na explosão
-            foreach (Collider col in Physics.OverlapSphere(transform.position, radius))
-            {
-                //Coloquei a parte de empurrão como teste, vai ter empurrão ou só dano?
-                if (col.GetComponent<Rigidbody>() != null) //Se o objeto puder ser empurrado, ele será
-                    col.GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, radius, 0, forceMode);
-                if (col.tag == "Enemy")
-                    col.GetComponent<HealthController>().TakeDamage(damage);
-            }
-
-            Destroy(gameObject);//Destrói a esfera
-
-        }
-        else {
+    void Update() {
+		
+        //if (detonation) {
+		//	Detonate ();
+        //}
+        //else {
 			
             transform.localScale = Vector3.one * scale; //Faz a esfera crescer de acordo com o scale
             particleS.transform.localScale = Vector3.one * scale; //E as particulas tbm
             scale += growthRate * Time.deltaTime; //Aumenta o scale conforme o tempo passa
-            radius = 2 * particleS.transform.localScale.x;//Aumenta o raio conforme aumenta a esfera
-
-        }
+			explosionRadius = radius * particleS.transform.localScale.x;//Aumenta o raio conforme aumenta a esfera
+			//Debug.Log("Raio de explosão: " + explosionRadius);
+        //}
     }
 
     void OnTriggerEnter(Collider other)
     {
 		//Ao tocar algo, ela explode
-        detonation = true;
+		if (other.gameObject.tag.Equals("Enemy"))
+        	//detonation = true;
+			Detonate ();
     }
+
+	private void Detonate(){
+		
+		Collider[] colliders = Physics.OverlapSphere (transform.position, explosionRadius);
+
+		foreach (Collider hit in colliders) {
+			
+			Rigidbody rigidbody = hit.GetComponent<Rigidbody> ();
+
+			if (rigidbody != null && !hit.gameObject.tag.Equals("Player")) {
+				rigidbody.AddExplosionForce (explosionForce, transform.position, explosionRadius, 1.0f, forceMode);
+				Debug.Log ("Added force!");
+			}
+
+			if (hit.gameObject.tag.Equals ("Enemy"))
+				hit.gameObject.GetComponent<HealthController> ().TakeDamage (damage);
+		}
+
+		//Destrói a esfera
+		Destroy(gameObject);
+	}
 }

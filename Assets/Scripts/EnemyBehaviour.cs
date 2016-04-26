@@ -36,6 +36,8 @@ public class EnemyBehaviour : MonoBehaviour {
 	public float maxHit = 5;
 	private float giveDamage;
 
+	public float gravityIncrement = 2.0f;
+
 	// Replace with HealthController and DoDamage scripts!!!!!!!
 	public void TakeDamage()
 	{
@@ -138,6 +140,10 @@ public class EnemyBehaviour : MonoBehaviour {
 		GoToNextState ();
 		currentHealth = health;
 		giveDamage = maxHit;
+	}
+
+	void FixedUpdate(){
+		rigidBody.AddForce (Physics.gravity * rigidBody.mass * gravityIncrement);
 	}
 
 	private void GoToNextState ()
