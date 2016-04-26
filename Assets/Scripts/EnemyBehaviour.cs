@@ -36,6 +36,7 @@ public class EnemyBehaviour : MonoBehaviour {
 	public float maxHit = 5;
 	private float giveDamage;
 
+	// Replace with HealthController and DoDamage scripts!!!!!!!
 	public void TakeDamage()
 	{
 		float damageToDo = 100.0f - (GetDistance () * 5);
@@ -132,12 +133,14 @@ public class EnemyBehaviour : MonoBehaviour {
 		animator  = gameObject.GetComponent<Animator> ();
 		rigidBody = gameObject.GetComponent<Rigidbody> ();
 
+		target = GameObject.FindGameObjectWithTag ("Player").transform;
+
 		GoToNextState ();
 		currentHealth = health;
 		giveDamage = maxHit;
 	}
 
-	void GoToNextState ()
+	private void GoToNextState ()
 	{
 		string methodName = state.ToString () + "State";
 		System.Reflection.MethodInfo info = GetType ().GetMethod (methodName,
@@ -147,7 +150,10 @@ public class EnemyBehaviour : MonoBehaviour {
 
 	public float GetDistance()
 	{
-		return (transform.position - target.transform.position).magnitude;
+		if (target != null)
+			return (transform.position - target.transform.position).magnitude;
+		else
+			return Mathf.Infinity;
 	}
 
 	private void RotateTowardsTarget()

@@ -147,6 +147,8 @@ public class SkillsController : MonoBehaviour {
 	/// <param name="skill">Skill.</param>
 	public void UseSkill (string skillID){
 
+		targetController.UpdateTarget ();
+
 		target = targetController.GetTargetTransform();
 
 		location = transform.position + Vector3.forward * 3; //Coloca a posição um pouco a frente

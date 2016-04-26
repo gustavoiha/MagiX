@@ -6,7 +6,7 @@ public class HealthController : MonoBehaviour {
 	/// <summary>
 	/// Starting health
 	/// </summary>
-	public float health = 10.0f;
+	public float health = 20.0f;
 	
 	// Update is called once per frame
 	void Update () {
@@ -24,7 +24,8 @@ public class HealthController : MonoBehaviour {
 
 	public void TakeDamage (float damage){
 
-		// Reduce from health the absolute value of damage
-		health -= Mathf.Abs (damage);
+		// Reduce from health the value of damage
+		// If damage is negative, life will increase
+		health -= damage;
 	}
 }

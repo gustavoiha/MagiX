@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 446860}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LegControl_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23,7 +23,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 411060}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Radius_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 453016}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 482702}
   - 137: {fileID: 13759864}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Body_MeshPart0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 474902}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Femur_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 431494}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: UpperFoot_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 489644}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Thoracic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 459458}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 410514}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: UpperFinger_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 489340}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LegControl_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +159,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 472190}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: UpperThumb_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 469688}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: UpperFinger_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 406270}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LowerFinger_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 410592}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LowerThumb_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 477770}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LowerFoot_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 476888}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Humerus_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 440938}
   - 119: {fileID: 11900524}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ImageProjector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 489924}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Humerus_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,7 +281,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 424682}
   - 137: {fileID: 13754834}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Body_MeshPart1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,7 +296,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 410400}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,7 +319,7 @@ GameObject:
   - 114: {fileID: 11453908}
   - 114: {fileID: 11412834}
   - 114: {fileID: 11468180}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -334,7 +334,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 424056}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hand_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -349,7 +349,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 480292}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,7 +364,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 459956}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LowerFoot_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -379,7 +379,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 487794}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Lombar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -395,7 +395,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 488274}
   - 95: {fileID: 9515088}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Fairy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,7 +410,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 451282}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LowerFinger_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,7 +425,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 493470}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hand_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -440,7 +440,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 429002}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LowerThumb_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -455,7 +455,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 496100}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Tibia_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -470,7 +470,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 445702}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: UpperThumb_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +485,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 468718}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Femur_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -500,7 +500,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 472096}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -515,7 +515,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 454030}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: UpperFoot_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -530,7 +530,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 428160}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Radius_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -545,7 +545,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 401884}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Tibia_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -568,7 +568,7 @@ GameObject:
   - 114: {fileID: 11402038}
   - 114: {fileID: 11474972}
   - 114: {fileID: 11458014}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1465,7 +1465,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 199566}

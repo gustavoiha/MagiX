@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 494796}
   - 137: {fileID: 13708164}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Corpo_MeshPart0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24,7 +24,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 469988}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Lower_Leg_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 450584}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Lower_Leg_L_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 485226}
   - 137: {fileID: 13741092}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Ombro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 457890}
   - 137: {fileID: 13724424}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Tacape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 454940}
   - 137: {fileID: 13719330}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Saia
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 479692}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Lower_Arm_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 494942}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Lower_Arm_R_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 467640}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Lower_Arm_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 457362}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Lower_Leg_R_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 457022}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 403662}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Upper_Leg_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 495088}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 429814}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Lower_Leg_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 442848}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Upper_Leg_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 480324}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Upper_Arm_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   - 136: {fileID: 13647696}
   - 114: {fileID: 11489518}
   - 114: {fileID: 11486288}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Ogre
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -289,7 +289,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 402226}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -304,7 +304,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 419930}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Upper_Arm_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,7 +319,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 469420}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Corpo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,7 +335,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 491828}
   - 137: {fileID: 13757762}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Corpo_MeshPart1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -350,7 +350,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 410518}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Torso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -573,7 +573,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 158452}
-  m_LocalRotation: {x: -0.2295749, y: -0.64819175, z: 0.7080634, w: 0.16058944}
+  m_LocalRotation: {x: -0.22957492, y: -0.6481918, z: 0.7080635, w: 0.16058946}
   m_LocalPosition: {x: -2.0730271, y: -1.8907256, z: -0.6750791}
   m_LocalScale: {x: 1, y: 1, z: 1.0000001}
   m_Children:
@@ -710,9 +710,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  moveSpeed: 3
+  moveSpeed: 6
   rotateSpeed: 3
-  followRange: 10
+  followRange: 100
   idleRange: 10
   health: 100
   currentHealth: 0
@@ -1021,7 +1021,19 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: followRange
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: moveSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 161762}

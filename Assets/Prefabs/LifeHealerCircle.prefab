@@ -8,6 +8,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400104}
+  - 135: {fileID: 13564362}
+  - 114: {fileID: 11404542}
   m_Layer: 0
   m_Name: LifeHealerCircle
   m_TagString: Untagged
@@ -86,6 +88,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 400104}
   m_RootOrder: 0
+--- !u!114 &11404542
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 131352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3a159425a87f0440a549d97aa072cdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeHealingRate: 1
 --- !u!119 &11961380
 Projector:
   m_ObjectHideFlags: 1
@@ -104,6 +118,18 @@ Projector:
   m_IgnoreLayers:
     serializedVersion: 2
     m_Bits: 0
+--- !u!135 &13564362
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 131352}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 10
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &19842984
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -1648,6 +1674,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: EmissionModule.rate.scalar
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Radius
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
