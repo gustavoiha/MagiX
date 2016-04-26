@@ -201,7 +201,7 @@ public class SkillsController : MonoBehaviour {
 
 	private void UseLightBall() {
 
-		if (timeTilNext [1] > 1)
+		if (timeTilNext [1] > 0)
 			return;
 		
         //Mesma coisa acima, sem o ajuste, já q se trata de uma esfera
@@ -214,7 +214,7 @@ public class SkillsController : MonoBehaviour {
 
 	private void UseLightCross() {
 
-		if (timeTilNext [2] > 2)
+		if (timeTilNext [2] > 0)
 			return;
 		
 		//Cria uma LightCross no local do player
@@ -235,10 +235,10 @@ public class SkillsController : MonoBehaviour {
 
     private void UseEssenceStealer() {
 
-		if (timeTilNext [4] > cd[4] || target == null)
+		if (timeTilNext [4] > 0 || target == null)
 			return;
 		
-		GameObject essence = Instantiate(essenceStealer, targetController.GetTargetTransform().position, Quaternion.LookRotation(-direction)) as GameObject;
+		GameObject essence = Instantiate(essenceStealer, target.position, Quaternion.LookRotation(-direction)) as GameObject;
 		timeTilNext[4] = cd[4];
     }
 }

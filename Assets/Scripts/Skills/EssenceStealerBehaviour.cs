@@ -7,8 +7,9 @@ public class EssenceStealerBehaviour : MonoBehaviour {
     ParticleSystem ps;
 
     //GameObjects
-    GameObject player;
-    GameObject target;
+    private GameObject player;
+	private Transform target;
+	private NewTargetController targetController;
 
     public float damage = 5f; //Damage
 
@@ -16,8 +17,11 @@ public class EssenceStealerBehaviour : MonoBehaviour {
 	void Start () {
         //Get ParticleSystem attached to the prefab
         ps = GetComponent<ParticleSystem>();
+
         //Find the player with the tag
         player = GameObject.FindGameObjectWithTag("Player");
+
+		targetController = player.GetComponent<NewTargetController> ();
         //Using the player's script, get their target
         //target = player.GetComponent<SkillsController>().target;
         //Starts to play the Particle System
@@ -26,6 +30,9 @@ public class EssenceStealerBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		target = targetController.GetTargetTransform ();
+
         //When the player stops pressing the key, the effect is gone
         if (Input.GetKeyUp(player.GetComponent<SkillsController>().magicFive) || target == null) {
             ps.Stop();
@@ -33,12 +40,12 @@ public class EssenceStealerBehaviour : MonoBehaviour {
             return;
         }
         //Damages the target.
-        target.GetComponent<HealthController>().TakeDamage(damage * Time.deltaTime);
+        target.gameObject.GetComponent<HealthController>().TakeDamage(damage * Time.deltaTime);
         //Cura aqui
 
         //Updates new Rotation to face the player
-        transform.rotation = Quaternion.LookRotation(player.transform.position-target.transform.position);
+        transform.rotation = Quaternion.LookRotation(player.transform.position-target.position);
         //Updates location of the target
-        transform.position = target.transform.position;
+        transform.position = target.position;
 	}
 }
