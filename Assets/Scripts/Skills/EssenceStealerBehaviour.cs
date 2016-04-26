@@ -19,7 +19,7 @@ public class EssenceStealerBehaviour : MonoBehaviour {
         //Find the player with the tag
         player = GameObject.FindGameObjectWithTag("Player");
         //Using the player's script, get their target
-        target = player.GetComponent<SkillsController>().target;
+        //target = player.GetComponent<SkillsController>().target;
         //Starts to play the Particle System
         ps.Play();
 	}

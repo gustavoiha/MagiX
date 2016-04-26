@@ -32,18 +32,19 @@ public class CameraBehaviour : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		
 		camera = GameObject.FindGameObjectWithTag ("MainCamera").transform;
+
 	}
 
 	// Update is called once per frame
 	void Update () {
-		updateCameraCoordinatesRegular ();
+		
+		UpdateCameraCoordinatesRotate ();
+
 	}
 
-	/// <summary>
-	/// Regular update the camera's coordinates.
-	/// </summary>
-	private void updateCameraCoordinatesRegular (){
+	private void UpdateCameraCoordinatesRotate (){
 
 		float turnY = Input.GetAxis ("Mouse Y") * Mathf.Sign(mouseInvertY) + Input.GetAxis ("VerticalRotation");
 

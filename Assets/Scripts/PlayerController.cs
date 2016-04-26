@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour {
 
 	private Animator animator;
 	private Rigidbody rigidBody;
+	private SkillsController skillsController;
+	private NewTargetController targetController;
 
 	public float moveSpeedFoward = 6.0f;
 	public float moveSpeedSides  = 6.0f;
@@ -21,40 +23,66 @@ public class PlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		animator  = gameObject.GetComponentInChildren<Animator> ();
-		rigidBody = gameObject.GetComponent<Rigidbody> ();
+		animator  		 = gameObject.GetComponentInChildren<Animator> ();
+		rigidBody 		 = gameObject.GetComponent<Rigidbody> ();
+		skillsController = gameObject.GetComponent<SkillsController> ();
+		targetController = gameObject.GetComponent<NewTargetController> ();
 	}
 
 	// Update is called once per frame
 	void Update () {
 
-		//if (Input.GetKeyDown ("b") && !animator.GetBool("hasSaber")) {
-			//Instantiate (Saber, Vector3.zero, Quaternion.identity);
-			//animator.SetInteger ("AnimParam", 2);
-		//}
-
 		/**
 		 * Movement animations
 		 */
 		if (Input.GetKeyDown("w")){
-			animator.SetBool("isWalking",true);
+			animator.SetBool("isWalking", true);
 		}
 
 		if (Input.GetKeyUp("w")){
-			animator.SetBool("isWalking",false);
+			animator.SetBool("isWalking", false);
 		}
 		//else if (Input.GetKeyUp("s"){
 		// walk backwards
 		//}
 
-		//if (Input.GetKeyDown ("w")/* && !isDrawingSaber*/) {
-		//	animator.SetInteger ("AnimParam", 1);
-		//}
+		/*
+		 * Skills
+		 */
+
+		if (Input.GetKeyDown (skillsController.magicOne)) {
+			skillsController.UseSkill (SkillsController.LIGHT_ARROW);
+			//animator.SetInteger(useSkill, 1);
+		}
+
+		if (Input.GetKeyDown (skillsController.magicTwo)) {
+			skillsController.UseSkill (SkillsController.LIGHT_BALL);
+			//animator.SetInteger(useSkill, 2);
+		}
+
+		if (Input.GetKeyDown (skillsController.magicThree)) {
+			skillsController.UseSkill (SkillsController.LIGHT_CROSS);
+			//animator.SetInteger(useSkill, 3);
+		}
+
+		if (Input.GetKeyDown (skillsController.magicFour)) {
+			skillsController.UseSkill (SkillsController.LIGHT_SANCTUARY);
+			//Aanimator.SetInteger(useSkill, 4);
+		}
+
+		if (Input.GetKeyDown (skillsController.magicFive)) {
+			skillsController.UseSkill (SkillsController.ESSENCE_STEALER);
+		}
+
+		if (Input.GetKeyDown (NewTargetController.targetSwitch)) {
+			targetController.UpdateTarget ();
+		}
+
 		if (Input.GetKeyDown ("escape"))
 			PauseMenu.isPaused = !PauseMenu.isPaused;
 
 		if (Input.GetKeyDown ("space"))
-			gameObject.GetComponent<Rigidbody> ().AddForce (new Vector3(0,800.0f,0));
+			gameObject.GetComponent<Rigidbody> ().AddForce (new Vector3(0, 800.0f, 0));
 
 		doTranslation ();
 		doRotation ();

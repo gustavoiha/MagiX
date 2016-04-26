@@ -59,13 +59,13 @@ public class EnemyBehaviour : MonoBehaviour {
 	{
 		giveDamage = maxHit * Random.value;
 
-		Debug.Log ("Tomou " + giveDamage + " seu otário");
+		//Debug.Log ("Tomou " + giveDamage + " seu otário");
 	}
 
 	IEnumerator IdleState()
 	{
 		
-		Debug.Log("Ta em idle");
+		//Debug.Log("Ta em idle");
 
 		animator.SetInteger ("State", 0);
 
@@ -81,14 +81,14 @@ public class EnemyBehaviour : MonoBehaviour {
 			yield return 0;
 		}
 
-		Debug.Log ("Saiu do idle");
+		//Debug.Log ("Saiu do idle");
 
 		GoToNextState ();
 	}
 
 	IEnumerator FollowState()
 	{
-		Debug.Log ("Começou o Follow");
+		//Debug.Log ("Começou o Follow");
 
 		animator.SetInteger ("State", 1);
 
@@ -105,14 +105,14 @@ public class EnemyBehaviour : MonoBehaviour {
 			yield return 0;
 		}
 
-		Debug.Log ("Saiu do follow");
+		//Debug.Log ("Saiu do follow");
 
 		GoToNextState ();
 	}
 
 	IEnumerator DieState()
 	{
-		Debug.Log ("MORREU");
+		//Debug.Log ("MORREU");
 		Destroy(this.gameObject);
 		yield return 0;
 	}
