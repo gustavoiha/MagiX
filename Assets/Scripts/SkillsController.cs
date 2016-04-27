@@ -155,7 +155,7 @@ public class SkillsController : MonoBehaviour {
 		location = transform.position + Vector3.forward * 3; //Coloca a posição um pouco a frente
 
 		if (target == null) { //If there is no target at all, calculations will be based on the mouse position
-			var worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z)); //Calcula local do mouse em relação a tela
+			var worldPosition = Camera.main.ScreenToWorldPoint (new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z)); //Calcula local do mouse em relação a tela
 			direction = worldPosition - transform.position; //Calcula direção baseada entre o personagem e o mouse
 			direction.Normalize();//Normaliza o vetor
 		}

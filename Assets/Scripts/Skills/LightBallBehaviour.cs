@@ -12,7 +12,7 @@ public class LightBallBehaviour : MonoBehaviour {
     public ParticleSystem particleS; //Particulas
     public ForceMode forceMode;//Tipo de força que será aplicada
 
-    bool detonation;//A esfera detona quando toca algo
+    //private bool detonation;//A esfera detona quando toca algo
 	private float explosionRadius;
 
     // Use this for initialization
@@ -20,7 +20,7 @@ public class LightBallBehaviour : MonoBehaviour {
     {
 		explosionRadius = radius;
         Destroy(gameObject, 20.0f);//Auto detonação
-        detonation = false;//Começa falso e fica verdadeiro quanto toca algo
+        //detonation = false;//Começa falso e fica verdadeiro quanto toca algo
     }
 
     // Update is called once per frame
@@ -57,7 +57,7 @@ public class LightBallBehaviour : MonoBehaviour {
 
 			if (rigidbody != null && !hit.gameObject.tag.Equals("Player")) {
 				rigidbody.AddExplosionForce (explosionForce, transform.position, explosionRadius, 1.0f, forceMode);
-				Debug.Log ("Added force!");
+				//Debug.Log ("Added force!");
 			}
 
 			if (hit.gameObject.tag.Equals ("Enemy"))
