@@ -8,6 +8,8 @@ public class DoDamage : MonoBehaviour {
 	/// </summary>
 	public float damageOnHit;
 
+    public bool toBeDestroyed;
+
 	/// <summary>
 	/// String that contains every gameobject tag you wish to take damage.
 	/// An example: "enemy1, enemy2, boss"
@@ -33,7 +35,8 @@ public class DoDamage : MonoBehaviour {
 			this.collisionEnemy = true;
 			HealthController enemy = collider.GetComponent<HealthController>() as HealthController;
 			enemy.TakeDamage(damageOnHit);
-            Destroy(gameObject);
+            if(toBeDestroyed)
+                Destroy(gameObject);
 		}
 	}
 
