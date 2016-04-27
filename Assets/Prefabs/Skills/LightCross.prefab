@@ -71,7 +71,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: 871a2e0319037d041aa24492d5857d1a, type: 2}
+  - {fileID: 2100000, guid: 62f4cdfc811f9b7458dbf843537325cd, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -109,7 +109,7 @@ MonoBehaviour:
   player: {fileID: 414952, guid: 44afbcb7f6e92f94b957ceaeea306846, type: 2}
   fireAngle: 15
   fireSpacing: 5
-  lightCrossTimeToDeath: 0.5
+  lightCrossTimeToDeath: 0.3
   startingRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!135 &13567280
 SphereCollider:
@@ -1674,8 +1674,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: lightCrossTimeToDeath
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 62f4cdfc811f9b7458dbf843537325cd, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 117088}

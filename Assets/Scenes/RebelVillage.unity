@@ -48397,7 +48397,7 @@ Transform:
   - {fileID: 2106136911}
   - {fileID: 567880771}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
 --- !u!1001 &1079587241
 Prefab:
   m_ObjectHideFlags: 0
@@ -52413,7 +52413,7 @@ Prefab:
     - target: {fileID: 2312224, guid: 55f4889aecb55b34b9527c36af332d78, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 4b8f05b0efa43ec4f9774fd7e3e0c7f1, type: 2}
+      objectReference: {fileID: 2100000, guid: 62f4cdfc811f9b7458dbf843537325cd, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55f4889aecb55b34b9527c36af332d78, type: 2}
   m_IsPrefabParent: 0
@@ -57938,6 +57938,10 @@ Prefab:
       propertyPath: m_Name
       value: ItemLightBeacon3
       objectReference: {fileID: 0}
+    - target: {fileID: 2312224, guid: 55f4889aecb55b34b9527c36af332d78, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 071a7217169610a428d878eedf91b43e, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55f4889aecb55b34b9527c36af332d78, type: 2}
   m_IsPrefabParent: 0
@@ -58682,6 +58686,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2312224, guid: 55f4889aecb55b34b9527c36af332d78, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b078d7688e6175344941669066a40713, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55f4889aecb55b34b9527c36af332d78, type: 2}
   m_IsPrefabParent: 0
@@ -59178,6 +59186,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 2312224, guid: 55f4889aecb55b34b9527c36af332d78, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 11471b94ae5818d4b811352e0ff9b4f0, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55f4889aecb55b34b9527c36af332d78, type: 2}
   m_IsPrefabParent: 0
@@ -71218,6 +71230,52 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 60116770606d26d4aa4ad5b1d47abb87, type: 2}
   m_PrefabInternal: {fileID: 1796659344}
+--- !u!1001 &1799036466
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 482288, guid: 55f4889aecb55b34b9527c36af332d78, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2593
+      objectReference: {fileID: 0}
+    - target: {fileID: 482288, guid: 55f4889aecb55b34b9527c36af332d78, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 252
+      objectReference: {fileID: 0}
+    - target: {fileID: 482288, guid: 55f4889aecb55b34b9527c36af332d78, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1956
+      objectReference: {fileID: 0}
+    - target: {fileID: 482288, guid: 55f4889aecb55b34b9527c36af332d78, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 482288, guid: 55f4889aecb55b34b9527c36af332d78, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 482288, guid: 55f4889aecb55b34b9527c36af332d78, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 482288, guid: 55f4889aecb55b34b9527c36af332d78, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 482288, guid: 55f4889aecb55b34b9527c36af332d78, type: 2}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 166116, guid: 55f4889aecb55b34b9527c36af332d78, type: 2}
+      propertyPath: m_Name
+      value: ItemLightBeacon1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 55f4889aecb55b34b9527c36af332d78, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1799132508
 Prefab:
   m_ObjectHideFlags: 0

@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour {
 		 * Skills
 		 */
 
-		if (Input.GetKeyDown (skillsController.magicOne)) {
+		if (Input.GetKey (skillsController.magicOne)) {
 			skillsController.UseSkill (SkillsController.LIGHT_ARROW);
 			//animator.SetInteger(useSkill, 1);
 		}

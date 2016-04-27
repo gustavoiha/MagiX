@@ -66,7 +66,7 @@ public class SkillsController : MonoBehaviour {
         //Define each cooldown
         timeTilNext = new float[5];
         cd = new float[5];
-        cd[0] = 1.0f; 
+        cd[0] = 0.5f;
         cd[1] = 2.0f;
         cd[2] = 3.0f;
         cd[3] = 2.0f;

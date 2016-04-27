@@ -27,11 +27,13 @@ public class NewTargetController : MonoBehaviour {
 	// Tells TargetController to find nearest available target
 	public void UpdateTarget(){
 
-		setTargetProjectorState (target, false);
+		if (target != null)
+			setTargetProjectorState (target, false);
 
 		target = FindNearestTarget ();
 
-		setTargetProjectorState (target, true);
+		if (target != null)
+			setTargetProjectorState (target, true);
 
 	}
 
@@ -50,7 +52,9 @@ public class NewTargetController : MonoBehaviour {
 			return;
 
 		OgreProjectorController mOgreProjectorController = transform.gameObject.GetComponentInChildren<OgreProjectorController>() as OgreProjectorController;
-		mOgreProjectorController.setState (newState);
+
+		if (mOgreProjectorController != null)
+			mOgreProjectorController.setState (newState);
 	}
 
 	private Transform FindNearestTarget(){

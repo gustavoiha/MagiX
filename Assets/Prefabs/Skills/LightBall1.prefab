@@ -72,7 +72,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: 871a2e0319037d041aa24492d5857d1a, type: 2}
+  - {fileID: 2100000, guid: b078d7688e6175344941669066a40713, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -122,10 +122,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: 1
-  growthRate: 1
+  growthRate: 4
   radius: 5
   explosionForce: 50
-  damage: 3
+  damage: 8
   particleS: {fileID: 19833692}
   forceMode: 1
 --- !u!135 &13500210
@@ -355,7 +355,7 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4289394427
+        rgba: 4294966528
       minMaxState: 0
     startSize:
       scalar: 0.2
@@ -1699,7 +1699,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: damage
-      value: 3
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b078d7688e6175344941669066a40713, type: 2}
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startColor.maxColor.rgba
+      value: 4294966528
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: growthRate
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -12,7 +12,8 @@ public class OgreProjectorController : MonoBehaviour {
 	}
 
 	public void setState(bool newState){
-		projector.enabled = newState;
+		if (projector != null)
+			projector.enabled = newState;
 	}
 
 }
