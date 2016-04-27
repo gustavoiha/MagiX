@@ -21,7 +21,11 @@ public class LightCrossBehaviour : MonoBehaviour {
 	public Quaternion startingRotation;
 
 	void Start(){
-		//Adquire a rotação do player
+
+        //Finds the player
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+		
+        //Adquire a rotação do player
 		//Quaternion rotation = Quaternion.LookRotation(new Vector3(player.position.x, 0, player.position.z), Vector3.forward); 
 
 		//Cria os raios a partir da rotação do player
