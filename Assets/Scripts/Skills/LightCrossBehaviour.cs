@@ -4,7 +4,7 @@ using System.Collections;
 public class LightCrossBehaviour : MonoBehaviour {
 
 	//Prefab dos raios
-	public Transform lightRay; 
+	public GameObject lightRay; 
 
 	//Localização do player
     public Transform player;
