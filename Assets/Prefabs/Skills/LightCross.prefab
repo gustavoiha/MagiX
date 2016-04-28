@@ -106,10 +106,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightRay: {fileID: 179504, guid: 5a5812cc2263d954fafd0b3124eacf41, type: 2}
-  player: {fileID: 414952, guid: 44afbcb7f6e92f94b957ceaeea306846, type: 2}
   fireAngle: 15
   fireSpacing: 5
-  lightCrossTimeToDeath: 0.3
+  lightCrossTimeToDeath: 1
   startingRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!135 &13567280
 SphereCollider:
@@ -1674,12 +1673,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: lightCrossTimeToDeath
-      value: 0.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 62f4cdfc811f9b7458dbf843537325cd, type: 2}
+    - target: {fileID: 0}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 418018, guid: dd47e8ce6ec39644d846391bd97e50a2, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 117088}

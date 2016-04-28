@@ -13,10 +13,10 @@ public class LightRayBehaviour : MonoBehaviour {
     private Vector3 startingScale;
 
 	// Starting length
-	private float startingLength;
+	//private float startingLength;
 
 	// Starting position
-	private Vector3 startingPosition;
+	//private Vector3 startingPosition;
 
 	//public float damage = 0.5f;
 
@@ -27,8 +27,8 @@ public class LightRayBehaviour : MonoBehaviour {
 		//Destroy(gameObject, 1.0f); //Auto-destruição -- Update: lightRay is child of LightCross now, which already self-destructs.
 
 		startingScale    = transform.localScale; //Escala atual local do raio
-		startingLength   = gameObject.GetComponent<MeshRenderer>().bounds.size.z;
-		startingPosition = gameObject.transform.localPosition;
+		//startingLength   = gameObject.GetComponent<MeshRenderer>().bounds.size.z;
+		//startingPosition = gameObject.transform.localPosition;
 	}
 	
 	// Update is called once per frame

@@ -7,7 +7,7 @@ public class LightCrossBehaviour : MonoBehaviour {
 	public GameObject lightRay; 
 
 	//Localização do player
-    public Transform player;
+	//private Transform player;
 
 	// Angle interval to fire multiple rays
 	public float fireAngle = 15.0f;
@@ -23,7 +23,7 @@ public class LightCrossBehaviour : MonoBehaviour {
 	void Start(){
 
         //Finds the player
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        //player = GameObject.FindGameObjectWithTag("Player").transform;
 		
         //Adquire a rotação do player
 		//Quaternion rotation = Quaternion.LookRotation(new Vector3(player.position.x, 0, player.position.z), Vector3.forward); 

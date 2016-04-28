@@ -6,7 +6,7 @@ public class Menu : MonoBehaviour {
 
 	public void NewGameButton ()
 	{
-		SceneManager.LoadScene ("RebelVillage");
+		GameController.startPhase("RebelVillage");
 	}
 	public void ExitGame ()
 	{

@@ -4,17 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
-	/********************************************************
-	 * VERY IMPORTANT:
-	 * DO NOT EVER ADD THIS SCRIPT TO A GAMEOBJECT IN A SCENE
-	 * INSTEAD, CREATE STATIC VARIABLES TO DO WHAT YOU WANT
-	 ********************************************************/
+	public static int totalItensToGet = 5;
 
-
+	public static int itensLeft;
 
 	// Use this for initialization
 	void Start () {
-	
+		itensLeft = totalItensToGet;
 	}
 	
 	// Update is called once per frame
@@ -34,5 +30,16 @@ public class GameController : MonoBehaviour {
 			SceneManager.LoadScene (phaseName);
 	}
 
+	public static void aquiredItem(){
+		
+		itensLeft--;
+		
+		Debug.Log ("itens left: " + itensLeft);
+
+		if (itensLeft == 0) {
+			GameObject.FindGameObjectWithTag ("BossShield").GetComponent<BossShieldScript> ().startBoss ();
+		}
+
+	}
 
 }

@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour {
 	private Vector3 moveDirection = Vector3.zero;
 	//public float gravity = 20.0f;
 
+	private int cheatStartBoss = 0;
+
 	// Use this for initialization
 	void Start () {
 		animator  		 = gameObject.GetComponentInChildren<Animator> ();
@@ -86,6 +88,23 @@ public class PlayerController : MonoBehaviour {
 
 		doTranslation ();
 		doRotation ();
+
+		/**
+		 * Cheat !!!
+		 */
+		if (Input.GetKeyDown (KeyCode.Backspace))
+			cheatStartBoss++;
+
+		if (cheatStartBoss == 8) {
+			//Debug.Log ("cheat!");
+			GameObject.FindGameObjectWithTag ("BossShield").GetComponent<BossShieldScript> ().startBoss ();
+
+			foreach (GameObject obj in GameObject.FindGameObjectsWithTag("ItemLightBeacon")){
+				Destroy (obj);
+			}
+
+			cheatStartBoss++;
+		}
 	}
 
 	private void doTranslation(){
