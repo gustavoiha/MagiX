@@ -30,6 +30,8 @@ public class SkillsController : MonoBehaviour {
 	public GameObject lightBall;
 	//Prefab da LightCross
 	public GameObject lightCross;
+	//Prefab da LightSanctuary
+	public GameObject lightSanctuary;
     //Prefab EssenceStealer
 	public GameObject essenceStealer;
 
@@ -197,7 +199,7 @@ public class SkillsController : MonoBehaviour {
 
     private void UseLightArrow() {
 		
-		if (timeTilNext [0] > 0 || healthController.HasMana (manaUse[0]))
+		if (timeTilNext [0] > 0 || !healthController.HasMana (manaUse[0]))
 			return;
 
 		healthController.DecreaseMana (manaUse [0]);
@@ -212,7 +214,7 @@ public class SkillsController : MonoBehaviour {
 
 	private void UseLightBall() {
 
-		if (timeTilNext [1] > 0 || healthController.HasMana (manaUse[1]))
+		if (timeTilNext [1] > 0 || !healthController.HasMana (manaUse[1]))
 			return;
 
 		healthController.DecreaseMana (manaUse [1]);
@@ -227,7 +229,7 @@ public class SkillsController : MonoBehaviour {
 
 	private void UseLightCross() {
 
-		if (timeTilNext [2] > 0 || healthController.HasMana (manaUse[2]))
+		if (timeTilNext [2] > 0 || !healthController.HasMana (manaUse[2]))
 			return;
 
 		healthController.DecreaseMana (manaUse [2]);
@@ -241,18 +243,24 @@ public class SkillsController : MonoBehaviour {
 
 	private void UseLightSanctuary() {
 
-		if (timeTilNext [3] > 3 || healthController.HasMana (manaUse[3]))
+		if (timeTilNext [3] > 0 || !healthController.HasMana (manaUse[3]))
 			return;
 
 		healthController.DecreaseMana (manaUse [3]);
 
-		LightSanctuaryBehaviour.toogleSanctuary = !LightSanctuaryBehaviour.toogleSanctuary;
+		//Vector3 position = gameObject.transform.position;
+
+		Quaternion rotation  = new Quaternion ();
+		rotation.eulerAngles = new Vector3 (0, 0, 0);
+
+		Instantiate(lightSanctuary, gameObject.transform.position, rotation);
+
 		timeTilNext [3] = coolDown[3];
 	}
 
     private void UseEssenceStealer() {
 
-		if (timeTilNext [4] > 0 || target == null || healthController.HasMana (manaUse[4]))
+		if (timeTilNext [4] > 0 || target == null || !healthController.HasMana (manaUse[4]))
 			return;
 
 		healthController.DecreaseMana (manaUse [4]);

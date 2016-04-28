@@ -241,22 +241,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &149250
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 440938}
-  - 119: {fileID: 11900524}
-  m_Layer: 12
-  m_Name: ImageProjector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &153138
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,11 +658,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 199566}
   m_LocalRotation: {x: 0.000000029230394, y: 0.49504018, z: -0.000000027366893, w: -0.86887014}
-  m_LocalPosition: {x: 2272.7, y: 2.1, z: 1023}
+  m_LocalPosition: {x: 2536.4, y: -213.74, z: 1953.3}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 433880}
-  - {fileID: 440938}
   - {fileID: 488274}
   - {fileID: 450524}
   m_Father: {fileID: 0}
@@ -759,18 +742,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 418018}
   m_RootOrder: 0
---- !u!4 &440938
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 149250}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 3.74, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.33333334, z: 0.5}
-  m_Children: []
-  m_Father: {fileID: 418018}
-  m_RootOrder: 1
 --- !u!4 &445702
 Transform:
   m_ObjectHideFlags: 1
@@ -808,7 +779,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 418018}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!4 &451282
 Transform:
   m_ObjectHideFlags: 1
@@ -1017,7 +988,7 @@ Transform:
   - {fileID: 453016}
   - {fileID: 480292}
   m_Father: {fileID: 418018}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!4 &489340
 Transform:
   m_ObjectHideFlags: 1
@@ -1250,6 +1221,7 @@ MonoBehaviour:
   lightArrow: {fileID: 148554, guid: 99fe8b462bbe60744a9660e9b6d864b3, type: 2}
   lightBall: {fileID: 120464, guid: be93328743a74124086b74c2df63951d, type: 2}
   lightCross: {fileID: 117088, guid: 6bcf621b48befb1429ee4711d062510f, type: 2}
+  lightSanctuary: {fileID: 198918, guid: f71382764563ff64f86f36eeec142a72, type: 2}
   essenceStealer: {fileID: 176514, guid: 5d1755c832a4fd94bb6bf4e566ccdfbe, type: 2}
   lightArrowForce: 2000
   lightBallForce: 1000
@@ -1370,24 +1342,6 @@ MonoBehaviour:
   moveSpeedFoward: 20
   moveSpeedSides: 10
   turnSpeedX: 10
---- !u!119 &11900524
-Projector:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 149250}
-  m_Enabled: 0
-  serializedVersion: 2
-  m_NearClipPlane: 0.1
-  m_FarClipPlane: 100
-  m_FieldOfView: 600
-  m_AspectRatio: 1
-  m_Orthographic: 0
-  m_OrthographicSize: 10
-  m_Material: {fileID: 2100000, guid: c8c80c5b03f5c7e40b07eb2170e667e5, type: 2}
-  m_IgnoreLayers:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!124 &12491694
 Behaviour:
   m_ObjectHideFlags: 1

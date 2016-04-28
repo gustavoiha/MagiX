@@ -44,7 +44,7 @@ public class HealthController : MonoBehaviour {
 	}
 
 	public bool HasMana (float amount){
-		return (amount >= mana) ? true : false;
+		return (amount <= mana) ? true : false;
 	}
 
 	public void DecreaseMana (float decrease){

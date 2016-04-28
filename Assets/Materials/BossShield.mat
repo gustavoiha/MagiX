@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: BossShield
-  m_Shader: {fileID: 200, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 206, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _EMISSION
   m_LightmapFlags: 1
   m_CustomRenderQueue: 3000
@@ -20,7 +20,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 33398b9390a8dba4486fdf763498bb90, type: 3}
+          m_Texture: {fileID: 2800000, guid: e3c1a0a3b43467648bb5aaa82f69fa98, type: 3}
           m_Scale: {x: 10, y: 10}
           m_Offset: {x: 0, y: 0}
       data:
@@ -95,7 +95,7 @@ Material:
       data:
         first:
           name: _InvFade
-        second: 2.92
+        second: 3
       data:
         first:
           name: _Parallax
@@ -148,7 +148,7 @@ Material:
       data:
         first:
           name: _TintColor
-        second: {r: 0.98965514, g: 1, b: 0.25, a: 1}
+        second: {r: 0.58620703, g: 0.25, b: 1, a: 0.334}
       data:
         first:
           name: _EmisColor

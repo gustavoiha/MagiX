@@ -4,58 +4,34 @@ using System.Collections;
 public class LightSanctuaryBehaviour : MonoBehaviour {
 
 	//Localização do player
-    public Transform player;
+	public Transform player;
 
 	//Distância do círculo
-    public float range;
-    //dano causado por segundo
-    public float damage = 5f;
+	public float range;
 
-	//Ativar ou desativar santuário
-    public static bool toogleSanctuary;
+	//dano causado por segundo
+	public float damagePerSecond = 5.0f;
+
+	// cura ao player por segundo
+	public float healingPerSecond = 2.0f;
+
+	// Duration of skill in seconds
+	public float exitTime = 10.0f;
 
 	// Use this for initialization
 	void Start () {
 
-        //Identifica o player e se "acopla" a ele
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-		
-		//Santuário começa desativado
-        toogleSanctuary = false;
+		GetComponent<ParticleSystem> ().Play ();
 
-		// Alcance terá mesma distância do Círculo de partículas
-        range = 20*GetComponent<ParticleSystem>().transform.localScale.x;
+		Destroy (gameObject, exitTime);
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
-		//O santuário se manterá no local do jogador(?)
-        transform.position = player.position;
+	void OnTriggerStay(Collider collider){
 
-		//Ao acionar o santuário
-        if (toogleSanctuary) {
+		if (collider.gameObject.tag.Equals ("Enemy"))
+			collider.gameObject.GetComponent<HealthController> ().TakeDamage ( damagePerSecond  * Time.deltaTime);
+		else if (collider.gameObject.tag.Equals ("Player"))
+			collider.gameObject.GetComponent<HealthController> ().TakeDamage (-healingPerSecond * Time.deltaTime);
 
-			//Aciona as partículas
-            GetComponent<ParticleSystem>().Play();
-
-			//Todos no alcance do santuário sofrerão algum efeito
-            foreach (Collider col in Physics.OverlapSphere(player.position, range))
-            {
-                if (col.tag == "Enemy")//Inimigos levarão dano
-                {
-                    col.GetComponent<HealthController>().TakeDamage(damage * Time.deltaTime);
-                    Debug.Log("Enemy hit");
-                }
-                if (col.tag == "Player")//E o jogador será curado
-                {
-                    //Cura aqui
-                }
-            }
-        }
-        else
-        {
-            GetComponent<ParticleSystem>().Stop();//Ao desativar o santuário, desligamos as partículas
-        }
-    }
+	}
 }
