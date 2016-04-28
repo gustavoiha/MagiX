@@ -14,6 +14,7 @@ public class SkillsController : MonoBehaviour {
     //Target acquired at ENEMY BEHAVIOUR script
 	private Transform target;
 
+	private HealthController    healthController;
 	private NewTargetController targetController;
 
     //Array with all enemies around
@@ -55,25 +56,30 @@ public class SkillsController : MonoBehaviour {
     Vector3 location;
 
     // Skills cooldowns
-    public float[] timeTilNext;
-    public float[] cd;
+	private float[] timeTilNext;
+    public float[]  coolDown;
+	public float[]  manaUse;
+
+	//[Serializable] public class coolDown{
+	//	public float[] coolDownArray;
+	//}
 
     // Use this for initialization
     void Start () {
 
+		healthController = gameObject.GetComponent<HealthController> ();
 		targetController = gameObject.GetComponent<NewTargetController> ();
 
         //Define each cooldown
         timeTilNext = new float[5];
-        cd = new float[5];
-        cd[0] = 0.5f;
-        cd[1] = 2.0f;
-        cd[2] = 3.0f;
-        cd[3] = 2.0f;
-        cd[4] = 5.0f;
+        //cd = new float[5];
+        //cd[0] = 0.5f;
+        //cd[1] = 2.0f;
+        //cd[2] = 3.0f;
+        //cd[3] = 2.0f;
+        //cd[4] = 5.0f;
 
-        for(int i=0; i<5; i++)
-        {
+		for (int i=0; i < coolDown.Length; i++) {
             timeTilNext[i] = 0;
         }
 	}
@@ -191,57 +197,67 @@ public class SkillsController : MonoBehaviour {
 
     private void UseLightArrow() {
 		
-		if (timeTilNext [0] > 0)
+		if (timeTilNext [0] > 0 || healthController.HasMana (manaUse[0]))
 			return;
-		
+
+		healthController.DecreaseMana (manaUse [0]);
+
         //Instantiate novos projéteis (Euler foi necessário para endireitar o prefab)
         GameObject projectile = Instantiate(lightArrow, location, Quaternion.LookRotation(direction) * Quaternion.Euler(90, 0, 180)) as GameObject;
         projectile.GetComponent<Rigidbody>().useGravity = false; //Evita a gravidade
         projectile.GetComponent<Rigidbody>().AddForce(direction * lightArrowForce); //Coloca uma força para arremessar a magia
 
-		timeTilNext[0] = cd[0];
+		timeTilNext[0] = coolDown[0];
     }
 
 	private void UseLightBall() {
 
-		if (timeTilNext [1] > 0)
+		if (timeTilNext [1] > 0 || healthController.HasMana (manaUse[1]))
 			return;
-		
+
+		healthController.DecreaseMana (manaUse [1]);
+
         //Mesma coisa acima, sem o ajuste, já q se trata de uma esfera
         GameObject projectile = Instantiate(lightBall, location, Quaternion.LookRotation(direction)) as GameObject;
         projectile.GetComponent<Rigidbody>().useGravity = false;
         projectile.GetComponent<Rigidbody>().AddForce(direction * lightBallForce);
 
-		timeTilNext[1] = cd[1];
+		timeTilNext[1] = coolDown[1];
     }
 
 	private void UseLightCross() {
 
-		if (timeTilNext [2] > 0)
+		if (timeTilNext [2] > 0 || healthController.HasMana (manaUse[2]))
 			return;
-		
+
+		healthController.DecreaseMana (manaUse [2]);
+
 		//Cria uma LightCross no local do player
 		GameObject newLightCross = Instantiate(lightCross, transform.position, transform.rotation) as GameObject;
 		newLightCross.transform.parent = gameObject.transform;
 
-		timeTilNext[2] = cd[2];
+		timeTilNext[2] = coolDown[2];
     }
 
 	private void UseLightSanctuary() {
 
-		if (timeTilNext [3] > 3)
+		if (timeTilNext [3] > 3 || healthController.HasMana (manaUse[3]))
 			return;
-		
+
+		healthController.DecreaseMana (manaUse [3]);
+
 		LightSanctuaryBehaviour.toogleSanctuary = !LightSanctuaryBehaviour.toogleSanctuary;
-		timeTilNext [3] = cd [3];
+		timeTilNext [3] = coolDown[3];
 	}
 
     private void UseEssenceStealer() {
 
-		if (timeTilNext [4] > 0 || target == null)
+		if (timeTilNext [4] > 0 || target == null || healthController.HasMana (manaUse[4]))
 			return;
-		
+
+		healthController.DecreaseMana (manaUse [4]);
+
 		GameObject essence = Instantiate(essenceStealer, target.position, Quaternion.LookRotation(-direction)) as GameObject;
-		timeTilNext[4] = cd[4];
+		timeTilNext[4] = coolDown[4];
     }
 }

@@ -44,6 +44,7 @@ public class CameraBehaviour : MonoBehaviour {
 
 	}
 
+
 	private void UpdateCameraCoordinatesRotate (){
 
 		float turnY = Input.GetAxis ("Mouse Y") * Mathf.Sign(mouseInvertY) + Input.GetAxis ("VerticalRotation");

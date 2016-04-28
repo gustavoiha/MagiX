@@ -1,22 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &131568
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 475774}
-  - 135: {fileID: 13558156}
-  - 114: {fileID: 11416406}
-  m_Layer: 13
-  m_Name: Damage
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &179504
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,23 +26,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179504}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 2322.0164, y: -13.519465, z: 836.43677}
+  m_LocalPosition: {x: -41.513535, y: 233.71442, z: 836.43677}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
-  m_Children:
-  - {fileID: 475774}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
---- !u!4 &475774
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 131568}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.006, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 439368}
+  m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!23 &2390884
 MeshRenderer:
@@ -94,19 +64,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179504}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &11416406
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 131568}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61e23f133d8e8644ba30b29329710bbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageOnHit: 5
-  tagsToReceiveDamage: Enemy
 --- !u!114 &11439814
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -120,18 +77,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   growthRate: 300
   maxScale: 50
---- !u!135 &13558156
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 131568}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.01
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &13629204
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -257,6 +257,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &153138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 450524}
+  - 108: {fileID: 10808418}
+  m_Layer: 12
+  m_Name: Spotlight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &153574
 GameObject:
   m_ObjectHideFlags: 1
@@ -319,7 +335,8 @@ GameObject:
   - 114: {fileID: 11453908}
   - 114: {fileID: 11412834}
   - 114: {fileID: 11468180}
-  m_Layer: 12
+  - 135: {fileID: 13591022}
+  m_Layer: 14
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -566,8 +583,8 @@ GameObject:
   - 54: {fileID: 5479070}
   - 114: {fileID: 11497676}
   - 114: {fileID: 11402038}
-  - 114: {fileID: 11474972}
   - 114: {fileID: 11458014}
+  - 114: {fileID: 11405642}
   m_Layer: 12
   m_Name: Player
   m_TagString: Player
@@ -657,12 +674,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 199566}
   m_LocalRotation: {x: 0.000000029230394, y: 0.49504018, z: -0.000000027366893, w: -0.86887014}
-  m_LocalPosition: {x: 2313.5, y: -11.9, z: 834.7}
+  m_LocalPosition: {x: 2272.7, y: 2.1, z: 1023}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 433880}
   - {fileID: 440938}
   - {fileID: 488274}
+  - {fileID: 450524}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &424056
@@ -779,6 +797,18 @@ Transform:
   - {fileID: 454030}
   m_Father: {fileID: 472096}
   m_RootOrder: 0
+--- !u!4 &450524
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153138}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.73, z: -2.28}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 418018}
+  m_RootOrder: 3
 --- !u!4 &451282
 Transform:
   m_ObjectHideFlags: 1
@@ -1168,6 +1198,39 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!108 &10808418
+Light:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153138}
+  m_Enabled: 1
+  serializedVersion: 6
+  m_Type: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 8
+  m_Range: 8.256316
+  m_SpotAngle: 62.756798
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4096
+  m_Lightmapping: 4
+  m_BounceIntensity: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+  m_AreaSize: {x: 1, y: 1}
 --- !u!114 &11402038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1188,11 +1251,37 @@ MonoBehaviour:
   lightBall: {fileID: 120464, guid: be93328743a74124086b74c2df63951d, type: 2}
   lightCross: {fileID: 117088, guid: 6bcf621b48befb1429ee4711d062510f, type: 2}
   essenceStealer: {fileID: 176514, guid: 5d1755c832a4fd94bb6bf4e566ccdfbe, type: 2}
-  lightArrowForce: 1000
-  lightBallForce: 200
+  lightArrowForce: 2000
+  lightBallForce: 1000
   lightCrossForce: 10
-  timeTilNext: []
-  cd: []
+  coolDown:
+  - 0.5
+  - 2
+  - 3
+  - 2
+  - 5
+  manaUse:
+  - 1
+  - 5
+  - 10
+  - 15
+  - 5
+--- !u!114 &11405642
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ab0635b8e78dc8428efce4dda4654e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 20
+  maxMana: 40
+  manaRecoveyRate: 0.7
+  health: 20
+  mana: 0
 --- !u!114 &11406080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1267,18 +1356,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newSkin: {fileID: 11400000, guid: 46581bf7fbdb90b49bb0e1c6aa4a3379, type: 2}
---- !u!114 &11474972
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 199566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63997247b80a1e3478f950b3cc94c61f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!114 &11497676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1318,6 +1395,18 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 166022}
   m_Enabled: 1
+--- !u!135 &13591022
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166022}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &13652820
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1473,6 +1562,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxMana
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: manaRecoveyRate
+      value: 0.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
