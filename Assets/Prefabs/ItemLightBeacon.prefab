@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 482288}
   - 33: {fileID: 3348096}
   - 23: {fileID: 2312224}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: ItemLightBeacon
   m_TagString: ItemLightBeacon
   m_Icon: {fileID: 0}
@@ -168,6 +168,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: ItemLightBeacon
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

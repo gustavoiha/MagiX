@@ -35,6 +35,14 @@ public class CameraBehaviour : MonoBehaviour {
 		
 		camera = GameObject.FindGameObjectWithTag ("MainCamera").transform;
 
+		float[] distances = camera.gameObject.GetComponent<Camera>().layerCullDistances;
+
+		for (int i = 0; i < distances.Length; i++){
+			distances[i] = 800;
+		}
+		distances[15] = 10000;
+		camera.gameObject.GetComponent<Camera>().layerCullDistances = distances;
+
 	}
 
 	// Update is called once per frame
