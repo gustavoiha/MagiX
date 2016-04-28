@@ -40,7 +40,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToSpawn: {fileID: 407156, guid: 9d4e1862bf588934dab7c11c4aee98b6, type: 2}
-  spawnInterval: 4
+  spawnInterval: 10
   enableRandomInterval: 1
   randomIncrementInSpawnInterval: 1
   SpawnRange: 50
@@ -59,7 +59,7 @@ Prefab:
       objectReference: {fileID: 407156, guid: 9d4e1862bf588934dab7c11c4aee98b6, type: 2}
     - target: {fileID: 0}
       propertyPath: spawnInterval
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: enableRandomInterval
