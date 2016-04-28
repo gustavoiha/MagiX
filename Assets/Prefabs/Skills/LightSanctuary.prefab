@@ -83,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144976}
   m_LocalRotation: {x: 0.7071069, y: -0.000000027045768, z: -0.000000059604638, w: 0.70710677}
-  m_LocalPosition: {x: 0, y: 7.5, z: 0}
+  m_LocalPosition: {x: 0, y: 12, z: 0}
   m_LocalScale: {x: 0.5, y: 0.33333328, z: 0.49999988}
   m_Children: []
   m_Father: {fileID: 418890}
@@ -104,6 +104,7 @@ MonoBehaviour:
   damagePerSecond: 5
   healingPerSecond: 2
   exitTime: 10
+  rotationRate: 30
 --- !u!119 &11966688
 Projector:
   m_ObjectHideFlags: 1
@@ -121,7 +122,7 @@ Projector:
   m_Material: {fileID: 2100000, guid: c8c80c5b03f5c7e40b07eb2170e667e5, type: 2}
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294966271
 --- !u!135 &13566386
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1677,11 +1678,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Radius
       value: 15.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: rotationRate
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IgnoreLayers.m_Bits
+      value: 4294966271
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

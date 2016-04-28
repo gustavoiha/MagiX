@@ -18,12 +18,20 @@ public class LightSanctuaryBehaviour : MonoBehaviour {
 	// Duration of skill in seconds
 	public float exitTime = 10.0f;
 
+	// Rotation in degrees per second
+	public float rotationRate = 10.0f;
+
 	// Use this for initialization
 	void Start () {
 
 		GetComponent<ParticleSystem> ().Play ();
 
-		Destroy (gameObject, exitTime);
+		Destroy (gameObject.transform.parent.gameObject, exitTime);
+	}
+
+	void Update(){
+		gameObject.transform.parent.gameObject.transform.Rotate (0, rotationRate * Time.deltaTime, 0);
+		gameObject.transform.Rotate (0, 0, - 2 *rotationRate * Time.deltaTime);
 	}
 
 	void OnTriggerStay(Collider collider){
