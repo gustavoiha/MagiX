@@ -66,7 +66,7 @@ ModelImporter:
     13700006: Saia
     13700008: Tacape
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:

@@ -389,7 +389,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2287.0872, y: -14.82, z: 847.42}
+  m_LocalPosition: {x: 552.39746, y: -189.18549, z: 3658.8333}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 457022}
@@ -573,7 +573,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 158452}
-  m_LocalRotation: {x: -0.22957492, y: -0.6481918, z: 0.7080635, w: 0.16058946}
+  m_LocalRotation: {x: -0.22957487, y: -0.64819175, z: 0.7080634, w: 0.16058944}
   m_LocalPosition: {x: -2.0730271, y: -1.8907256, z: -0.6750791}
   m_LocalScale: {x: 1, y: 1, z: 1.0000001}
   m_Children:
@@ -729,7 +729,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ab0635b8e78dc8428efce4dda4654e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 20
+  maxMana: 20
+  manaRecoveyRate: 1
   health: 10
+  mana: 0
 --- !u!119 &11947148
 Projector:
   m_ObjectHideFlags: 1
@@ -771,7 +775,7 @@ SkinnedMeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 5fa49e2074f452c41937d716341fdd9a, type: 2}
+  - {fileID: 2100000, guid: 9be95cea2118f7b41abf93ab9afd243c, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -975,7 +979,7 @@ SkinnedMeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 5fa49e2074f452c41937d716341fdd9a, type: 2}
+  - {fileID: 2100000, guid: 9be95cea2118f7b41abf93ab9afd243c, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
