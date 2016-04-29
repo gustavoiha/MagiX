@@ -97,11 +97,7 @@ public class EnemyBehaviour : MonoBehaviour {
 
 		while (state == State.Follow)
 		{
-			transform.position = Vector3.MoveTowards (transform.position, target.position, Time.deltaTime * moveSpeed);
-
-			MakePerpendicular ();
-
-			RotateTowardsTarget ();
+			followPlayer ();
 
 			if (GetDistance () > idleRange)
 				state = State.Idle;
@@ -132,7 +128,7 @@ public class EnemyBehaviour : MonoBehaviour {
 	void Start()
 	{
 		
-		animator  = gameObject.GetComponent<Animator> ();
+		animator  = gameObject.GetComponentInChildren<Animator> ();
 		rigidBody = gameObject.GetComponent<Rigidbody> ();
 
 		target = GameObject.FindGameObjectWithTag ("Player").transform;
@@ -175,6 +171,22 @@ public class EnemyBehaviour : MonoBehaviour {
 		// Making sure the object is always perpendicular
 		Quaternion quaternion  = new Quaternion ();
 		quaternion.eulerAngles = new Vector3 (0, gameObject.transform.rotation.eulerAngles.y, 0);
+	}
+
+	private void followPlayer(){
+
+		Vector3 delta = target.position - gameObject.transform.position;
+
+		delta.Normalize ();
+
+		Quaternion rot = Quaternion.Slerp (transform.rotation,
+			Quaternion.LookRotation (delta), rotateSpeed * Time.deltaTime);
+
+		Quaternion rotation = Quaternion.Euler (new Vector3 (0, rot.eulerAngles.y , 0));
+
+		this.transform.rotation = rotation;
+
+		transform.position += delta * moveSpeed * Time.deltaTime;
 	}
 
 }
