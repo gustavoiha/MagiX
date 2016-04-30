@@ -23,27 +23,40 @@ public class PlayerController : MonoBehaviour {
 
 	private int cheatStartBoss = 0;
 
+	// States in animator
+	private int walkingID;
+
 	// Use this for initialization
 	void Start () {
 		animator  		 = gameObject.GetComponentInChildren<Animator> ();
 		rigidBody 		 = gameObject.GetComponent<Rigidbody> ();
 		skillsController = gameObject.GetComponent<SkillsController> ();
 		targetController = gameObject.GetComponent<NewTargetController> ();
+
+		walkingID = Animator.StringToHash ("isWalking");
 	}
 
 	// Update is called once per frame
 	void Update () {
 
+		if (Input.GetKeyDown (KeyCode.Escape))
+			PauseMenu.isPaused = !PauseMenu.isPaused;
+
 		/**
 		 * Movement animations
 		 */
-		if (Input.GetKeyDown("w")){
-			animator.SetBool("isWalking", true);
-		}
+		//if (Input.GetKeyDown("w")){
+		float HorizontalAxis = Input.GetAxis("VerticalTranslation");
 
-		if (Input.GetKeyUp("w")){
+		if (HorizontalAxis != 0.0f) {
+			//if (HorizontalAxis > 0.0f)
+			animator.SetBool ("isWalking", true);
+			//else
+			// Move backwards
+		} else {
 			animator.SetBool("isWalking", false);
 		}
+
 		//else if (Input.GetKeyUp("s"){
 		// walk backwards
 		//}
@@ -52,24 +65,28 @@ public class PlayerController : MonoBehaviour {
 		 * Skills
 		 */
 
+		if (Input.GetKey (skillsController.basicAttack)) {
+			animator.SetInteger("skill", 1);
+		}
+
 		if (Input.GetKey (skillsController.magicOne)) {
-			skillsController.UseSkill (SkillsController.LIGHT_ARROW);
-			//animator.SetInteger(useSkill, 1);
+			StartCoroutine(ExecuteSkillAfterTime(0.5f, SkillsController.LIGHT_ARROW));
+			animator.SetInteger("skill", 2);
 		}
 
 		if (Input.GetKeyDown (skillsController.magicTwo)) {
 			skillsController.UseSkill (SkillsController.LIGHT_BALL);
-			//animator.SetInteger(useSkill, 2);
+			animator.SetInteger("skill", 3);
 		}
 
 		if (Input.GetKeyDown (skillsController.magicThree)) {
 			skillsController.UseSkill (SkillsController.LIGHT_CROSS);
-			//animator.SetInteger(useSkill, 3);
+			animator.SetInteger("skill", 4);
 		}
 
 		if (Input.GetKeyDown (skillsController.magicFour)) {
-			skillsController.UseSkill (SkillsController.LIGHT_SANCTUARY);
-			//Aanimator.SetInteger(useSkill, 4);
+			StartCoroutine(ExecuteSkillAfterTime(2.0f, SkillsController.LIGHT_SANCTUARY));
+			animator.SetInteger("skill", 5);
 		}
 
 		if (Input.GetKeyDown (skillsController.magicFive)) {
@@ -80,13 +97,13 @@ public class PlayerController : MonoBehaviour {
 			targetController.UpdateTarget ();
 		}
 
-		if (Input.GetKeyDown ("escape"))
-			PauseMenu.isPaused = !PauseMenu.isPaused;
-
 		if (Input.GetKeyDown ("space"))
 			gameObject.GetComponent<Rigidbody> ().AddForce (new Vector3(0, 800.0f, 0));
 
-		doTranslation ();
+		// Mode if animator is in walking mode
+		if (animator.GetBool(walkingID))
+			doTranslation ();
+		
 		doRotation ();
 
 		/**
@@ -151,4 +168,12 @@ public class PlayerController : MonoBehaviour {
 			mouseInvertY *= -1;
 	}
 
+	IEnumerator ExecuteSkillAfterTime(float time, int tag) {
+		
+		yield return new WaitForSeconds(time);
+
+		skillsController.UseSkill (tag);
+
+		animator.SetInteger ("skill", 0);
+	}
 }

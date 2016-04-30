@@ -20,7 +20,7 @@ public class BossShieldScript : MonoBehaviour {
 		//Debug.Log ("starting boss!");
 		Transform bossPosition = GameObject.FindGameObjectWithTag ("BossPosition").transform;
 
-		GameObject newBoss = Instantiate (boss, bossPosition.position, bossPosition.rotation) as GameObject;
+		Instantiate (boss, bossPosition.position, bossPosition.rotation);
 
 		Destroy (bossPosition.gameObject);
 

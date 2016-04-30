@@ -175,6 +175,9 @@ public class EnemyBehaviour : MonoBehaviour {
 
 	private void followPlayer(){
 
+		if (gameObject == null || target == null)
+			return;
+
 		Vector3 delta = target.position - gameObject.transform.position;
 
 		delta.Normalize ();

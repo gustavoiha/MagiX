@@ -5,6 +5,7 @@ using System;
 public class SkillsController : MonoBehaviour {
 
 	//Botões
+	public KeyCode basicAttack;
     public KeyCode magicOne;
     public KeyCode magicTwo;
     public KeyCode magicThree;
@@ -36,11 +37,11 @@ public class SkillsController : MonoBehaviour {
 	public GameObject essenceStealer;
 
 	// Skills' id's. Pass them as arguments int UseSkill() method
-	public const string LIGHT_ARROW 	= "lightArrow";
-	public const string LIGHT_BALL  	= "lightBall";
-	public const string LIGHT_CROSS 	= "lightCross";
-	public const string LIGHT_SANCTUARY = "lightSanctuary";
-	public const string ESSENCE_STEALER = "essenceStealer";
+	public const int LIGHT_ARROW 	 = 0;
+	public const int LIGHT_BALL  	 = 1;
+	public const int LIGHT_CROSS 	 = 2;
+	public const int LIGHT_SANCTUARY = 3;
+	public const int ESSENCE_STEALER = 4;
 
 	//Força aplicada na flecha
     public float lightArrowForce = 100.0f; 
@@ -153,7 +154,7 @@ public class SkillsController : MonoBehaviour {
 	/// Call his method to use a desired skill
 	/// </summary>
 	/// <param name="skill">Skill.</param>
-	public void UseSkill (string skillID){
+	public bool UseSkill (int skillID){
 
 		if (!targetController.HasTarget())
 			targetController.UpdateTarget ();
@@ -172,10 +173,13 @@ public class SkillsController : MonoBehaviour {
 			direction.Normalize();
 		}
 
-		// Check if null or empty to continue
-		if (string.IsNullOrEmpty(skillID))
-			return;
+		// Check if ok to continue
+		if (skillID < 0 && skillID < manaUse.Length)
+			return false;
 		
+		if (!healthController.HasMana (manaUse [skillID]))
+			return false;
+
 		switch (skillID) {
 
 		case LIGHT_ARROW:
@@ -195,6 +199,7 @@ public class SkillsController : MonoBehaviour {
 			break;
 		}
 
+		return true;
 	}
 
     private void UseLightArrow() {
@@ -265,7 +270,7 @@ public class SkillsController : MonoBehaviour {
 
 		healthController.DecreaseMana (manaUse [4]);
 
-		GameObject essence = Instantiate(essenceStealer, target.position, Quaternion.LookRotation(-direction)) as GameObject;
+		Instantiate(essenceStealer, target.position, Quaternion.LookRotation(-direction));
 		timeTilNext[4] = coolDown[4];
     }
 }

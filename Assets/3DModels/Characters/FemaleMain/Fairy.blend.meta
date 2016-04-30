@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 2be3a2d7b20b95b4bad5b48c9505424b
-timeCreated: 1461070741
+timeCreated: 1461973322
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -39,6 +39,8 @@ ModelImporter:
     100062: UpperFoot_R
     100064: UpperThumb_L
     100066: UpperThumb_R
+    100068: Scepter
+    100070: ScepterBone
     400000: Armature
     400002: Body
     400004: Body_MeshPart0
@@ -73,12 +75,15 @@ ModelImporter:
     400062: UpperFoot_R
     400064: UpperThumb_L
     400066: UpperThumb_R
+    400068: Scepter
+    400070: ScepterBone
     4300000: Body_MeshPart0
     4300002: Body_MeshPart1
+    4300004: Scepter
     7400000: Default Take
     7400002: Idle
     7400004: Walking
-    7400006: drawingSaberJedi
+    7400006: LightArrow
     7400008: jumpingBegin
     7400010: jumpingBeginSaber
     7400012: jumpingHighEnd
@@ -86,9 +91,12 @@ ModelImporter:
     7400016: jumpingLowEndSaber
     7400018: Strafing
     7400020: walkingSaber
+    7400022: BasicAttack
+    7400024: Sanctuary
     9500000: //RootNode
     13700000: Body_MeshPart0
     13700002: Body_MeshPart1
+    13700004: Scepter
   materials:
     importMaterials: 1
     materialName: 0
@@ -111,10 +119,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Walking
-      takeName: ArmatureAction
+      name: BasicAttack
+      takeName: BasicAttack
       firstFrame: 0
-      lastFrame: 32
+      lastFrame: 37
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -185,6 +193,8 @@ ModelImporter:
         weight: 1
       - path: Armature/Root/Lombar/Thoracic/Humerus_R/Radius_R/Hand_R
         weight: 1
+      - path: Armature/Root/Lombar/Thoracic/Humerus_R/Radius_R/Hand_R/ScepterBone
+        weight: 1
       - path: Armature/Root/Lombar/Thoracic/Humerus_R/Radius_R/Hand_R/UpperFinger_R
         weight: 1
       - path: Armature/Root/Lombar/Thoracic/Humerus_R/Radius_R/Hand_R/UpperFinger_R/LowerFinger_R
@@ -203,14 +213,116 @@ ModelImporter:
         weight: 1
       - path: Body/Body_MeshPart1
         weight: 1
+      - path: Scepter
+        weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Idle
-      takeName: Animations
-      firstFrame: 1
-      lastFrame: 1
+      name: LightArrow
+      takeName: drawingSaberJedi
+      firstFrame: 7
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Root
+        weight: 1
+      - path: Armature/Root/LegControl_L
+        weight: 1
+      - path: Armature/Root/LegControl_L/UpperFoot_L
+        weight: 1
+      - path: Armature/Root/LegControl_L/UpperFoot_L/LowerFoot_L
+        weight: 1
+      - path: Armature/Root/LegControl_R
+        weight: 1
+      - path: Armature/Root/LegControl_R/UpperFoot_R
+        weight: 1
+      - path: Armature/Root/LegControl_R/UpperFoot_R/LowerFoot_R
+        weight: 1
+      - path: Armature/Root/Lombar
+        weight: 1
+      - path: Armature/Root/Lombar/Femur_L
+        weight: 1
+      - path: Armature/Root/Lombar/Femur_L/Tibia_L
+        weight: 1
+      - path: Armature/Root/Lombar/Femur_R
+        weight: 1
+      - path: Armature/Root/Lombar/Femur_R/Tibia_R
+        weight: 1
+      - path: Armature/Root/Lombar/Thoracic
+        weight: 1
+      - path: Armature/Root/Lombar/Thoracic/Humerus_L
+        weight: 1
+      - path: Armature/Root/Lombar/Thoracic/Humerus_L/Radius_L
+        weight: 1
+      - path: Armature/Root/Lombar/Thoracic/Humerus_L/Radius_L/Hand_L
+        weight: 1
+      - path: Armature/Root/Lombar/Thoracic/Humerus_L/Radius_L/Hand_L/UpperFinger_L
+        weight: 1
+      - path: Armature/Root/Lombar/Thoracic/Humerus_L/Radius_L/Hand_L/UpperFinger_L/LowerFinger_L
+        weight: 1
+      - path: Armature/Root/Lombar/Thoracic/Humerus_L/Radius_L/Hand_L/UpperThumb_L
+        weight: 1
+      - path: Armature/Root/Lombar/Thoracic/Humerus_L/Radius_L/Hand_L/UpperThumb_L/LowerThumb_L
+        weight: 1
+      - path: Armature/Root/Lombar/Thoracic/Humerus_R
+        weight: 1
+      - path: Armature/Root/Lombar/Thoracic/Humerus_R/Radius_R
+        weight: 1
+      - path: Armature/Root/Lombar/Thoracic/Humerus_R/Radius_R/Hand_R
+        weight: 1
+      - path: Armature/Root/Lombar/Thoracic/Humerus_R/Radius_R/Hand_R/ScepterBone
+        weight: 1
+      - path: Armature/Root/Lombar/Thoracic/Humerus_R/Radius_R/Hand_R/UpperFinger_R
+        weight: 1
+      - path: Armature/Root/Lombar/Thoracic/Humerus_R/Radius_R/Hand_R/UpperFinger_R/LowerFinger_R
+        weight: 1
+      - path: Armature/Root/Lombar/Thoracic/Humerus_R/Radius_R/Hand_R/UpperThumb_R
+        weight: 1
+      - path: Armature/Root/Lombar/Thoracic/Humerus_R/Radius_R/Hand_R/UpperThumb_R/LowerThumb_R
+        weight: 1
+      - path: Armature/Root/Lombar/Thoracic/Neck
+        weight: 1
+      - path: Armature/Root/Lombar/Thoracic/Neck/Head
+        weight: 1
+      - path: Body
+        weight: 1
+      - path: Body/Body_MeshPart0
+        weight: 1
+      - path: Body/Body_MeshPart1
+        weight: 1
+      - path: Scepter
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 7
+    - serializedVersion: 16
+      name: Sanctuary
+      takeName: Sanctuary
+      firstFrame: 0
+      lastFrame: 73
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -281,6 +393,8 @@ ModelImporter:
         weight: 1
       - path: Armature/Root/Lombar/Thoracic/Humerus_R/Radius_R/Hand_R
         weight: 1
+      - path: Armature/Root/Lombar/Thoracic/Humerus_R/Radius_R/Hand_R/ScepterBone
+        weight: 1
       - path: Armature/Root/Lombar/Thoracic/Humerus_R/Radius_R/Hand_R/UpperFinger_R
         weight: 1
       - path: Armature/Root/Lombar/Thoracic/Humerus_R/Radius_R/Hand_R/UpperFinger_R/LowerFinger_R
@@ -298,6 +412,8 @@ ModelImporter:
       - path: Body/Body_MeshPart0
         weight: 1
       - path: Body/Body_MeshPart1
+        weight: 1
+      - path: Scepter
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
