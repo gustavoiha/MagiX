@@ -22,6 +22,8 @@ public class HealthController : MonoBehaviour {
 
 	public float mana;
 
+	public bool destroyOnDeath = true;
+
 	void Start(){
 		health = maxHealth;
 		mana   = maxMana;
@@ -40,7 +42,8 @@ public class HealthController : MonoBehaviour {
 		// Do death anmation, for example
 
 		// Destroy object
-		Destroy (gameObject);
+		if (destroyOnDeath)
+			Destroy (gameObject);
 	}
 
 	public bool HasMana (float amount){

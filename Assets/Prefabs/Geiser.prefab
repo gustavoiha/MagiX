@@ -121,7 +121,7 @@ Projector:
   m_Material: {fileID: 2100000, guid: 0f41396effebf66408ff1bf9ff9416d4, type: 2}
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294966271
 --- !u!136 &13612440
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -182,7 +182,7 @@ ParticleSystem:
   randomSeed: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   moveWithTransform: 1
   scalingMode: 1
   InitialModule:
@@ -1734,11 +1734,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: playOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IgnoreLayers.m_Bits
+      value: 4294966271
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
