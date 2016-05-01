@@ -280,6 +280,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 430530}
   - 95: {fileID: 9537166}
+  - 114: {fileID: 11470314}
   m_Layer: 12
   m_Name: Fairy
   m_TagString: Untagged
@@ -439,7 +440,6 @@ GameObject:
   - 114: {fileID: 11453908}
   - 114: {fileID: 11412834}
   - 114: {fileID: 11468180}
-  - 135: {fileID: 13591022}
   m_Layer: 12
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -597,7 +597,6 @@ GameObject:
   - 23: {fileID: 2331190}
   - 54: {fileID: 5479070}
   - 114: {fileID: 11497676}
-  - 114: {fileID: 11402038}
   - 114: {fileID: 11458014}
   - 114: {fileID: 11405642}
   m_Layer: 12
@@ -704,7 +703,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 199566}
   m_LocalRotation: {x: 0.000000029230394, y: 0.49504018, z: -0.000000027366893, w: -0.86887014}
-  m_LocalPosition: {x: 2420.4, y: -232.18, z: 3267.2}
+  m_LocalPosition: {x: 3413.518, y: 28.82, z: 374.01678}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 433880}
@@ -1259,43 +1258,6 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
---- !u!114 &11402038
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 199566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c4b155968a40d44a9903baa0257472b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  basicAttack: 0
-  magicOne: 49
-  magicTwo: 50
-  magicThree: 51
-  magicFour: 52
-  magicFive: 53
-  lightArrow: {fileID: 148554, guid: 99fe8b462bbe60744a9660e9b6d864b3, type: 2}
-  lightBall: {fileID: 120464, guid: be93328743a74124086b74c2df63951d, type: 2}
-  lightCross: {fileID: 117088, guid: 6bcf621b48befb1429ee4711d062510f, type: 2}
-  lightSanctuary: {fileID: 198918, guid: f71382764563ff64f86f36eeec142a72, type: 2}
-  essenceStealer: {fileID: 176514, guid: 5d1755c832a4fd94bb6bf4e566ccdfbe, type: 2}
-  lightArrowForce: 2000
-  lightBallForce: 1000
-  lightCrossForce: 10
-  coolDown:
-  - 0.5
-  - 2
-  - 3
-  - 2
-  - 5
-  manaUse:
-  - 1
-  - 5
-  - 10
-  - 15
-  - 5
 --- !u!114 &11405642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1387,6 +1349,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newSkin: {fileID: 11400000, guid: 46581bf7fbdb90b49bb0e1c6aa4a3379, type: 2}
+--- !u!114 &11470314
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4b155968a40d44a9903baa0257472b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basicAttack: 49
+  magicOne: 50
+  magicTwo: 51
+  magicThree: 52
+  magicFour: 53
+  lightArrow: {fileID: 148554, guid: 99fe8b462bbe60744a9660e9b6d864b3, type: 2}
+  lightBall: {fileID: 120464, guid: be93328743a74124086b74c2df63951d, type: 2}
+  lightSanctuary: {fileID: 198918, guid: f71382764563ff64f86f36eeec142a72, type: 2}
+  defenseDome: {fileID: 156790, guid: be5998a6bf14ae148a6062168c4f51fc, type: 2}
+  lightArrowForce: 2000
+  lightBallForce: 1000
+  coolDown:
+  - 0.5
+  - 2
+  - 3
+  - 2
+  - 16
+  manaUse:
+  - 1
+  - 5
+  - 10
+  - 15
+  - 1
 --- !u!114 &11497676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1408,18 +1404,6 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 166022}
   m_Enabled: 1
---- !u!135 &13591022
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 166022}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &13652820
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1655,6 +1639,10 @@ Prefab:
       propertyPath: destroyOnDeath
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: defenseDome
+      value: 
+      objectReference: {fileID: 156790, guid: be5998a6bf14ae148a6062168c4f51fc, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 199566}

@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
 	private Animator animator;
 	private Rigidbody rigidBody;
 	private SkillsController skillsController;
-	private NewTargetController targetController;
+	private TargetController targetController;
 
 	public float moveSpeedFoward = 6.0f;
 	public float moveSpeedSides  = 6.0f;
@@ -30,8 +30,8 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
 		animator  		 = gameObject.GetComponentInChildren<Animator> ();
 		rigidBody 		 = gameObject.GetComponent<Rigidbody> ();
-		skillsController = gameObject.GetComponent<SkillsController> ();
-		targetController = gameObject.GetComponent<NewTargetController> ();
+		skillsController = gameObject.GetComponentInChildren<SkillsController> ();
+		targetController = gameObject.GetComponent<TargetController> ();
 
 		walkingID = Animator.StringToHash ("isWalking");
 	}
@@ -65,35 +65,50 @@ public class PlayerController : MonoBehaviour {
 		 * Skills
 		 */
 
-		if (Input.GetKey (skillsController.basicAttack)) {
-			animator.SetInteger("skill", 1);
+		// Basic Attack
+		if (Input.GetKey (skillsController.basicAttack) && skillsController.CanUseSkill(SkillsController.BASIC_ATTACK)) {
+			//skillsController.UseSkill (SkillsController.BASIC_ATTACK);
+			animator.SetInteger ("skill", 1);
 		}
 
-		if (Input.GetKey (skillsController.magicOne)) {
-			StartCoroutine(ExecuteSkillAfterTime(0.5f, SkillsController.LIGHT_ARROW));
-			animator.SetInteger("skill", 2);
+		if (Input.GetKeyUp (skillsController.basicAttack))
+			animator.SetInteger ("skill", 0);
+
+		// Light Arrow
+		if (Input.GetKey (skillsController.magicOne) && skillsController.CanUseSkill(SkillsController.LIGHT_ARROW)) {
+			animator.SetInteger ("skill", 2);
 		}
 
-		if (Input.GetKeyDown (skillsController.magicTwo)) {
+		if (Input.GetKeyUp (skillsController.magicOne))
+			animator.SetInteger ("skill", 0);
+
+		// Light Ball
+		if (Input.GetKeyDown (skillsController.magicTwo) && skillsController.CanUseSkill(SkillsController.LIGHT_BALL)) {
 			skillsController.UseSkill (SkillsController.LIGHT_BALL);
-			animator.SetInteger("skill", 3);
+			animator.SetInteger ("skill", 3);
 		}
 
-		if (Input.GetKeyDown (skillsController.magicThree)) {
-			skillsController.UseSkill (SkillsController.LIGHT_CROSS);
-			animator.SetInteger("skill", 4);
+		if (Input.GetKeyUp (skillsController.magicTwo))
+			animator.SetInteger ("skill", 0);
+
+		// Sanctuary
+		if (Input.GetKeyDown (skillsController.magicThree) && skillsController.CanUseSkill(SkillsController.LIGHT_SANCTUARY)) {
+			//skillsController.UseSkill(SkillsController.LIGHT_SANCTUARY);
+			animator.SetInteger ("skill", 5);
 		}
 
-		if (Input.GetKeyDown (skillsController.magicFour)) {
-			StartCoroutine(ExecuteSkillAfterTime(2.0f, SkillsController.LIGHT_SANCTUARY));
-			animator.SetInteger("skill", 5);
+		//if (Input.GetKeyDown (skillsController.magicThree))
+		//	animator.SetInteger ("skill", 0);
+
+		// Defense ball
+		if (Input.GetKeyDown (skillsController.magicFour) && skillsController.CanUseSkill(SkillsController.DEFENCE_DOME)) {
+			skillsController.UseSkill (SkillsController.DEFENCE_DOME);
 		}
 
-		if (Input.GetKeyDown (skillsController.magicFive)) {
-			skillsController.UseSkill (SkillsController.ESSENCE_STEALER);
-		}
+		//if (Input.GetKeyUp (skillsController.magicFour))
+		//	animator.SetInteger ("skill", 0);
 
-		if (Input.GetKeyDown (NewTargetController.targetSwitch)) {
+		if (Input.GetKeyDown (TargetController.targetSwitch)) {
 			targetController.UpdateTarget ();
 		}
 
@@ -101,7 +116,7 @@ public class PlayerController : MonoBehaviour {
 			gameObject.GetComponent<Rigidbody> ().AddForce (new Vector3(0, 800.0f, 0));
 
 		// Mode if animator is in walking mode
-		if (animator.GetBool(walkingID))
+		if (animator.GetBool (walkingID))
 			doTranslation ();
 		
 		doRotation ();
@@ -124,7 +139,7 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	private void doTranslation(){
+	private void doTranslation (){
 		//if (shouldMove()) {
 			//if (controler.isGrounded) {
 			moveDirection = Vector3.zero;
@@ -136,7 +151,7 @@ public class PlayerController : MonoBehaviour {
 		//}
 	}
 
-	private void doRotation(){
+	private void doRotation (){
 
 		// Stoping player from rotating automatially because of the rigdbody component
 		rigidBody.angularVelocity = new Vector3(0,0,0);
@@ -168,12 +183,4 @@ public class PlayerController : MonoBehaviour {
 			mouseInvertY *= -1;
 	}
 
-	IEnumerator ExecuteSkillAfterTime(float time, int tag) {
-		
-		yield return new WaitForSeconds(time);
-
-		skillsController.UseSkill (tag);
-
-		animator.SetInteger ("skill", 0);
-	}
 }
