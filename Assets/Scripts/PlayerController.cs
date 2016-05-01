@@ -9,10 +9,11 @@ public class PlayerController : MonoBehaviour {
 	private Rigidbody rigidBody;
 	private SkillsController skillsController;
 	private TargetController targetController;
+	private Transform cameraTransform;
 
 	public float moveSpeedFoward = 6.0f;
 	public float moveSpeedSides  = 6.0f;
-	public float turnSpeedX = 60.0f;
+	public float turnSpeedY = 60.0f;
 	//public float turnSpeedY = 60.0f;
 
 	private int mouseInvertX = 1;
@@ -32,6 +33,8 @@ public class PlayerController : MonoBehaviour {
 		rigidBody 		 = gameObject.GetComponent<Rigidbody> ();
 		skillsController = gameObject.GetComponentInChildren<SkillsController> ();
 		targetController = gameObject.GetComponent<TargetController> ();
+		//cameraBehaviour  = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraBehaviour>();
+		cameraTransform  = GameObject.FindGameObjectWithTag ("MainCamera").transform;
 
 		walkingID = Animator.StringToHash ("isWalking");
 	}
@@ -42,18 +45,16 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Escape))
 			PauseMenu.isPaused = !PauseMenu.isPaused;
 
+
+
 		/**
 		 * Movement animations
 		 */
-		//if (Input.GetKeyDown("w")){
-		float HorizontalAxis = Input.GetAxis("VerticalTranslation");
 
-		if (HorizontalAxis != 0.0f) {
-			//if (HorizontalAxis > 0.0f)
+		if (Input.GetAxis("VerticalTranslation") != 0.0f || Input.GetAxis("HorizontalTranslation") != 0.0f) {
 			animator.SetBool ("isWalking", true);
-			//else
-			// Move backwards
-		} else {
+		}
+		else {
 			animator.SetBool("isWalking", false);
 		}
 
@@ -97,16 +98,16 @@ public class PlayerController : MonoBehaviour {
 			animator.SetInteger ("skill", 5);
 		}
 
-		//if (Input.GetKeyDown (skillsController.magicThree))
-		//	animator.SetInteger ("skill", 0);
+		if (Input.GetKeyUp (skillsController.magicThree))
+			animator.SetInteger ("skill", 0);
 
 		// Defense ball
 		if (Input.GetKeyDown (skillsController.magicFour) && skillsController.CanUseSkill(SkillsController.DEFENCE_DOME)) {
 			skillsController.UseSkill (SkillsController.DEFENCE_DOME);
 		}
 
-		//if (Input.GetKeyUp (skillsController.magicFour))
-		//	animator.SetInteger ("skill", 0);
+		if (Input.GetKeyUp (skillsController.magicFour))
+			animator.SetInteger ("skill", 0);
 
 		if (Input.GetKeyDown (TargetController.targetSwitch)) {
 			targetController.UpdateTarget ();
@@ -116,10 +117,13 @@ public class PlayerController : MonoBehaviour {
 			gameObject.GetComponent<Rigidbody> ().AddForce (new Vector3(0, 800.0f, 0));
 
 		// Mode if animator is in walking mode
-		if (animator.GetBool (walkingID))
+		if (animator.GetBool (walkingID)) {
+			
 			doTranslation ();
-		
-		doRotation ();
+			doRotation ();
+		}
+
+		MakePerpendicular ();
 
 		/**
 		 * Cheat !!!
@@ -142,28 +146,45 @@ public class PlayerController : MonoBehaviour {
 	private void doTranslation (){
 		//if (shouldMove()) {
 			//if (controler.isGrounded) {
-			moveDirection = Vector3.zero;
-			moveDirection += transform.forward * Input.GetAxis ("VerticalTranslation")   * moveSpeedFoward;
-			moveDirection += transform.right   * Input.GetAxis ("HorizontalTranslation") * moveSpeedSides;
+			//moveDirection = Vector3.zero;
+			//moveDirection += transform.forward * Input.GetAxis ("VerticalTranslation");
+			//moveDirection += transform.right   * Input.GetAxis ("HorizontalTranslation");
 
-			transform.position += moveDirection * Time.deltaTime;
+			//Vector3 delta = moveDirection + gameObject.transform.position - cameraTransform.position;
+			//delta.Normalize ();
+
+			transform.position += transform.forward * Time.deltaTime * moveSpeedFoward;
 			//}
 		//}
 	}
 
 	private void doRotation (){
 
-		// Stoping player from rotating automatially because of the rigdbody component
+		float moveX = Input.GetAxis ("HorizontalTranslation");
+		float moveZ = Input.GetAxis ("VerticalTranslation");
+
+		float extraAngleY = Mathf.Atan2 (moveX, moveZ) * Mathf.Rad2Deg;
+
+		Quaternion lookRotation = cameraTransform.rotation;
+		lookRotation.eulerAngles += new Vector3 (0, extraAngleY, 0);
+
+		//Vector3 turnDirection = new Vector3 (moveX, 0, moveZ) - transform.position;
+		//turnDirection.Normalize ();
+
+		//Quaternion turnRotation = Quaternion.LookRotation (turnDirection);
+
+		transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeedY);
+
+	}
+
+	private void MakePerpendicular (){
+
+		// Stoping player from rotating automatially because of the rigidbody component
 		rigidBody.angularVelocity = new Vector3(0,0,0);
 
-		// Making sure the player is always perpendicular
 		Quaternion quaternion  = new Quaternion ();
 		quaternion.eulerAngles = new Vector3 (0, transform.rotation.eulerAngles.y, 0);
-
-		float turnX = Input.GetAxis ("Mouse X") * Mathf.Sign(mouseInvertX) + Input.GetAxis ("HorizontalRotation");
-
 		transform.rotation = quaternion;
-		transform.Rotate (0, turnX * turnSpeedX * Time.deltaTime, 0);
 	}
 
 	// Returns true if player is in walking or running animation

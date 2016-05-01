@@ -424,29 +424,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &166022
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 433880}
-  - 20: {fileID: 2036212}
-  - 92: {fileID: 9297608}
-  - 124: {fileID: 12491694}
-  - 81: {fileID: 8120464}
-  - 114: {fileID: 11406080}
-  - 114: {fileID: 11453908}
-  - 114: {fileID: 11412834}
-  - 114: {fileID: 11468180}
-  m_Layer: 12
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &172744
 GameObject:
   m_ObjectHideFlags: 1
@@ -706,7 +683,6 @@ Transform:
   m_LocalPosition: {x: 3413.518, y: 28.82, z: 374.01678}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
-  - {fileID: 433880}
   - {fileID: 430530}
   - {fileID: 450524}
   m_Father: {fileID: 0}
@@ -764,7 +740,7 @@ Transform:
   - {fileID: 427760}
   - {fileID: 485880}
   m_Father: {fileID: 418018}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!4 &432658
 Transform:
   m_ObjectHideFlags: 1
@@ -792,18 +768,6 @@ Transform:
   - {fileID: 466914}
   - {fileID: 462768}
   m_Father: {fileID: 454376}
-  m_RootOrder: 0
---- !u!4 &433880
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 166022}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 418018}
   m_RootOrder: 0
 --- !u!4 &434166
 Transform:
@@ -866,7 +830,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 418018}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!4 &454376
 Transform:
   m_ObjectHideFlags: 1
@@ -1112,40 +1076,6 @@ Transform:
   - {fileID: 493548}
   m_Father: {fileID: 457990}
   m_RootOrder: 2
---- !u!20 &2036212
-Camera:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 166022}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 2000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 100
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
-  m_StereoMirrorMode: 0
 --- !u!23 &2331190
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -1194,20 +1124,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!81 &8120464
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 166022}
-  m_Enabled: 1
---- !u!92 &9297608
-Behaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 166022}
-  m_Enabled: 1
 --- !u!95 &9537166
 Animator:
   serializedVersion: 3
@@ -1275,56 +1191,6 @@ MonoBehaviour:
   health: 20
   mana: 0
   destroyOnDeath: 0
---- !u!114 &11406080
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 166022}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bef3d242a13c447ac90c2d2dc213b1ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  intensity: 0.375
-  chromaticAberration: 2
-  blur: 0.1
-  blurSpread: 1.5
-  vignetteShader: {fileID: 4800000, guid: 627943dc7a9a74286b70a4f694a0acd5, type: 3}
-  separableBlurShader: {fileID: 4800000, guid: e97c14fbb5ea04c3a902cc533d7fc5d1, type: 3}
-  chromAberrationShader: {fileID: 4800000, guid: 2b4f29398d9484ccfa9fd220449f5eee,
-    type: 3}
---- !u!114 &11412834
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 166022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5948ba5259a0bb649af63711717d4a25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CameraPivot: 0.01
-  CameraAngle: 35
-  CameraAngleLimitUpper: 85
-  CameraAngleLimitLower: -10
-  CameraDistance: 6
-  turnSpeedY: 10
---- !u!114 &11453908
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 166022}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 478a2083ad114a07d000fbfb8d76c639, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shader: {fileID: 4800000, guid: e9ba2083ad114a07d000fbfb8d76c639, type: 3}
-  blurAmount: 0.2
-  extraBlur: 1
 --- !u!114 &11458014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1337,18 +1203,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 100
---- !u!114 &11468180
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 166022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d366a00372742584ab778a531046e456, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  newSkin: {fileID: 11400000, guid: 46581bf7fbdb90b49bb0e1c6aa4a3379, type: 2}
 --- !u!114 &11470314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1374,8 +1228,8 @@ MonoBehaviour:
   coolDown:
   - 0.5
   - 2
-  - 3
-  - 2
+  - 5
+  - 60
   - 16
   manaUse:
   - 1
@@ -1395,15 +1249,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeedFoward: 20
-  moveSpeedSides: 10
-  turnSpeedX: 10
---- !u!124 &12491694
-Behaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 166022}
-  m_Enabled: 1
+  moveSpeedSides: 20
+  turnSpeedY: 6
 --- !u!136 &13652820
 CapsuleCollider:
   m_ObjectHideFlags: 1
