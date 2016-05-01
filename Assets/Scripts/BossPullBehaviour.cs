@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BossPullBehaviour : MonoBehaviour {
 
-    public GameObject boss;
+    public Transform boss;
 
     public ForceMode forceMode;
 
@@ -16,23 +16,27 @@ public class BossPullBehaviour : MonoBehaviour {
 
     public float timeLeft = 2.0f; //Time between the sphere is fully grown and the implosion happens
 	
+    void Start() {
+        transform.position = boss.position;
+    }
+
 	// Update is called once per frame
 	void Update () {
-        transform.Rotate(new Vector3(0, rotationSpeed) * Time.deltaTime);
-	    if(transform.localScale.y <= maxRadius)
-        {
-            transform.localScale = Vector3.one * scale; //Faz a esfera crescer de acordo com o scale
-            scale += growthRate * Time.deltaTime; //Aumenta o scale conforme o tempo passa
-            radius = transform.localScale.y;
-            return;
+        transform.Rotate(new Vector3(0, rotationSpeed) * Time.deltaTime); //Rotates the sphere
+	    if(transform.localScale.y <= maxRadius) {
+            transform.localScale = Vector3.one * scale; //Makes the sphere grow according to the scale
+            scale += growthRate * Time.deltaTime; //Rises the scale according to the growthRate
+            radius = transform.localScale.y; //Updates the radius
+            print(radius);
+            return; //Blocks the rest of the Update part (so it won't detonate)
         }
-        timeLeft -= Time.deltaTime;
+        timeLeft -= Time.deltaTime; //Starts countdown
         if (timeLeft < 0)
-            Implode();
+            Implode(); //Implodes when it finishes
      }
 
     void Implode() {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, radius); //Checks everything around the sphere
 
         foreach (Collider hit in colliders)
         {
@@ -41,12 +45,10 @@ public class BossPullBehaviour : MonoBehaviour {
 
             if (rigidbody != null)
             {
-                rigidbody.AddExplosionForce(-implosionForce, transform.position, radius, 1.0f, forceMode);
+                rigidbody.AddExplosionForce(-implosionForce, transform.position, radius, 1.0f, forceMode); //Implodes for every rigidbody close to the sphere
                 //Debug.Log ("Added force!");
             }
         }
-
-        //Destrói a esfera
-        Destroy(gameObject);
+        Destroy(gameObject); //Destroys the sphere
     }
 }
