@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour {
 
 		// Light Ball
 		if (Input.GetKeyDown (skillsController.magicTwo) && skillsController.CanUseSkill(SkillsController.LIGHT_BALL)) {
-			skillsController.UseSkill (SkillsController.LIGHT_BALL);
+			//skillsController.UseSkill (SkillsController.LIGHT_BALL);
 			animator.SetInteger ("skill", 3);
 		}
 
@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour {
 		// Sanctuary
 		if (Input.GetKeyDown (skillsController.magicThree) && skillsController.CanUseSkill(SkillsController.LIGHT_SANCTUARY)) {
 			//skillsController.UseSkill(SkillsController.LIGHT_SANCTUARY);
-			animator.SetInteger ("skill", 5);
+			animator.SetInteger ("skill", 4);
 		}
 
 		if (Input.GetKeyUp (skillsController.magicThree))

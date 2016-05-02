@@ -64,14 +64,7 @@ public class SkillsController : MonoBehaviour {
 		healthController = gameObject.transform.parent.gameObject.gameObject.GetComponent<HealthController> ();
 		targetController = gameObject.transform.parent.gameObject.GetComponent<TargetController> ();
 
-        //Define each cooldown
         timeTilNext = new float[5];
-        //cd = new float[5];
-        //cd[0] = 0.5f;
-        //cd[1] = 2.0f;
-        //cd[2] = 3.0f;
-        //cd[3] = 2.0f;
-        //cd[4] = 5.0f;
 
 		for (int i = 0; i < coolDown.Length; i++) {
             timeTilNext[i] = 0;
@@ -81,7 +74,7 @@ public class SkillsController : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-        for(int i = 0; i < 5; i++) {
+		for(int i = 0; i < timeTilNext.Length; i++) {
             //Resets cooldowns
             timeTilNext[i] -= Time.deltaTime;
         }
@@ -118,8 +111,8 @@ public class SkillsController : MonoBehaviour {
 			direction.Normalize();
 		}
 		
-		//if (!healthController.HasMana (manaUse [skillID]))
-		//	return;
+		healthController.DecreaseMana (manaUse [skillID]);
+		timeTilNext [skillID] = coolDown [skillID];
 
 		switch (skillID) {
 
@@ -146,10 +139,10 @@ public class SkillsController : MonoBehaviour {
 	public bool CanUseSkill (int skillID){
 		
 		// Check if ok to continue
-		if (skillID < 0 || skillID > manaUse.Length)
+		if (skillID < 0 || skillID >= manaUse.Length)
 			return false;
-		
-		return healthController.HasMana (manaUse [skillID]) && (timeTilNext [skillID] <= 0) ? true: false;
+
+		return healthController.HasMana (manaUse [skillID]) && (timeTilNext [skillID] <= 0.0f);
 	}
 
 	private void UseBasicAttack(){
@@ -157,41 +150,26 @@ public class SkillsController : MonoBehaviour {
 	}
 
     private void UseLightArrow() {
-		
-		//if (timeTilNext [0] > 0 || !healthController.HasMana (manaUse[0]))
-		//	return;
-
-		healthController.DecreaseMana (manaUse [0]);
 
         //Instantiate novos projéteis (Euler foi necessário para endireitar o prefab)
         GameObject projectile = Instantiate(lightArrow, location, Quaternion.LookRotation(direction) * Quaternion.Euler(90, 0, 180)) as GameObject;
         projectile.GetComponent<Rigidbody>().useGravity = false; //Evita a gravidade
         projectile.GetComponent<Rigidbody>().AddForce(direction * lightArrowForce); //Coloca uma força para arremessar a magia
 
-		timeTilNext[0] = coolDown[0];
     }
 
 	private void UseLightBall() {
 
-		//if (timeTilNext [1] > 0 || !healthController.HasMana (manaUse[1]))
-		//	return;
-
-		healthController.DecreaseMana (manaUse [1]);
+		healthController.DecreaseMana (manaUse [2]);
 
         //Mesma coisa acima, sem o ajuste, já q se trata de uma esfera
         GameObject projectile = Instantiate(lightBall, location, Quaternion.LookRotation(direction)) as GameObject;
         projectile.GetComponent<Rigidbody>().useGravity = false;
         projectile.GetComponent<Rigidbody>().AddForce(direction * lightBallForce);
 
-		timeTilNext[1] = coolDown[1];
     }
 
 	private void UseLightSanctuary() {
-
-		//if (timeTilNext [3] > 0 || !healthController.HasMana (manaUse[3]))
-		//	return;
-
-		healthController.DecreaseMana (manaUse [3]);
 
 		//Vector3 position = gameObject.transform.position;
 
@@ -200,13 +178,9 @@ public class SkillsController : MonoBehaviour {
 
 		Instantiate(lightSanctuary, gameObject.transform.position, rotation);
 
-		timeTilNext [3] = coolDown[3];
 	}
 
     private void UseDefenceDome() {
-
-		//if (timeTilNext [4] > 0 || !healthController.HasMana (manaUse[4]))
-		//	return;
 
 		healthController.DecreaseMana (manaUse [4]);
 
@@ -218,7 +192,6 @@ public class SkillsController : MonoBehaviour {
 
 		newDefenseDome.transform.localPosition = new Vector3 (0, 2.7f, 0);
 
-		timeTilNext[4] = coolDown[4];
     }
 
 }

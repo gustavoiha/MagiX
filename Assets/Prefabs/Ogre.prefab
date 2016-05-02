@@ -779,6 +779,9 @@ MonoBehaviour:
   manaRecoveyRate: 1
   health: 10
   mana: 0
+  destroyOnDeath: 1
+  collectibleOnDeath: 1
+  collectible: {fileID: 485932, guid: 7dcd65e79a802a84c9949e680c0de02c, type: 2}
 --- !u!114 &11421878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -808,10 +811,8 @@ MonoBehaviour:
   moveSpeed: 12
   rotateSpeed: 3
   followRange: 100
+  attackRange: 2
   idleRange: 10
-  health: 100
-  currentHealth: 0
-  maxHit: 5
   gravityIncrement: 1
 --- !u!119 &11947148
 Projector:
@@ -1150,6 +1151,14 @@ Prefab:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: collectibleOnDeath
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: collectible
+      value: 
+      objectReference: {fileID: 485932, guid: 7dcd65e79a802a84c9949e680c0de02c, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 161762}
