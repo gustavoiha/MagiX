@@ -12,6 +12,7 @@ public class OgrePositionController : MonoBehaviour {
 	void OnTriggerEnter(Collider collider) {
 		if(collider.gameObject.CompareTag("Player")) {
 			Instantiate (ogre, gameObject.transform.position, gameObject.transform.rotation);
+			Destroy (gameObject);
 		}
 	}
 }

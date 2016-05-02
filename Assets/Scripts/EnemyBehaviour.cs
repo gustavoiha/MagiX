@@ -3,8 +3,7 @@ using System.Collections;
 
 public class EnemyBehaviour : MonoBehaviour {
 
-	public enum State
-	{
+	public enum State {
 		Idle,
 		Follow,
 		Attacking,
@@ -26,33 +25,15 @@ public class EnemyBehaviour : MonoBehaviour {
 	//Quanto ele chegará perto do player
 	public float followRange = 10.0f;
 
+	public float attackRange = 2.0f;
+
 	//Distância da sensibilidade do player (deve ser menor ou igual a followRange)
 	public float idleRange = 10.0f;
 
-	public float health = 100.0f;
-	public float currentHealth;
-
-	//Valor do dano dado pelo inimigo
-	public float maxHit = 5;
-	private float giveDamage;
-
 	public float gravityIncrement = 2.0f;
 
-	// Replace with HealthController and DoDamage scripts!!!!!!!
-
-
-	public void GiveDamage()
-	{
-		giveDamage = maxHit * Random.value;
-
-		//Debug.Log ("Tomou " + giveDamage + " seu otário");
-	}
-
-	IEnumerator IdleState()
-	{
+	IEnumerator IdleState() {
 		
-		//Debug.Log("Ta em idle");
-
 		animator.SetInteger ("State", 0);
 
 		while(state == State.Idle)
@@ -72,10 +53,8 @@ public class EnemyBehaviour : MonoBehaviour {
 		GoToNextState ();
 	}
 
-	IEnumerator FollowState()
-	{
-		//Debug.Log ("Começou o Follow");
-
+	IEnumerator FollowState() {
+		
 		animator.SetInteger ("State", 1);
 
 		while (state == State.Follow)
@@ -92,21 +71,31 @@ public class EnemyBehaviour : MonoBehaviour {
 		GoToNextState ();
 	}
 
-	IEnumerator DieState()
-	{
-		//Debug.Log ("MORREU");
+	IEnumerator DieState() {
+		
 		Destroy(this.gameObject);
 		yield return 0;
 	}
 
-	/*IEnumerator AttackingState(){
+	IEnumerator AttackingState() {
 
 		animator.SetInteger ("State", 2);
+		gameObject.GetComponentInChildren<SphereCollider> ().enabled = true;
 
-		// Attack
+		while (state == State.Attacking)
+		{
+			followPlayer ();
+			RotateTowardsTarget ();
 
+			if (GetDistance () > attackRange)
+				state = State.Follow;
+			
+			yield return 0;
+		}
+
+		gameObject.GetComponentInChildren<SphereCollider> ().enabled = false;
 		GoToNextState ();
-	}*/
+	}
 
 	void Start()
 	{
@@ -117,8 +106,6 @@ public class EnemyBehaviour : MonoBehaviour {
 		target = GameObject.FindGameObjectWithTag ("Player").transform;
 
 		GoToNextState ();
-		currentHealth = health;
-		giveDamage = maxHit;
 	}
 
 	void FixedUpdate(){
@@ -157,6 +144,9 @@ public class EnemyBehaviour : MonoBehaviour {
 	}
 
 	private void followPlayer(){
+
+		if (gameObject == null || target == null)
+			return;
 
 		Vector3 delta = target.position - gameObject.transform.position;
 

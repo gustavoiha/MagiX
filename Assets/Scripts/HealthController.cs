@@ -22,6 +22,12 @@ public class HealthController : MonoBehaviour {
 
 	public float mana;
 
+	public bool destroyOnDeath = true;
+
+	public bool collectibleOnDeath = false;
+
+	public Transform collectible;
+
 	void Start(){
 		health = maxHealth;
 		mana   = maxMana;
@@ -40,7 +46,13 @@ public class HealthController : MonoBehaviour {
 		// Do death anmation, for example
 
 		// Destroy object
-		Destroy (gameObject);
+		if (destroyOnDeath) {
+
+			if (collectibleOnDeath)
+				Instantiate (collectible, transform.position, Quaternion.identity);
+			
+			Destroy (gameObject);
+		}
 	}
 
 	public bool HasMana (float amount){
