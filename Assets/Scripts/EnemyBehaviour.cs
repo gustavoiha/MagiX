@@ -39,24 +39,7 @@ public class EnemyBehaviour : MonoBehaviour {
 	public float gravityIncrement = 2.0f;
 
 	// Replace with HealthController and DoDamage scripts!!!!!!!
-	public void TakeDamage()
-	{
-		float damageToDo = 100.0f - (GetDistance () * 5);
-		if (damageToDo < 0)
-			damageToDo = 0;
-		if (damageToDo > health)
-			damageToDo = health;
-		currentHealth -= damageToDo;
-		if (currentHealth <= 0)
-			state = State.Die;
-		else
-		{
-			followRange = Mathf.Max (GetDistance (), followRange);
-			state = State.Follow;
-		}
 
-		print ("Current Health: " + currentHealth.ToString ());
-	}
 
 	public void GiveDamage()
 	{
