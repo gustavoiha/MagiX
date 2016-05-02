@@ -66,7 +66,6 @@ public class MenuPause : MonoBehaviour {
 		pauseselectionPanel.SetActive(true);
 		optionsPanel.SetActive(false);
 	}
-
 	public void DecreaseButton(){
 		int currentQuality = QualitySettings.GetQualityLevel ();
 		string qualityName = QualitySettings.names [currentQuality];
