@@ -36,6 +36,7 @@ public class MenuPause : MonoBehaviour {
 				Time.timeScale = 1;
 			}
 		}
+			
 		soundText.text = "Master Volume - (" + AudioListener.volume.ToString ("f2") + ")";
 
 		int currentQuality = QualitySettings.GetQualityLevel ();
