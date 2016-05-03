@@ -34,13 +34,10 @@ public class ProgressBarController : MonoBehaviour {
 
 		image.fillAmount = percent;
 
-		if (image.fillAmount == 0)
-		{
-			DeadPanel.SetActive(true);
-			Time.timeScale = 0;
+	}
 
-		}
-
+	public void SetDeadMenuState(bool state){
+		DeadPanel.SetActive(state);
 	}
 
 }
