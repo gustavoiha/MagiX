@@ -45,10 +45,8 @@ public class CameraBehaviour : MonoBehaviour {
 	}
 
 	void Update(){
-		//if(Input.GetMouseButton(0)){
-			
+
 		UpdateCameraCoordinatesRegular ();
-		//}
 	}
 
 	public void UpdateCameraCoordinatesRegular (){

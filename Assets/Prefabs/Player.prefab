@@ -652,8 +652,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 199566}
-  m_LocalRotation: {x: 0.000000029230394, y: 0.49504018, z: -0.000000027366893, w: -0.86887014}
-  m_LocalPosition: {x: 3413.518, y: 28.82, z: 374.01678}
+  m_LocalRotation: {x: 0, y: -0.7200328, z: 0, w: 0.6939401}
+  m_LocalPosition: {x: 3944.97, y: -369.6, z: 2056.41}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 450524}
@@ -1182,14 +1182,14 @@ MonoBehaviour:
   lightBallForce: 1000
   coolDown:
   - 0.5
-  - 2
-  - 10
+  - 1
+  - 8
   - 60
   - 16
   manaUse:
+  - 0
   - 1
   - 5
-  - 10
   - 15
   - 1
 --- !u!114 &11458014

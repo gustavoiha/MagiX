@@ -45,7 +45,10 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Escape))
 			PauseMenu.isPaused = !PauseMenu.isPaused;
 
-
+		// if died
+		if (GetComponent<HealthController> ().health <= 0.0f) {
+			animator.SetBool ("isDead", true);
+		}
 
 		/**
 		 * Movement animations
@@ -141,6 +144,11 @@ public class PlayerController : MonoBehaviour {
 
 			cheatStartBoss++;
 		}
+	}
+
+	public void Dead (int a){
+		GameObject.FindGameObjectWithTag ("HealthBar").GetComponent<ProgressBarController> ().SetDeadMenuState (true);
+		Time.timeScale = 0.0f;
 	}
 
 	private void doTranslation (){

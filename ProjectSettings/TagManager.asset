@@ -8,6 +8,7 @@ TagManager:
   - BossPosition
   - BossShield
   - ItemLightBeacon
+  - HealthBar
   layers:
   - Default
   - TransparentFX
