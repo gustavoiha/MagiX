@@ -253,8 +253,7 @@ ModelImporter:
       - time: 0.85991746
         functionName: EventUseSkill
         data: 
-        objectReferenceParameter: {fileID: 100008, guid: 2be3a2d7b20b95b4bad5b48c9505424b,
-          type: 3}
+        objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 1
         messageOptions: 0
@@ -361,8 +360,7 @@ ModelImporter:
       - time: 0.39335948
         functionName: EventUseSkill
         data: 
-        objectReferenceParameter: {fileID: 100008, guid: 2be3a2d7b20b95b4bad5b48c9505424b,
-          type: 3}
+        objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 3
         messageOptions: 0
@@ -469,8 +467,7 @@ ModelImporter:
       - time: 0.8162393
         functionName: EventUseSkill
         data: 
-        objectReferenceParameter: {fileID: 100008, guid: 2be3a2d7b20b95b4bad5b48c9505424b,
-          type: 3}
+        objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 1
         messageOptions: 0
@@ -577,8 +574,7 @@ ModelImporter:
       - time: 0.75641024
         functionName: EventUseSkill
         data: 
-        objectReferenceParameter: {fileID: 100008, guid: 2be3a2d7b20b95b4bad5b48c9505424b,
-          type: 3}
+        objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 2
         messageOptions: 0
@@ -681,7 +677,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.007839012
+        functionName: Step
+        data: 
+        objectReferenceParameter: {fileID: 100008, guid: 2be3a2d7b20b95b4bad5b48c9505424b,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -885,8 +889,7 @@ ModelImporter:
       - time: 0.88207453
         functionName: EventUseSkill
         data: 
-        objectReferenceParameter: {fileID: 100008, guid: 2be3a2d7b20b95b4bad5b48c9505424b,
-          type: 3}
+        objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 4
         messageOptions: 0
@@ -993,8 +996,7 @@ ModelImporter:
       - time: 1
         functionName: EventDead
         data: 
-        objectReferenceParameter: {fileID: 100008, guid: 2be3a2d7b20b95b4bad5b48c9505424b,
-          type: 3}
+        objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 1
         messageOptions: 0

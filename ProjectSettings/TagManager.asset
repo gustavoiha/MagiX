@@ -9,6 +9,7 @@ TagManager:
   - BossShield
   - ItemLightBeacon
   - HealthBar
+  - Sound
   layers:
   - Default
   - TransparentFX

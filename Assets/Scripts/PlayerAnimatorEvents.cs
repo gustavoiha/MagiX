@@ -16,4 +16,8 @@ public class PlayerAnimatorEvents : MonoBehaviour {
 		GameObject.FindGameObjectWithTag ("HealthBar").GetComponent<ProgressBarController> ().SetDeadMenuState (true);
 		Time.timeScale = 0.0f;
 	}
+
+	public void Step() {
+		gameObject.GetComponent<SoundController> ().WalkingPlayer ();
+	}
 }

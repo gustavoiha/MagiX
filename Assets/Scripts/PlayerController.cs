@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
 	private SkillsController skillsController;
 	private TargetController targetController;
 	private Transform cameraTransform;
+	private SoundController soundController;
 
 	public float moveSpeedFoward = 6.0f;
 	public float moveSpeedSides  = 6.0f;
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour {
 		targetController = gameObject.GetComponent<TargetController> ();
 		//cameraBehaviour  = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraBehaviour>();
 		cameraTransform  = GameObject.FindGameObjectWithTag ("MainCamera").transform;
+		soundController = GameObject.FindGameObjectWithTag ("Sound").GetComponent<SoundController>();
 
 		walkingID = Animator.StringToHash ("isWalking");
 	}
@@ -56,6 +58,7 @@ public class PlayerController : MonoBehaviour {
 
 		if (Input.GetAxis("VerticalTranslation") != 0.0f || Input.GetAxis("HorizontalTranslation") != 0.0f) {
 			animator.SetBool ("isWalking", true);
+			soundController.GetComponent<SoundController> ().WalkingPlayer ();
 		}
 		else {
 			animator.SetBool("isWalking", false);
@@ -146,10 +149,7 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	public void Dead (int a){
-		GameObject.FindGameObjectWithTag ("HealthBar").GetComponent<ProgressBarController> ().SetDeadMenuState (true);
-		Time.timeScale = 0.0f;
-	}
+
 
 	private void doTranslation (){
 		//if (shouldMove()) {
