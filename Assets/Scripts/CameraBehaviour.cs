@@ -47,7 +47,6 @@ public class CameraBehaviour : MonoBehaviour {
 	void Update(){
 
 		UpdateCameraCoordinatesRegular ();
-
 	}
 
 	public void UpdateCameraCoordinatesRegular (){
