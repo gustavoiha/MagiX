@@ -21,10 +21,6 @@ public class CameraBehaviour : MonoBehaviour {
 	// Camera's distance from Pivot
 	public float CameraDistance = 9.5f;
 
-	// switch these values so the mouse's movement turns the camera in the other direction
-	private int mouseInvertX = 1;
-	private int mouseInvertY = -1;
-
 	// Camera's rotation speed in the X axis
 	public float turnSpeedX = 80.0f;
 	public float turnSpeedY = 80.0f;
@@ -42,6 +38,10 @@ public class CameraBehaviour : MonoBehaviour {
 
 		gameObject.GetComponent<Camera>().layerCullDistances = distances;
 
+		transform.localPosition = new Vector3 (CameraDistance, 0, 0);
+
+		transform.rotation = Quaternion.LookRotation (- transform.localPosition);
+
 	}
 
 	void Update(){
@@ -53,36 +53,20 @@ public class CameraBehaviour : MonoBehaviour {
 
 		transform.rotation = Quaternion.LookRotation (- transform.localPosition);
 
+		transform.RotateAround (transform.parent.transform.position, Vector3.up, turnSpeedY * Input.GetAxis ("HorizontalRotation") * Time.deltaTime);
 
-		float turnX = Input.GetAxis ("VerticalRotation");
-		float turnY = Input.GetAxis ("HorizontalRotation");
+		//if ((Input.GetAxis ("VerticalRotation") < 0 || transform.rotation.eulerAngles.x < CameraAngleLimitUpper)
+		//	&&
+		//	(Input.GetAxis ("VerticalRotation") > 0 || transform.rotation.eulerAngles.x > 360.0f + CameraAngleLimitLower))
 
-		gameObject.transform.Rotate (turnX * turnSpeedX * Time.deltaTime, turnY * turnSpeedY * Time.deltaTime, 0);
+		if ((Input.GetAxis ("VerticalRotation") > 0 && transform.rotation.eulerAngles.x >= CameraAngleLimitUpper && transform.rotation.eulerAngles.x < 180.0f) ||
+			(Input.GetAxis ("VerticalRotation") < 0 && transform.rotation.eulerAngles.x <= 360.0f + CameraAngleLimitLower && transform.rotation.eulerAngles.x >= 180.0f))
+			return;
 
-		// Angle to limit the camera's rotation
-		float newCamAngleX;
+		transform.RotateAround (transform.parent.transform.position, - transform.right, - turnSpeedX * Input.GetAxis ("VerticalRotation") * Time.deltaTime);
 
-		if (gameObject.transform.localRotation.eulerAngles.x <= 180)
-			newCamAngleX = Mathf.Min (transform.localRotation.eulerAngles.x, CameraAngleLimitUpper);
-		else
-			newCamAngleX = Mathf.Max (transform.localRotation.eulerAngles.x, 360 + CameraAngleLimitLower);
 
-		//float moveX = Input.GetAxis ("HorizontalTranslation");
-		//float moveZ = Input.GetAxis ("VerticalTranslation");
 
-		//float extraAngleY = - Mathf.Atan2 (moveX, moveZ) * Mathf.Rad2Deg;
-
-		Quaternion quaternion  = new Quaternion ();
-		quaternion.eulerAngles = new Vector3 (newCamAngleX, transform.rotation.eulerAngles.y, 0);
-		transform.localRotation   = quaternion;
-
-		float camPosX = - CameraDistance * Mathf.Sin (transform.localRotation.eulerAngles.y * Mathf.Deg2Rad);
-		float camPosY = CameraPivot + CameraDistance * Mathf.Sin (transform.localRotation.eulerAngles.x * Mathf.Deg2Rad);
-		float camPosZ = - CameraDistance * Mathf.Cos (transform.localRotation.eulerAngles.x * Mathf.Deg2Rad) * Mathf.Cos (transform.localRotation.eulerAngles.y * Mathf.Deg2Rad);
-
-		//Debug.Log (camera.localRotation.eulerAngles);
-
-		transform.localPosition = new Vector3 (camPosX, camPosY, camPosZ);
 	}
 
 	/*private void UpdateCameraCoordinatesRotate (Vector3 playerPosition, Vector3 playerRotation){
@@ -117,14 +101,4 @@ public class CameraBehaviour : MonoBehaviour {
 		transform.localPosition = new Vector3 (0, camPosY, camPosZ);
 	}*/
 
-	/**
-	 * Invert mouse directions regarding the camera's rotation
-	 * pass "X" as argument to invert horizontal axis, and "Y" for vertical
-	 */
-	public void invertMouseDirection(string direction){
-		if (direction == "X")
-			mouseInvertX *= -1;
-		else if (direction == "Y")
-			mouseInvertY *= -1;
-	}
 }
