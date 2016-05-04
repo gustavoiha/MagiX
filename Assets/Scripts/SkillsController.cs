@@ -145,6 +145,14 @@ public class SkillsController : MonoBehaviour {
 		return healthController.HasMana (manaUse [skillID]) && (timeTilNext [skillID] <= 0.0f);
 	}
 
+	public bool HasSkillMana (int skillID){
+		// Check if ok to continue
+		if (skillID < 0 || skillID >= manaUse.Length)
+			return false;
+
+		return healthController.HasMana (manaUse [skillID]);
+	}
+
 	private void UseBasicAttack(){
 		
 	}

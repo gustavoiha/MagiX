@@ -88,6 +88,16 @@ public class PlayerController : MonoBehaviour {
 		 * Skills
 		 */
 
+		if (Input.GetKey (KeyCode.Mouse0)) {
+			if (skillsController.HasSkillMana(SkillsController.LIGHT_ARROW))
+				animator.SetInteger ("skill", 2);
+			else if (skillsController.HasSkillMana(SkillsController.BASIC_ATTACK))
+				animator.SetInteger ("skill", 1);
+		}
+
+		if (Input.GetKeyUp (KeyCode.Mouse0))
+			animator.SetInteger ("skill", 0);
+
 		// Basic Attack
 		if (Input.GetKey (skillsController.basicAttack) && skillsController.CanUseSkill(SkillsController.BASIC_ATTACK)) {
 			//skillsController.UseSkill (SkillsController.BASIC_ATTACK);
@@ -102,7 +112,7 @@ public class PlayerController : MonoBehaviour {
 			animator.SetInteger ("skill", 2);
 		}
 
-		if (Input.GetKeyUp (skillsController.magicOne))
+		if (Input.GetKeyUp (skillsController.magicOne) && !Input.GetKey (KeyCode.Mouse0))
 			animator.SetInteger ("skill", 0);
 
 		// Light Ball
