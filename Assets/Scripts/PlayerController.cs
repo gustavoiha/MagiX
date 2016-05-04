@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
@@ -27,6 +27,21 @@ public class PlayerController : MonoBehaviour {
 
 	// States in animator
 	private int walkingID;
+	private int jumpingID;
+
+    public float isGroundedRayLength = 0.1f;
+    public LayerMask layerMaskForGrounded;
+
+    public bool isGrounded {
+		get {
+		     Vector3 position = transform.position;
+		     position.y = GetComponent<Collider>().bounds.min.y + 0.1f;
+		     float length = isGroundedRayLength + 0.1f;
+		     Debug.DrawRay (position, Vector3.down * length);
+		     bool grounded = Physics.Raycast (position, Vector3.down, length, layerMaskForGrounded.value);
+		     return grounded;
+		}
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -36,9 +51,10 @@ public class PlayerController : MonoBehaviour {
 		targetController = gameObject.GetComponent<TargetController> ();
 		//cameraBehaviour  = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraBehaviour>();
 		cameraTransform  = GameObject.FindGameObjectWithTag ("MainCamera").transform;
-		soundController = GameObject.FindGameObjectWithTag ("Sound").GetComponent<SoundController>();
+		soundController  = GameObject.FindGameObjectWithTag ("Sound").GetComponent<SoundController>();
 
 		walkingID = Animator.StringToHash ("isWalking");
+		jumpingID = Animator.StringToHash ("isJumping");
 	}
 
 	// Update is called once per frame
@@ -119,8 +135,12 @@ public class PlayerController : MonoBehaviour {
 			targetController.UpdateTarget ();
 		}
 
-		if (Input.GetKeyDown ("space"))
-			gameObject.GetComponent<Rigidbody> ().AddForce (new Vector3(0, 800.0f, 0));
+		if (Input.GetKeyDown ("space") && isGrounded) {
+			animator.SetBool ("isJumping", true);
+			gameObject.GetComponent<Rigidbody> ().AddForce (new Vector3 (0, 800.0f, 0));
+		}
+		else if (!isGrounded)
+			animator.SetBool ("isJumping", false);
 
 		// Mode if animator is in walking mode
 		if (animator.GetBool (walkingID)) {
