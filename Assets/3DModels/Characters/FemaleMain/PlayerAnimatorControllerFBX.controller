@@ -1114,7 +1114,10 @@ AnimatorStateTransition:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: isWalking
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110217656}
   m_Solo: 0
@@ -1208,7 +1211,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: LightBall
-  m_Speed: 1
+  m_Speed: 0.6
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 110196806}
@@ -1252,7 +1255,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400002, guid: 2be3a2d7b20b95b4bad5b48c9505424b, type: 3}
+  m_Motion: {fileID: 7400032, guid: eb1505f87c0edc542ab4d0000ecc99da, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -1482,7 +1485,7 @@ AnimatorStateMachine:
     m_Position: {x: 312, y: 432, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110246836}
-    m_Position: {x: 708, y: -24, z: 0}
+    m_Position: {x: 684, y: -24, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110254930}
     m_Position: {x: 708, y: 120, z: 0}

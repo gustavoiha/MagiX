@@ -15,7 +15,7 @@ GameObject:
   - 54: {fileID: 5455694}
   - 114: {fileID: 11482096}
   m_Layer: 13
-  m_Name: BossDome
+  m_Name: DefenseShield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,6 +98,8 @@ MonoBehaviour:
   health: 0
   mana: 0
   destroyOnDeath: 1
+  collectibleOnDeath: 0
+  collectible: {fileID: 0}
 --- !u!114 &11491840
 MonoBehaviour:
   m_ObjectHideFlags: 1

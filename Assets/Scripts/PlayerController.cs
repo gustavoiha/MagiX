@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour {
 	private Transform cameraTransform;
 	private SoundController soundController;
 
+	public GameObject particleChargeBall;
+	public GameObject particleChargeSanctuary;
+
 	public float moveSpeedFoward = 6.0f;
 	public float moveSpeedSides  = 6.0f;
 	public float turnSpeedY = 60.0f;
@@ -117,7 +120,11 @@ public class PlayerController : MonoBehaviour {
 
 		// Light Ball
 		if (Input.GetKeyDown (skillsController.magicTwo) && skillsController.CanUseSkill(SkillsController.LIGHT_BALL)) {
-			//skillsController.UseSkill (SkillsController.LIGHT_BALL);
+			
+			GameObject particleCharge = Instantiate (particleChargeBall, gameObject.transform.position, Quaternion.identity) as GameObject;
+			particleCharge.transform.parent = gameObject.transform;
+			Destroy (particleCharge, 5.0f);
+
 			animator.SetInteger ("skill", 3);
 		}
 
@@ -126,7 +133,11 @@ public class PlayerController : MonoBehaviour {
 
 		// Sanctuary
 		if (Input.GetKeyDown (skillsController.magicThree) && skillsController.CanUseSkill(SkillsController.LIGHT_SANCTUARY)) {
-			//skillsController.UseSkill(SkillsController.LIGHT_SANCTUARY);
+			
+			GameObject particleCharge = Instantiate (particleChargeSanctuary, gameObject.transform.position, Quaternion.identity) as GameObject;
+			particleCharge.transform.parent = gameObject.transform;
+			Destroy (particleCharge, 5.0f);
+
 			animator.SetInteger ("skill", 4);
 		}
 
@@ -135,7 +146,7 @@ public class PlayerController : MonoBehaviour {
 
 		// Defense ball
 		if (Input.GetKeyDown (skillsController.magicFour) && skillsController.CanUseSkill(SkillsController.DEFENCE_DOME)) {
-			skillsController.UseSkill (SkillsController.DEFENCE_DOME);
+			animator.SetInteger ("skill", 5);
 		}
 
 		if (Input.GetKeyUp (skillsController.magicFour))

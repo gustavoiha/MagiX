@@ -19,7 +19,7 @@ public class LightBallBehaviour : MonoBehaviour {
     void Start()
     {
 		explosionRadius = radius;
-        Destroy(gameObject, 20.0f);//Auto detonação
+        Destroy(gameObject, 8.0f);//Auto detonação
         //detonation = false;//Começa falso e fica verdadeiro quanto toca algo
     }
 
