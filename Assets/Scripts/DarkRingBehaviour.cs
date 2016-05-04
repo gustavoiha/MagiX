@@ -12,7 +12,7 @@ public class DarkRingBehaviour : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        transform.position = boss.position;
+		transform.position = boss.position + Vector3.up * 2.0f;;
 	}
 	
 	// Update is called once per frame

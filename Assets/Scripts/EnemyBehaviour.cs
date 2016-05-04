@@ -7,7 +7,6 @@ public class EnemyBehaviour : MonoBehaviour {
 		Idle,
 		Follow,
 		Attacking,
-		Die,
 	}
 
 	private State state;
@@ -27,75 +26,7 @@ public class EnemyBehaviour : MonoBehaviour {
 
 	public float attackRange = 2.0f;
 
-	//Distância da sensibilidade do player (deve ser menor ou igual a followRange)
-	public float idleRange = 10.0f;
-
 	public float gravityIncrement = 2.0f;
-
-	IEnumerator IdleState() {
-		
-		animator.SetInteger ("State", 0);
-
-		while(state == State.Idle)
-		{
-			//OnUpdate
-
-			MakePerpendicular ();
-
-			if (GetDistance () < followRange)
-				state = State.Follow;
-			
-			yield return 0;
-		}
-
-		//Debug.Log ("Saiu do idle");
-
-		GoToNextState ();
-	}
-
-	IEnumerator FollowState() {
-		
-		animator.SetInteger ("State", 1);
-
-		while (state == State.Follow)
-		{
-			followPlayer ();
-
-			if (GetDistance () > idleRange)
-				state = State.Idle;
-			yield return 0;
-		}
-
-		//Debug.Log ("Saiu do follow");
-
-		GoToNextState ();
-	}
-
-	IEnumerator DieState() {
-		
-		Destroy(this.gameObject);
-		yield return 0;
-	}
-
-	IEnumerator AttackingState() {
-
-		animator.SetInteger ("State", 2);
-		gameObject.GetComponentInChildren<SphereCollider> ().enabled = true;
-
-		while (state == State.Attacking)
-		{
-			followPlayer ();
-			RotateTowardsTarget ();
-
-			if (GetDistance () > attackRange)
-				state = State.Follow;
-			
-			yield return 0;
-		}
-
-		gameObject.GetComponentInChildren<SphereCollider> ().enabled = false;
-		GoToNextState ();
-	}
 
 	void Start()
 	{
@@ -104,20 +35,31 @@ public class EnemyBehaviour : MonoBehaviour {
 		rigidBody = gameObject.GetComponent<Rigidbody> ();
 
 		target = GameObject.FindGameObjectWithTag ("Player").transform;
+	}
 
-		GoToNextState ();
+	void Update(){
+
+		if (GetDistance () <= attackRange) {
+			animator.SetInteger ("State", 2);
+			gameObject.GetComponentInChildren<SphereCollider> ().enabled = true;
+			followPlayer ();
+			RotateTowardsTarget ();
+		}
+		else if (GetDistance () <= followRange) {
+			animator.SetInteger ("State", 1);
+			followPlayer ();
+			gameObject.GetComponentInChildren<SphereCollider> ().enabled = false;
+		}
+		else {
+			animator.SetInteger ("State", 0);
+			MakePerpendicular ();
+			gameObject.GetComponentInChildren<SphereCollider> ().enabled = false;
+		}
+
 	}
 
 	void FixedUpdate(){
 		rigidBody.AddForce (Physics.gravity * rigidBody.mass * gravityIncrement);
-	}
-
-	private void GoToNextState ()
-	{
-		string methodName = state.ToString () + "State";
-		System.Reflection.MethodInfo info = GetType ().GetMethod (methodName,
-			                                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-		StartCoroutine ((IEnumerator)info.Invoke (this, null));
 	}
 
 	public float GetDistance()
