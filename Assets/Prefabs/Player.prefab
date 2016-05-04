@@ -2108,6 +2108,10 @@ MonoBehaviour:
   moveSpeedFoward: 20
   moveSpeedSides: 20
   turnSpeedY: 6
+  isGroundedRayLength: 0.1
+  layerMaskForGrounded:
+    serializedVersion: 2
+    m_Bits: 1792
 --- !u!136 &13652820
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2302,6 +2306,10 @@ Prefab:
       propertyPath: defenseDome
       value: 
       objectReference: {fileID: 156790, guid: be5998a6bf14ae148a6062168c4f51fc, type: 2}
+    - target: {fileID: 0}
+      propertyPath: layerMaskForGrounded.m_Bits
+      value: 1792
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 199566}
