@@ -25,6 +25,8 @@ public class CameraBehaviour : MonoBehaviour {
 	public float turnSpeedX = 80.0f;
 	public float turnSpeedY = 80.0f;
 
+	public bool isStatic = false;
+
 	// Use this for initialization
 	void Start () {
 
@@ -38,15 +40,17 @@ public class CameraBehaviour : MonoBehaviour {
 
 		gameObject.GetComponent<Camera>().layerCullDistances = distances;
 
-		transform.localPosition = new Vector3 (CameraDistance, 0, 0);
+		if (!isStatic) {
+			transform.localPosition = new Vector3 (CameraDistance, 0, 0);
 
-		transform.rotation = Quaternion.LookRotation (- transform.localPosition);
-
+			transform.rotation = Quaternion.LookRotation (-transform.localPosition);
+		}
 	}
 
 	void Update(){
 
-		UpdateCameraCoordinatesRegular ();
+		if (!isStatic)
+			UpdateCameraCoordinatesRegular ();
 	}
 
 	public void UpdateCameraCoordinatesRegular (){

@@ -149,7 +149,7 @@ MonoBehaviour:
   CameraPivot: 0.01
   CameraAngle: 35
   CameraAngleLimitUpper: 85
-  CameraAngleLimitLower: -10
+  CameraAngleLimitLower: -5
   CameraDistance: 6
   turnSpeedX: 20
   turnSpeedY: 20
@@ -199,7 +199,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: CameraAngleLimitLower
+      value: -5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 125238}
