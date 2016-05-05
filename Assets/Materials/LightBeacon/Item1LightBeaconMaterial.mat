@@ -94,10 +94,6 @@ Material:
         second: 0.5
       data:
         first:
-          name: _InvFade
-        second: 0.01
-      data:
-        first:
           name: _Parallax
         second: 0.02
       data:
@@ -128,6 +124,10 @@ Material:
         first:
           name: _Mode
         second: 3
+      data:
+        first:
+          name: _InvFade
+        second: 0.01
       data:
         first:
           name: _BumpAmt

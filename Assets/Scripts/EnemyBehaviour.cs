@@ -2,20 +2,12 @@
 using System.Collections;
 
 public class EnemyBehaviour : MonoBehaviour {
-
-	public enum State {
-		Idle,
-		Follow,
-		Attacking,
-	}
-
-	private State state;
-
+	
 	private Animator animator;
 	private Rigidbody rigidBody;
 
 	//Objeto que o inimigo irá seguir
-	public Transform target;
+	private Transform target;
 
 	//Velocidade do inimigo
 	public float moveSpeed = 3.0f;
@@ -28,8 +20,7 @@ public class EnemyBehaviour : MonoBehaviour {
 
 	public float gravityIncrement = 2.0f;
 
-	void Start()
-	{
+	void Start (){
 		
 		animator  = gameObject.GetComponentInChildren<Animator> ();
 		rigidBody = gameObject.GetComponent<Rigidbody> ();
@@ -37,7 +28,7 @@ public class EnemyBehaviour : MonoBehaviour {
 		target = GameObject.FindGameObjectWithTag ("Player").transform;
 	}
 
-	void Update(){
+	void Update (){
 
 		if (GetDistance () <= attackRange) {
 			animator.SetInteger ("State", 2);
@@ -58,25 +49,23 @@ public class EnemyBehaviour : MonoBehaviour {
 
 	}
 
-	void FixedUpdate(){
+	void FixedUpdate (){
 		rigidBody.AddForce (Physics.gravity * rigidBody.mass * gravityIncrement);
 	}
 
-	public float GetDistance()
-	{
+	private float GetDistance (){
 		if (target != null)
 			return (transform.position - target.transform.position).magnitude;
 		else
 			return Mathf.Infinity;
 	}
 
-	private void RotateTowardsTarget()
-	{
+	private void RotateTowardsTarget (){
 		transform.rotation = Quaternion.Slerp (transform.rotation,
 			Quaternion.LookRotation (target.position - transform.position), rotateSpeed * Time.deltaTime);
 	}
 
-	private void MakePerpendicular(){
+	private void MakePerpendicular (){
 		// Stoping object from rotating automatially because of the rigdbody component
 		rigidBody.angularVelocity = new Vector3(0,0,0);
 
@@ -85,7 +74,7 @@ public class EnemyBehaviour : MonoBehaviour {
 		quaternion.eulerAngles = new Vector3 (0, gameObject.transform.rotation.eulerAngles.y, 0);
 	}
 
-	private void followPlayer(){
+	private void followPlayer (){
 
 		if (gameObject == null || target == null)
 			return;

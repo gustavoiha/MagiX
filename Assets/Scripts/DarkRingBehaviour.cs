@@ -3,8 +3,6 @@ using System.Collections;
 
 public class DarkRingBehaviour : MonoBehaviour {
 
-    public Transform boss;
-
     public float scale = 1.0f; //Used to expand the ring
     public float growthRate = 1.0f; //Rate the ring will expand
     public float damage = 5.0f; //Damage the ring will do
@@ -12,7 +10,7 @@ public class DarkRingBehaviour : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		transform.position = boss.position + Vector3.up * 2.0f;;
+		transform.position += Vector3.up * 2.0f;
 	}
 	
 	// Update is called once per frame

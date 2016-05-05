@@ -3,7 +3,6 @@ using System.Collections;
 
 public class BossPullBehaviour : MonoBehaviour {
 
-    public Transform boss;
 
     public ForceMode forceMode;
 
@@ -17,7 +16,7 @@ public class BossPullBehaviour : MonoBehaviour {
     public float timeLeft = 2.0f; //Time between the sphere is fully grown and the implosion happens
 	
     void Start() {
-        transform.position = boss.position;
+        
     }
 
 	// Update is called once per frame
@@ -40,14 +39,15 @@ public class BossPullBehaviour : MonoBehaviour {
 
         foreach (Collider hit in colliders)
         {
+			if (hit.gameObject.CompareTag ("Player")) {
+			
+				Rigidbody rigidbody = hit.GetComponent<Rigidbody> ();
 
-            Rigidbody rigidbody = hit.GetComponent<Rigidbody>();
-
-            if (rigidbody != null)
-            {
-                rigidbody.AddExplosionForce(-implosionForce, transform.position, radius, 1.0f, forceMode); //Implodes for every rigidbody close to the sphere
-                //Debug.Log ("Added force!");
-            }
+				if (rigidbody != null) {
+					rigidbody.AddExplosionForce (-implosionForce, transform.position, radius, 1.0f, forceMode); //Implodes for every rigidbody close to the sphere
+					//Debug.Log ("Added force!");
+				}
+			}
         }
         Destroy(gameObject); //Destroys the sphere
     }

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour {
 	private TargetController targetController;
 	private Transform cameraTransform;
 	private SoundController soundController;
+
+	public GameObject particleChargeBall;
+	public GameObject particleChargeSanctuary;
 
 	public float moveSpeedFoward = 6.0f;
 	public float moveSpeedSides  = 6.0f;
@@ -27,6 +30,21 @@ public class PlayerController : MonoBehaviour {
 
 	// States in animator
 	private int walkingID;
+	private int jumpingID;
+
+    public float isGroundedRayLength = 0.1f;
+    public LayerMask layerMaskForGrounded;
+
+    public bool isGrounded {
+		get {
+		     Vector3 position = transform.position;
+		     position.y = GetComponent<Collider>().bounds.min.y + 0.1f;
+		     float length = isGroundedRayLength + 0.1f;
+		     Debug.DrawRay (position, Vector3.down * length);
+		     bool grounded = Physics.Raycast (position, Vector3.down, length, layerMaskForGrounded.value);
+		     return grounded;
+		}
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -36,9 +54,10 @@ public class PlayerController : MonoBehaviour {
 		targetController = gameObject.GetComponent<TargetController> ();
 		//cameraBehaviour  = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraBehaviour>();
 		cameraTransform  = GameObject.FindGameObjectWithTag ("MainCamera").transform;
-		soundController = GameObject.FindGameObjectWithTag ("Sound").GetComponent<SoundController>();
+		soundController  = GameObject.FindGameObjectWithTag ("Sound").GetComponent<SoundController>();
 
 		walkingID = Animator.StringToHash ("isWalking");
+		jumpingID = Animator.StringToHash ("isJumping");
 	}
 
 	// Update is called once per frame
@@ -72,6 +91,16 @@ public class PlayerController : MonoBehaviour {
 		 * Skills
 		 */
 
+		if (Input.GetKey (KeyCode.Mouse0)) {
+			if (skillsController.HasSkillMana(SkillsController.LIGHT_ARROW))
+				animator.SetInteger ("skill", 2);
+			else if (skillsController.HasSkillMana(SkillsController.BASIC_ATTACK))
+				animator.SetInteger ("skill", 1);
+		}
+
+		if (Input.GetKeyUp (KeyCode.Mouse0))
+			animator.SetInteger ("skill", 0);
+
 		// Basic Attack
 		if (Input.GetKey (skillsController.basicAttack) && skillsController.CanUseSkill(SkillsController.BASIC_ATTACK)) {
 			//skillsController.UseSkill (SkillsController.BASIC_ATTACK);
@@ -86,12 +115,16 @@ public class PlayerController : MonoBehaviour {
 			animator.SetInteger ("skill", 2);
 		}
 
-		if (Input.GetKeyUp (skillsController.magicOne))
+		if (Input.GetKeyUp (skillsController.magicOne) && !Input.GetKey (KeyCode.Mouse0))
 			animator.SetInteger ("skill", 0);
 
 		// Light Ball
 		if (Input.GetKeyDown (skillsController.magicTwo) && skillsController.CanUseSkill(SkillsController.LIGHT_BALL)) {
-			//skillsController.UseSkill (SkillsController.LIGHT_BALL);
+			
+			GameObject particleCharge = Instantiate (particleChargeBall, gameObject.transform.position, Quaternion.identity) as GameObject;
+			particleCharge.transform.parent = gameObject.transform;
+			Destroy (particleCharge, 5.0f);
+
 			animator.SetInteger ("skill", 3);
 		}
 
@@ -100,7 +133,11 @@ public class PlayerController : MonoBehaviour {
 
 		// Sanctuary
 		if (Input.GetKeyDown (skillsController.magicThree) && skillsController.CanUseSkill(SkillsController.LIGHT_SANCTUARY)) {
-			//skillsController.UseSkill(SkillsController.LIGHT_SANCTUARY);
+			
+			GameObject particleCharge = Instantiate (particleChargeSanctuary, gameObject.transform.position, Quaternion.identity) as GameObject;
+			particleCharge.transform.parent = gameObject.transform;
+			Destroy (particleCharge, 5.0f);
+
 			animator.SetInteger ("skill", 4);
 		}
 
@@ -109,7 +146,7 @@ public class PlayerController : MonoBehaviour {
 
 		// Defense ball
 		if (Input.GetKeyDown (skillsController.magicFour) && skillsController.CanUseSkill(SkillsController.DEFENCE_DOME)) {
-			skillsController.UseSkill (SkillsController.DEFENCE_DOME);
+			animator.SetInteger ("skill", 5);
 		}
 
 		if (Input.GetKeyUp (skillsController.magicFour))
@@ -119,8 +156,12 @@ public class PlayerController : MonoBehaviour {
 			targetController.UpdateTarget ();
 		}
 
-		if (Input.GetKeyDown ("space"))
-			gameObject.GetComponent<Rigidbody> ().AddForce (new Vector3(0, 800.0f, 0));
+		if (Input.GetKeyDown ("space") && isGrounded) {
+			animator.SetBool ("isJumping", true);
+			gameObject.GetComponent<Rigidbody> ().AddForce (new Vector3 (0, 800.0f, 0));
+		}
+		else if (!isGrounded)
+			animator.SetBool ("isJumping", false);
 
 		// Mode if animator is in walking mode
 		if (animator.GetBool (walkingID)) {

@@ -145,6 +145,14 @@ public class SkillsController : MonoBehaviour {
 		return healthController.HasMana (manaUse [skillID]) && (timeTilNext [skillID] <= 0.0f);
 	}
 
+	public bool HasSkillMana (int skillID){
+		// Check if ok to continue
+		if (skillID < 0 || skillID >= manaUse.Length)
+			return false;
+
+		return healthController.HasMana (manaUse [skillID]);
+	}
+
 	private void UseBasicAttack(){
 		
 	}
@@ -152,7 +160,7 @@ public class SkillsController : MonoBehaviour {
     private void UseLightArrow() {
 
         //Instantiate novos projéteis (Euler foi necessário para endireitar o prefab)
-        GameObject projectile = Instantiate(lightArrow, location, Quaternion.LookRotation(direction) * Quaternion.Euler(90, 0, 180)) as GameObject;
+		GameObject projectile = Instantiate(lightArrow, transform.position + Vector3.up * 8.0f, Quaternion.LookRotation(direction) * Quaternion.Euler(90, 0, 180)) as GameObject;
         projectile.GetComponent<Rigidbody>().useGravity = false; //Evita a gravidade
         projectile.GetComponent<Rigidbody>().AddForce(direction * lightArrowForce); //Coloca uma força para arremessar a magia
 
@@ -160,13 +168,10 @@ public class SkillsController : MonoBehaviour {
 
 	private void UseLightBall() {
 
-		healthController.DecreaseMana (manaUse [2]);
-
         //Mesma coisa acima, sem o ajuste, já q se trata de uma esfera
-        GameObject projectile = Instantiate(lightBall, location, Quaternion.LookRotation(direction)) as GameObject;
+		GameObject projectile = Instantiate(lightBall, transform.position + Vector3.up * 8.0f, Quaternion.LookRotation(direction)) as GameObject;
         projectile.GetComponent<Rigidbody>().useGravity = false;
         projectile.GetComponent<Rigidbody>().AddForce(direction * lightBallForce);
-
     }
 
 	private void UseLightSanctuary() {
@@ -177,12 +182,9 @@ public class SkillsController : MonoBehaviour {
 		rotation.eulerAngles = new Vector3 (0, 0, 0);
 
 		Instantiate(lightSanctuary, gameObject.transform.position, rotation);
-
 	}
 
     private void UseDefenceDome() {
-
-		healthController.DecreaseMana (manaUse [4]);
 
 		GameObject newDefenseDome = Instantiate(defenseDome, gameObject.transform.position, Quaternion.identity) as GameObject;
 
