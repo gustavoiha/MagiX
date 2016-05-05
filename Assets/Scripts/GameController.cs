@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		itensLeft = totalItensToGet;
+		GameObject.FindGameObjectWithTag ("HealthBar").GetComponent<ProgressBarController> ().SetBossMenuState (false);
 	}
 	
 	// Update is called once per frame

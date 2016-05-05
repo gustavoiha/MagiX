@@ -24,7 +24,6 @@ public class ProgressBarController : MonoBehaviour {
 		image = GetComponent<Image> ();
 		playerHealthController = GameObject.FindGameObjectWithTag ("Player").GetComponent<HealthController> ();
 		DeadPanel.SetActive (false);
-		BossPanel.SetActive (false);
 		Time.timeScale = 1;
 	}
 
