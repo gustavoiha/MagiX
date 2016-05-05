@@ -10,6 +10,7 @@ TagManager:
   - ItemLightBeacon
   - HealthBar
   - Sound
+  - Boss
   layers:
   - Default
   - TransparentFX

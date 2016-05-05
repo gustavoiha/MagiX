@@ -54,11 +54,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 499424}
-  - 135: {fileID: 13511916}
-  - 135: {fileID: 13589630}
-  - 135: {fileID: 13550068}
-  - 135: {fileID: 13587382}
   - 114: {fileID: 11421384}
+  - 136: {fileID: 13605848}
   m_Layer: 12
   m_Name: ScepterBone_end
   m_TagString: Untagged
@@ -1173,8 +1170,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 199566}
-  m_LocalRotation: {x: 0, y: -0.9850799, z: 0, w: -0.17209798}
-  m_LocalPosition: {x: 310.53, y: 140.7, z: 457.75}
+  m_LocalRotation: {x: 0, y: -0.78293693, z: 0, w: -0.6221011}
+  m_LocalPosition: {x: 3838.6, y: -369.6, z: 1952.1}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 483726}
@@ -2237,6 +2234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 100
+  tagsToTarget: Enemy, Boss
 --- !u!114 &11497676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2258,54 +2256,19 @@ MonoBehaviour:
   layerMaskForGrounded:
     serializedVersion: 2
     m_Bits: 1792
---- !u!135 &13511916
-SphereCollider:
+--- !u!136 &13605848
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 104654}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.003
-  m_Center: {x: 0, y: 0.005, z: 0}
---- !u!135 &13550068
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104654}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.003
-  m_Center: {x: 0, y: 0.015, z: 0}
---- !u!135 &13587382
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104654}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.003
-  m_Center: {x: 0, y: 0.02, z: 0}
---- !u!135 &13589630
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104654}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.003
-  m_Center: {x: 0, y: 0.01, z: 0}
+  m_Radius: 0.002
+  m_Height: 0.05158439
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &13652820
 CapsuleCollider:
   m_ObjectHideFlags: 1

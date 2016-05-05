@@ -12,6 +12,8 @@ public class TargetController : MonoBehaviour {
 
 	public const KeyCode targetSwitch = KeyCode.Tab;
 
+	public string tagsToTarget;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -74,7 +76,7 @@ public class TargetController : MonoBehaviour {
 
 			float dSqrToTarget = directionToTarget.sqrMagnitude;
 
-			if (dSqrToTarget < closestDistanceSqr && potentialTarget.tag.Equals("Enemy")) {
+			if (dSqrToTarget < closestDistanceSqr && tagsToTarget.Contains (potentialTarget.tag)) {
 				closestDistanceSqr = dSqrToTarget;
 				bestTarget = potentialTarget;
 			}

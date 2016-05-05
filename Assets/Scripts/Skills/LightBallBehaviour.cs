@@ -42,7 +42,7 @@ public class LightBallBehaviour : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
 		//Ao tocar algo, ela explode
-		if (other.gameObject.tag.Equals("Enemy"))
+		if (other.gameObject.tag.Equals("Enemy") || other.gameObject.tag.Equals("Boss"))
         	//detonation = true;
 			Detonate ();
     }
@@ -60,7 +60,7 @@ public class LightBallBehaviour : MonoBehaviour {
 				//Debug.Log ("Added force!");
 			}
 
-			if (hit.gameObject.tag.Equals ("Enemy"))
+			if (hit.gameObject.tag.Equals ("Enemy") || hit.gameObject.tag.Equals ("Boss"))
 				hit.gameObject.GetComponent<HealthController> ().TakeDamage (damage);
 		}
 

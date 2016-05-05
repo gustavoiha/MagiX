@@ -36,7 +36,7 @@ public class LightSanctuaryBehaviour : MonoBehaviour {
 
 	void OnTriggerStay(Collider collider){
 
-		if (collider.gameObject.tag.Equals ("Enemy"))
+		if (collider.gameObject.tag.Equals ("Enemy") || collider.gameObject.tag.Equals ("Boss"))
 			collider.gameObject.GetComponent<HealthController> ().TakeDamage ( damagePerSecond  * Time.deltaTime);
 		else if (collider.gameObject.tag.Equals ("Player"))
 			collider.gameObject.GetComponent<HealthController> ().TakeDamage (-healingPerSecond * Time.deltaTime);

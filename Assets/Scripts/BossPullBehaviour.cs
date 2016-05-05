@@ -26,7 +26,7 @@ public class BossPullBehaviour : MonoBehaviour {
             transform.localScale = Vector3.one * scale; //Makes the sphere grow according to the scale
             scale += growthRate * Time.deltaTime; //Rises the scale according to the growthRate
             radius = transform.localScale.y; //Updates the radius
-            print(radius);
+            //print(radius);
             return; //Blocks the rest of the Update part (so it won't detonate)
         }
         timeLeft -= Time.deltaTime; //Starts countdown

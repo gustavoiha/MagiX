@@ -11,6 +11,7 @@ public class BossBehaviour : MonoBehaviour {
 
 	public GameObject SkillRing;
 	public GameObject SkillPull;
+	public GameObject SkillStorm;
 
 	//Velocidade do inimigo
 	public float moveSpeed = 3.0f;
@@ -20,6 +21,8 @@ public class BossBehaviour : MonoBehaviour {
 	public float followRange = 100.0f;
 
 	public float meeleAttackRange = 6.0f;
+
+	public float middleSkillAttackRange = 12.0f;
 
 	public float gravityIncrement = 2.0f;
 
@@ -32,33 +35,65 @@ public class BossBehaviour : MonoBehaviour {
 	private const int MEELE_ATTACK = 1;
 	private const int SKILL_PULL   = 2;
 	private const int SKILL_RING   = 3;
+	private const int SKILL_STORM  = 4;
+
+	public float StormSpeedGain = 10.0f;
+
+	private TrailRenderer swordTrail;
+
+	private bool isUsingSkill = false;
 
 	void Start (){
 
-		animator  = gameObject.GetComponentInChildren<Animator> ();
-		rigidBody = gameObject.GetComponent<Rigidbody> ();
+		animator   = gameObject.GetComponentInChildren<Animator> ();
+		rigidBody  = gameObject.GetComponent<Rigidbody> ();
+		swordTrail = gameObject.GetComponentInChildren<TrailRenderer> ();
 
 		target = GameObject.FindGameObjectWithTag ("Player").transform;
 
 		timeLeftToSkill = intervalBetweenSkills;
+
+		SetSwordTrail (false);
 	}
 
 	void Update (){
 
+		//Debug.Log (GetDistance ());
 		MakePerpendicular ();
 
 		if (GetDistance () <= meeleAttackRange) {
-			UseSkill (MEELE_ATTACK);
+			
 			FollowPlayer ();
 			RotateTowardsTarget ();
+
+			UseSkill (MEELE_ATTACK);
+
 		}
-		else if (GetDistance () <= followRange) {
+		else if (GetDistance () <= middleSkillAttackRange) {
+			FollowPlayer ();
+			RotateTowardsTarget ();
+
 			if (timeLeftToSkill <= 0.0f) {
-				UseSkillSort ();
+				UseSkillSort (SKILL_STORM, SKILL_RING);
 				timeLeftToSkill = intervalBetweenSkills + Random.value * randomIncrementRange;
+				Debug.Log ("girando");
 			}
 			else {
-				animator.SetBool("isWalking", true);
+				animator.SetBool ("isRunning", true);
+				animator.SetInteger ("Skill", 0);
+			}
+		}
+		else if (GetDistance () <= followRange) {
+			
+			if (timeLeftToSkill <= 0.0f) {
+				
+				UseSkill (SKILL_PULL);
+				timeLeftToSkill = intervalBetweenSkills + Random.value * randomIncrementRange;
+				animator.SetBool("isRunning", false);
+			}
+			else {
+				animator.SetBool("isRunning", true);
+				animator.SetInteger ("Skill", 0);
 				FollowPlayer ();
 			}
 		}
@@ -73,28 +108,28 @@ public class BossBehaviour : MonoBehaviour {
 		rigidBody.AddForce (Physics.gravity * rigidBody.mass * gravityIncrement);
 	}
 
-	private void UseSkillSort (){
+	private void UseSkillSort (int skillID1, int skillID2){
 		float sortValue = Random.value;
 
-		if (sortValue <= 0.5)
-			UseSkill (SKILL_PULL);
+		if (sortValue <= 0.7f)
+			UseSkill (skillID1);
 		else
-			UseSkill (SKILL_RING);
+			UseSkill (skillID2);
 	}
 
 	private void UseSkill (int skillID){
-		
+
+		animator.SetInteger ("Skill", skillID);
+
 		switch (skillID) {
-		case MEELE_ATTACK:
-			animator.SetInteger ("skill", 1);
-			break;
 		case SKILL_PULL:
 			Instantiate (SkillPull, transform.position, transform.rotation);
-			animator.SetInteger ("skill", 2);
 			break;
 		case SKILL_RING:
 			Instantiate (SkillRing, transform.position, transform.rotation);
-			animator.SetInteger ("skill", 3);
+			break;
+		case SKILL_STORM:
+			Instantiate (SkillStorm, transform.position, transform.rotation);
 			break;
 		}
 	}
@@ -139,5 +174,18 @@ public class BossBehaviour : MonoBehaviour {
 		transform.position += delta * moveSpeed * Time.deltaTime;
 	}
 
+	public void setStormSkillState (int i){
+		bool newState = (i >= 0) ? true : false;
+		SetSwordTrail (newState);
 
+		moveSpeed += StormSpeedGain * Mathf.Sign (i);
+	}
+
+	public void SetSwordTrail (bool newState){
+		swordTrail.enabled = newState;
+	}
+
+	public void UsingSkill (int i){
+		isUsingSkill = (i >= 0) ? true : false;
+	}
 }
