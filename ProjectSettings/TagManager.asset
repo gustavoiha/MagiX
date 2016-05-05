@@ -11,6 +11,7 @@ TagManager:
   - HealthBar
   - Sound
   - Boss
+  - Nova
   layers:
   - Default
   - TransparentFX

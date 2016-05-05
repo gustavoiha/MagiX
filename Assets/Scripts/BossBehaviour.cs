@@ -184,7 +184,6 @@ public class BossBehaviour : MonoBehaviour {
 
 	public void SetSwordTrail (bool newState){
 		swordTrail.enabled = newState;
-		Debug.Log (newState);
 	}
 
 	public void UsingSkill (int i){
