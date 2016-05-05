@@ -413,6 +413,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &142642
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 458634}
+  - 96: {fileID: 9682060}
+  m_Layer: 11
+  m_Name: SwordTrail
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &144454
 GameObject:
   m_ObjectHideFlags: 1
@@ -933,22 +949,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &187224
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 437234}
-  - 96: {fileID: 9623852}
-  m_Layer: 0
-  m_Name: SwordTrail
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &187920
 GameObject:
   m_ObjectHideFlags: 1
@@ -1360,18 +1360,6 @@ Transform:
   - {fileID: 463476}
   m_Father: {fileID: 458802}
   m_RootOrder: 0
---- !u!4 &437234
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187224}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.01404, z: -0}
-  m_LocalScale: {x: 0.001, y: 0.010743326, z: 0.001}
-  m_Children: []
-  m_Father: {fileID: 498130}
-  m_RootOrder: 1
 --- !u!4 &437818
 Transform:
   m_ObjectHideFlags: 1
@@ -1483,6 +1471,18 @@ Transform:
   - {fileID: 454658}
   m_Father: {fileID: 488156}
   m_RootOrder: 0
+--- !u!4 &458634
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142642}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.01404, z: -0}
+  m_LocalScale: {x: 0.001, y: 0.010743326, z: 0.001}
+  m_Children: []
+  m_Father: {fileID: 498130}
+  m_RootOrder: 1
 --- !u!4 &458802
 Transform:
   m_ObjectHideFlags: 1
@@ -1736,7 +1736,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169852}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3878.7683, y: -384.1203, z: 1945.9261}
+  m_LocalPosition: {x: 316.38, y: 141.69, z: 333.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 444144}
@@ -1839,7 +1839,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 145754}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.05, z: 0}
   m_LocalScale: {x: 1.7, y: 1.7, z: 1.7}
   m_Children:
   - {fileID: 422432}
@@ -1862,7 +1862,7 @@ Transform:
   m_LocalScale: {x: 1.0000001, y: 1.0000002, z: 1.0000001}
   m_Children:
   - {fileID: 443214}
-  - {fileID: 437234}
+  - {fileID: 458634}
   - {fileID: 497588}
   m_Father: {fileID: 420128}
   m_RootOrder: 0
@@ -1997,12 +1997,12 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!96 &9623852
+--- !u!96 &9682060
 TrailRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 187224}
+  m_GameObject: {fileID: 142642}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -2114,10 +2114,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ab0635b8e78dc8428efce4dda4654e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 60
+  maxHealth: 80
   maxMana: 0
   manaRecoveyRate: 0
-  health: 60
+  health: 80
   mana: 0
   destroyOnDeath: 1
   collectibleOnDeath: 0
@@ -2322,7 +2322,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: maxHealth
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: health
+      value: 80
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 169852}

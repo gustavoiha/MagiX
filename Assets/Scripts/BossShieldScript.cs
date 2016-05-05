@@ -22,6 +22,8 @@ public class BossShieldScript : MonoBehaviour {
 
 		Instantiate (boss, bossPosition.position, bossPosition.rotation);
 
+		GameObject.FindGameObjectWithTag ("HealthBar").GetComponent<ProgressBarController> ().SetBossMenuState (true);
+
 		Destroy (bossPosition.gameObject);
 
 		Destroy (gameObject);

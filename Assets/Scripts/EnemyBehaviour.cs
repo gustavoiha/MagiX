@@ -30,6 +30,8 @@ public class EnemyBehaviour : MonoBehaviour {
 
 	void Update (){
 
+		MakePerpendicular ();
+
 		if (GetDistance () <= attackRange) {
 			animator.SetInteger ("State", 2);
 			gameObject.GetComponentInChildren<SphereCollider> ().enabled = true;
@@ -43,8 +45,7 @@ public class EnemyBehaviour : MonoBehaviour {
 		}
 		else {
 			animator.SetInteger ("State", 0);
-			MakePerpendicular ();
-			gameObject.GetComponentInChildren<SphereCollider> ().enabled = false;
+			//gameObject.GetComponentInChildren<SphereCollider> ().enabled = false;
 		}
 
 	}

@@ -2155,10 +2155,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ab0635b8e78dc8428efce4dda4654e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 40
   maxMana: 40
   manaRecoveyRate: 0.7
-  health: 20
+  health: 40
   mana: 0
   destroyOnDeath: 0
   collectibleOnDeath: 0
@@ -2466,6 +2466,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: layerMaskForGrounded.m_Bits
       value: 1792
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxHealth
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: health
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

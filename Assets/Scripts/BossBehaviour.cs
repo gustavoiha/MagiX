@@ -129,7 +129,8 @@ public class BossBehaviour : MonoBehaviour {
 			Instantiate (SkillRing, transform.position, transform.rotation);
 			break;
 		case SKILL_STORM:
-			Instantiate (SkillStorm, transform.position, transform.rotation);
+			GameObject particle = Instantiate (SkillStorm, transform.position, transform.rotation) as GameObject;
+			Destroy (particle, 8.0f);
 			break;
 		}
 	}
@@ -183,6 +184,7 @@ public class BossBehaviour : MonoBehaviour {
 
 	public void SetSwordTrail (bool newState){
 		swordTrail.enabled = newState;
+		Debug.Log (newState);
 	}
 
 	public void UsingSkill (int i){

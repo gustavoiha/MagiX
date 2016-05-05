@@ -839,16 +839,14 @@ ModelImporter:
       - time: 0
         functionName: setStormSkillState
         data: 
-        objectReferenceParameter: {fileID: 100008, guid: 3db5e3f1749a4884a861629616b19109,
-          type: 3}
+        objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 1
         messageOptions: 0
       - time: 1
         functionName: setStormSkillState
         data: 
-        objectReferenceParameter: {fileID: 100008, guid: 3db5e3f1749a4884a861629616b19109,
-          type: 3}
+        objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: -1
         messageOptions: 0
