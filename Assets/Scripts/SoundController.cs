@@ -62,7 +62,7 @@ public class SoundController : MonoBehaviour {
      
 	}
 
-    public void PlayerSoundsController(AudioClip a)
+    /*public void PlayerSoundsController(AudioClip a)
     {
         audio = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
         if (playing)
@@ -73,5 +73,5 @@ public class SoundController : MonoBehaviour {
                 audio.Play();
             }
         }
-    }
+    }*/
 }
