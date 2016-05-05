@@ -29,9 +29,49 @@ public class SoundController : MonoBehaviour {
 	}
 
 	// sons do player
-	public void PlayerSounds (int sound) {
+	public void PlayerSounds (int sound, bool playing) {
 		audio = GameObject.FindGameObjectWithTag ("Player").GetComponent<AudioSource> ();
-		
+		switch(sound)
+        {
+            case WALK_PLAYER:
+                if (playing)
+                {
+                    if (!audio.isPlaying)
+                    {
+                        audio.clip = playerStep;
+                        audio.Play();
+                    }
+                }
+                else audio.Stop();
+                break;
+
+            case BASIC_ATTACK:
+                if (playing)
+                {
+                    if (!audio.isPlaying)
+                    {
+                        audio.clip = playerStep;
+                        audio.Play();
+                    }
+                }
+                else audio.Stop();
+                break;
+
+
+        }
      
 	}
+
+    public void PlayerSoundsController(AudioClip a)
+    {
+        audio = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
+        if (playing)
+        {
+            if (!audio.isPlaying)
+            {
+                audio.clip = playerStep;
+                audio.Play();
+            }
+        }
+    }
 }
