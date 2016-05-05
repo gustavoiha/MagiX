@@ -18,6 +18,6 @@ public class PlayerAnimatorEvents : MonoBehaviour {
 	}
 
 	public void Step() {
-		gameObject.GetComponent<SoundController> ().WalkingPlayer ();
+		
 	}
 }

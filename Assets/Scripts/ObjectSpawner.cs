@@ -45,6 +45,10 @@ public class ObjectSpawner : MonoBehaviour {
 
 	private float timeFromLastSpawn;
 
+    public int spawnLimit;
+
+    private int spawnCounter = 0;
+
 	// Use this for initialization
 	void Start () {
 
@@ -55,26 +59,33 @@ public class ObjectSpawner : MonoBehaviour {
 		enableRandomRange    = true;
 		randomIncrementInSpawnInterval = 1.0f;
 		randomIncrementInSpawnRange    = SpawnRange / 4.0f;
+        
 
 		// Start the time counter
 		timeFromLastSpawn = spawnInterval;
-
+        
+        
 	}
 
-	// Update is called once per frame
-	void Update () {
+	
+	void Update() {
+        
+            if (timeFromLastSpawn > 0.0f)
+            {
+                timeFromLastSpawn -= Time.deltaTime;
+                return;
+            }
 
-		if (timeFromLastSpawn > 0.0f) {
-			timeFromLastSpawn -= Time.deltaTime;
-			return;
-		}
+            if (spawnEnabled && objectToSpawn != null && spawnCounter < spawnLimit)
+            {
+                // Spawn object
+                /*Transform newObject = */
+                Instantiate(objectToSpawn, SpawnPosition(), gameObject.transform.rotation) /*as Transform*/;
+                spawnCounter++;
+            }
 
-		if (spawnEnabled && objectToSpawn != null){
-			// Spawn object
-			/*Transform newObject = */Instantiate(objectToSpawn, SpawnPosition(), gameObject.transform.rotation) /*as Transform*/;
-		}
-
-		UpdateSpawnTimeCounter();
+            UpdateSpawnTimeCounter();
+        
 	}
 
 	// Use this to set spawn enabled (true) or stopped (false)
