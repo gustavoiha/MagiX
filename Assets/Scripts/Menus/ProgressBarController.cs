@@ -16,6 +16,8 @@ public class ProgressBarController : MonoBehaviour {
 
 	public GameObject BossPanel;
 
+	public GameObject WinPanel;
+
 	private HealthController playerHealthController;
 	private HealthController bossHealthController;
 
@@ -24,6 +26,7 @@ public class ProgressBarController : MonoBehaviour {
 		image = GetComponent<Image> ();
 		playerHealthController = GameObject.FindGameObjectWithTag ("Player").GetComponent<HealthController> ();
 		DeadPanel.SetActive (false);
+		WinPanel. SetActive (false);
 		Time.timeScale = 1;
 	}
 
@@ -41,14 +44,20 @@ public class ProgressBarController : MonoBehaviour {
 			image.fillAmount = percent;
 		}
 		else if (character == "boss"){
-
+			
 			if (bossHealthController == null)
-				bossHealthController = GameObject.FindGameObjectWithTag ("Boss").GetComponent<HealthController> ();
+				if (GameObject.FindGameObjectWithTag ("Boss") != null)
+					bossHealthController = GameObject.FindGameObjectWithTag ("Boss").GetComponent<HealthController> ();
 			
 			if (bossHealthController == null)
 				return;
 			
 			percent = bossHealthController.health / bossHealthController.maxHealth;
+
+			if (percent <= 0.0f) {
+				WinPanel.SetActive (true);
+				Time.timeScale = 0.0f;
+			}
 
 			image.fillAmount = percent;
 		}
@@ -61,6 +70,10 @@ public class ProgressBarController : MonoBehaviour {
 
 	public void SetBossMenuState (bool state){
 		BossPanel.SetActive (state);
+	}
+
+	public void SetWinMenuState (bool state){
+		WinPanel.SetActive (state);
 	}
 
 }

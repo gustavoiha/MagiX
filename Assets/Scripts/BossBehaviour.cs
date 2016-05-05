@@ -5,6 +5,7 @@ public class BossBehaviour : MonoBehaviour {
 
 	private Animator animator;
 	private Rigidbody rigidBody;
+	private SoundController soundController;
 
 	//Objeto que o inimigo irá seguir
 	private Transform target;
@@ -45,9 +46,10 @@ public class BossBehaviour : MonoBehaviour {
 
 	void Start (){
 
-		animator   = gameObject.GetComponentInChildren<Animator> ();
-		rigidBody  = gameObject.GetComponent<Rigidbody> ();
-		swordTrail = gameObject.GetComponentInChildren<TrailRenderer> ();
+		animator        = gameObject.GetComponentInChildren<Animator> ();
+		rigidBody       = gameObject.GetComponent<Rigidbody> ();
+		swordTrail      = gameObject.GetComponentInChildren<TrailRenderer> ();
+		soundController =  GameObject.FindGameObjectWithTag ("Sound").GetComponent<SoundController> ();
 
 		target = GameObject.FindGameObjectWithTag ("Player").transform;
 
@@ -123,6 +125,7 @@ public class BossBehaviour : MonoBehaviour {
 
 		switch (skillID) {
 		case SKILL_PULL:
+			//soundController.PlayerSounds (SoundController., true);
 			Instantiate (SkillPull, transform.position, transform.rotation);
 			break;
 		case SKILL_RING:

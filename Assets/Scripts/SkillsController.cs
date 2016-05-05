@@ -16,6 +16,7 @@ public class SkillsController : MonoBehaviour {
 
 	private HealthController healthController;
 	private TargetController targetController;
+	private SoundController  soundController;
 
     ///
     /// Skills' prefabs
@@ -63,6 +64,7 @@ public class SkillsController : MonoBehaviour {
 
 		healthController = gameObject.transform.parent.gameObject.gameObject.GetComponent<HealthController> ();
 		targetController = gameObject.transform.parent.gameObject.GetComponent<TargetController> ();
+		soundController =  GameObject.FindGameObjectWithTag ("Sound").GetComponent<SoundController> ();
 
         timeTilNext = new float[5];
 
@@ -118,17 +120,22 @@ public class SkillsController : MonoBehaviour {
 
 		case BASIC_ATTACK:
 			UseBasicAttack ();
+			soundController.PlayerSounds (SoundController.BASIC_ATTACK, true);
 			break;
 		case LIGHT_ARROW:
 			UseLightArrow();
+			soundController.PlayerSounds (SoundController.LIGHT_ARROW, true);
 			break;
 		case LIGHT_BALL:
 			UseLightBall ();
+			soundController.PlayerSounds (SoundController.LIGHT_BALL, true);
 			break;
 		case LIGHT_SANCTUARY:
 			UseLightSanctuary ();
+			soundController.PlayerSounds (SoundController.LIGHT_SANCTUARY, true);
 			break;
 		case DEFENCE_DOME:
+			soundController.PlayerSounds (SoundController.DEFENCE_DOME, true);
 			UseDefenceDome ();
 			break;
 		}
