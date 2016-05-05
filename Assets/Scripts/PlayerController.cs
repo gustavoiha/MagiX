@@ -1,4 +1,4 @@
-using UnityEngine;
+ using UnityEngine;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour {
 
 		if (Input.GetAxis("VerticalTranslation") != 0.0f || Input.GetAxis("HorizontalTranslation") != 0.0f) {
 			animator.SetBool ("isWalking", true);
-			soundController.GetComponent<SoundController> ().WalkingPlayer ();
+			
 		}
 		else {
 			animator.SetBool("isWalking", false);
