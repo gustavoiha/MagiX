@@ -1170,8 +1170,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 199566}
-  m_LocalRotation: {x: 0, y: -0.78293693, z: 0, w: -0.6221011}
-  m_LocalPosition: {x: 3838.6, y: -369.6, z: 1952.1}
+  m_LocalRotation: {x: 0, y: -0.6334974, z: 0, w: 0.7737448}
+  m_LocalPosition: {x: 2482, y: 55, z: 2107}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 483726}
@@ -2190,7 +2190,7 @@ MonoBehaviour:
   - 1
   - 8
   - 60
-  - 16
+  - 10
   manaUse:
   - 0
   - 1

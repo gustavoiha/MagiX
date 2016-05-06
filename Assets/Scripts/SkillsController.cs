@@ -81,6 +81,10 @@ public class SkillsController : MonoBehaviour {
             timeTilNext[i] -= Time.deltaTime;
         }
 
+		if (GameObject.FindGameObjectWithTag ("Shield") != null)
+			GameController.usingShield = true;
+		else
+			GameController.usingShield = false;
     }
 
 	/// <summary>
@@ -194,6 +198,8 @@ public class SkillsController : MonoBehaviour {
     private void UseDefenceDome() {
 
 		GameObject newDefenseDome = Instantiate(defenseDome, gameObject.transform.position, Quaternion.identity) as GameObject;
+
+		GameController.usingShield = true;
 
 		newDefenseDome.transform.localScale *= 3;
 

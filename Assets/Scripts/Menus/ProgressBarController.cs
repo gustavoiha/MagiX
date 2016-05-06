@@ -20,11 +20,13 @@ public class ProgressBarController : MonoBehaviour {
 
 	private HealthController playerHealthController;
 	private HealthController bossHealthController;
+	private SoundController  soundController;
 
 	// Use this for initialization
 	void Start () {
 		image = GetComponent<Image> ();
 		playerHealthController = GameObject.FindGameObjectWithTag ("Player").GetComponent<HealthController> ();
+		soundController =  GameObject.FindGameObjectWithTag ("Sound").GetComponent<SoundController> ();
 		DeadPanel.SetActive (false);
 		WinPanel. SetActive (false);
 		Time.timeScale = 1;
@@ -66,6 +68,7 @@ public class ProgressBarController : MonoBehaviour {
 
 	public void SetDeadMenuState (bool state){
 		DeadPanel.SetActive(state);
+		soundController.EndSounds (SoundController.LOSE);
 	}
 
 	public void SetBossMenuState (bool state){

@@ -49,7 +49,7 @@ public class BossBehaviour : MonoBehaviour {
 		animator        = gameObject.GetComponentInChildren<Animator> ();
 		rigidBody       = gameObject.GetComponent<Rigidbody> ();
 		swordTrail      = gameObject.GetComponentInChildren<TrailRenderer> ();
-		soundController =  GameObject.FindGameObjectWithTag ("Sound").GetComponent<SoundController> ();
+		soundController = GameObject.FindGameObjectWithTag ("Sound").GetComponent<SoundController> ();
 
 		target = GameObject.FindGameObjectWithTag ("Player").transform;
 
@@ -69,6 +69,7 @@ public class BossBehaviour : MonoBehaviour {
 			RotateTowardsTarget ();
 
 			UseSkill (MEELE_ATTACK);
+			soundController.BossSounds (SoundController.BOSS_BASIC_ATTACK);
 
 		}
 		else if (GetDistance () <= middleSkillAttackRange) {
@@ -125,13 +126,15 @@ public class BossBehaviour : MonoBehaviour {
 
 		switch (skillID) {
 		case SKILL_PULL:
-			//soundController.PlayerSounds (SoundController., true);
+			soundController.BossSounds (SoundController.IMPLOSION);
 			Instantiate (SkillPull, transform.position, transform.rotation);
 			break;
 		case SKILL_RING:
+			soundController.BossSounds (SoundController.EXPLOSION);
 			Instantiate (SkillRing, transform.position, transform.rotation);
 			break;
 		case SKILL_STORM:
+			soundController.BossSounds (SoundController.STORM);
 			GameObject particle = Instantiate (SkillStorm, transform.position, transform.rotation) as GameObject;
 			Destroy (particle, 8.0f);
 			break;

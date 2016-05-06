@@ -17,7 +17,8 @@ public class PlayerAnimatorEvents : MonoBehaviour {
 		Time.timeScale = 0.0f;
 	}
 
-	public void Step() {
-		
+	public void UsingShield(int i) {
+		GameController.usingShield = false;
+		Debug.Log ("no shield");
 	}
 }

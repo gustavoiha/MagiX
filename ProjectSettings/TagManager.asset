@@ -12,6 +12,7 @@ TagManager:
   - Sound
   - Boss
   - Nova
+  - Shield
   layers:
   - Default
   - TransparentFX

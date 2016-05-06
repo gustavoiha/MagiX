@@ -365,8 +365,7 @@ ModelImporter:
       - time: 0.71228063
         functionName: UseSkill
         data: 
-        objectReferenceParameter: {fileID: 100010, guid: eb1505f87c0edc542ab4d0000ecc99da,
-          type: 3}
+        objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 2
         messageOptions: 0
@@ -681,8 +680,7 @@ ModelImporter:
       - time: 0.7051282
         functionName: UseSkill
         data: 
-        objectReferenceParameter: {fileID: 100008, guid: 2be3a2d7b20b95b4bad5b48c9505424b,
-          type: 3}
+        objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 4
         messageOptions: 0

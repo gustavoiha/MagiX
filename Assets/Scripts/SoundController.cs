@@ -15,6 +15,10 @@ public class SoundController : MonoBehaviour {
     public AudioClip playerDead;
     public AudioClip win;
     public AudioClip lose;
+	public AudioClip bossBasicAttack;
+	public AudioClip bossImplosion;
+	public AudioClip bossExplosion;
+	public AudioClip bossStorm;
 
     //id dos sons emitidos pelo player
     public const int WALK_PLAYER        = 0;
@@ -24,6 +28,10 @@ public class SoundController : MonoBehaviour {
     public const int LIGHT_SANCTUARY    = 4;
     public const int DEFENCE_DOME       = 5;
     public const int DEAD_PLAYER        = 6;
+	public const int BOSS_BASIC_ATTACK  = 7;
+	public const int IMPLOSION  = 8;
+	public const int EXPLOSION  = 9;
+	public const int STORM      = 10;
 
     // vitória e derrota
     public const int WIN    = 0;
@@ -42,31 +50,31 @@ public class SoundController : MonoBehaviour {
 		switch(sound)
         {
             case WALK_PLAYER:
-                PlayerSoundsController(playerStep, playing, false);
+			PlayerSoundsController(playerStep, playing, false, "Player");
                 break;
 
             case BASIC_ATTACK:
-                PlayerSoundsController(playerBasicAtt, playing, true);
+			PlayerSoundsController(playerBasicAtt, playing, true, "Player");
                 break;
 
             case LIGHT_ARROW:
-                PlayerSoundsController(playerLightArrow, playing, true);
+			PlayerSoundsController(playerLightArrow, playing, true, "Player");
                 break;
 
             case LIGHT_BALL:
-                PlayerSoundsController(playerLightBall, playing, true);
+			PlayerSoundsController(playerLightBall, playing, true, "Player");
                 break;
 
             case LIGHT_SANCTUARY:
-                PlayerSoundsController(playerBasicAtt, playing, true);
+			PlayerSoundsController(playerBasicAtt, playing, true, "Player");
                 break;
 
-            case DEFFENCE_DOME:
-                PlayerSoundsController(playerDeffenseDome, playing, true);
+            case DEFENCE_DOME:
+			PlayerSoundsController(playerDeffenseDome, playing, true, "Player");
                 break;
 
             case DEAD_PLAYER:
-                PlayerSoundsController(playerDead, playing, false);
+                PlayerSoundsController(playerDead, playing, false, "Player");
                 break;
             
 
@@ -74,9 +82,9 @@ public class SoundController : MonoBehaviour {
      
 	}
 		
-    private void PlayerSoundsController(AudioClip a, bool playing, bool isSkill)
+	private void PlayerSoundsController(AudioClip a, bool playing, bool isSkill, string tag)
     {
-        audio = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
+        audio = GameObject.FindGameObjectWithTag(tag).GetComponent<AudioSource>();
         if (playing)
         {
             if (!isSkill)
@@ -110,12 +118,28 @@ public class SoundController : MonoBehaviour {
                 audio.Play();
                 break;
             case LOSE:
-                audio.clip = win;
+                audio.clip = lose;
                 audio.loop = false;
                 audio.Play();
                 break;
         }
-
         
     }
+
+	public void BossSounds (int sound){
+		switch (sound) {
+		case BOSS_BASIC_ATTACK:
+			PlayerSoundsController (bossBasicAttack, true, true, "Boss");
+			break;
+		case IMPLOSION:
+			PlayerSoundsController (bossImplosion, true, true, "Boss");
+			break;
+		case EXPLOSION:
+			PlayerSoundsController (bossExplosion, true, true, "Boss");
+			break;
+		case STORM:
+			PlayerSoundsController (bossStorm, true, true, "Boss");
+			break;
+		}
+	}
 }

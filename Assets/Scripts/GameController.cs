@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour {
 
 	public static int itensLeft;
 
+	public static bool usingShield = false;
+
 	// Use this for initialization
 	void Start () {
 		itensLeft = totalItensToGet;
