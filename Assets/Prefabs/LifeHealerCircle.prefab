@@ -99,7 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3a159425a87f0440a549d97aa072cdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeHealingRate: 1
+  lifeHealingRate: 5
+  ManaGainRate: 5
 --- !u!119 &11961380
 Projector:
   m_ObjectHideFlags: 1
@@ -1686,6 +1687,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: ColorModule.gradient.maxGradient.key0.rgba
       value: 1934405922
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: lifeHealingRate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ManaGainRate
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

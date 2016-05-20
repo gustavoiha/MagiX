@@ -3,12 +3,6 @@ using System.Collections;
 
 public class LightSanctuaryBehaviour : MonoBehaviour {
 
-	//Localização do player
-	public Transform player;
-
-	//Distância do círculo
-	public float range;
-
 	//dano causado por segundo
 	public float damagePerSecond = 5.0f;
 

@@ -62,9 +62,9 @@ public class SkillsController : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-		healthController = gameObject.transform.parent.gameObject.gameObject.GetComponent<HealthController> ();
-		targetController = gameObject.transform.parent.gameObject.GetComponent<TargetController> ();
-		soundController =  GameObject.FindGameObjectWithTag ("Sound").GetComponent<SoundController> ();
+		healthController = /*gameObject.transform.parent.*/gameObject.GetComponent<HealthController> ();
+		targetController = /*gameObject.transform.parent.*/gameObject.GetComponent<TargetController> ();
+		soundController  = GameObject.FindGameObjectWithTag ("Sound").GetComponent<SoundController> ();
 
         timeTilNext = new float[5];
 
@@ -80,11 +80,6 @@ public class SkillsController : MonoBehaviour {
             //Resets cooldowns
             timeTilNext[i] -= Time.deltaTime;
         }
-
-		if (GameObject.FindGameObjectWithTag ("Shield") != null)
-			GameController.usingShield = true;
-		else
-			GameController.usingShield = false;
     }
 
 	/// <summary>
@@ -105,17 +100,9 @@ public class SkillsController : MonoBehaviour {
 
 		target = targetController.GetTargetTransform();
 
-		location = transform.position + Vector3.forward * 3; //Coloca a posição um pouco a frente
+		location = transform.position + transform.forward * 10.0f + transform.up * 8.0f; //Coloca a posição um pouco a frente
 
-		if (target == null) { //If there is no target at all, calculations will be based on the mouse position
-			var worldPosition = Camera.main.ScreenToWorldPoint (new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z)); //Calcula local do mouse em relação a tela
-			direction = worldPosition - transform.position; //Calcula direção baseada entre o personagem e o mouse
-			direction.Normalize();//Normaliza o vetor
-		}
-		else { //If there is a target, calculations will be based on the target's position
-			direction = targetController.GetTargetTransform().position - location;
-			direction.Normalize();
-		}
+		UpdateDirection ();
 		
 		healthController.DecreaseMana (manaUse [skillID]);
 		timeTilNext [skillID] = coolDown [skillID];
@@ -131,6 +118,8 @@ public class SkillsController : MonoBehaviour {
 			soundController.PlayerSounds (SoundController.LIGHT_ARROW, true);
 			break;
 		case LIGHT_BALL:
+			location = transform.position + transform.forward * 1.4f + transform.up * 12.2f;
+			UpdateDirection ();
 			UseLightBall ();
 			soundController.PlayerSounds (SoundController.LIGHT_BALL, true);
 			break;
@@ -164,6 +153,16 @@ public class SkillsController : MonoBehaviour {
 		return healthController.HasMana (manaUse [skillID]);
 	}
 
+	private void UpdateDirection (){
+		if (target == null) { //If there is no target at all, calculations will be based on the mouse position
+			direction = transform.forward;
+		}
+		else { //If there is a target, calculations will be based on the target's position
+			direction = targetController.GetTargetTransform().position - location;
+			direction.Normalize();
+		}
+	}
+
 	private void UseBasicAttack(){
 		
 	}
@@ -171,7 +170,7 @@ public class SkillsController : MonoBehaviour {
     private void UseLightArrow() {
 
         //Instantiate novos projéteis (Euler foi necessário para endireitar o prefab)
-		GameObject projectile = Instantiate(lightArrow, transform.position + Vector3.up * 8.0f, Quaternion.LookRotation(direction) * Quaternion.Euler(90, 0, 180)) as GameObject;
+		GameObject projectile = Instantiate(lightArrow, location, Quaternion.LookRotation(direction) * Quaternion.Euler(90, 0, 180)) as GameObject;
         projectile.GetComponent<Rigidbody>().useGravity = false; //Evita a gravidade
         projectile.GetComponent<Rigidbody>().AddForce(direction * lightArrowForce); //Coloca uma força para arremessar a magia
 
@@ -180,7 +179,7 @@ public class SkillsController : MonoBehaviour {
 	private void UseLightBall() {
 
         //Mesma coisa acima, sem o ajuste, já q se trata de uma esfera
-		GameObject projectile = Instantiate(lightBall, transform.position + Vector3.up * 8.0f, Quaternion.LookRotation(direction)) as GameObject;
+		GameObject projectile = Instantiate(lightBall, location, Quaternion.LookRotation(direction)) as GameObject;
         projectile.GetComponent<Rigidbody>().useGravity = false;
         projectile.GetComponent<Rigidbody>().AddForce(direction * lightBallForce);
     }

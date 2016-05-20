@@ -57,7 +57,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 198918}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3907.6675, y: -385.80707, z: 1966.111}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 434062}
@@ -71,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 175628}
   m_LocalRotation: {x: -0.7071068, y: 0.000000027045767, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: -3.5, z: -0}
+  m_LocalPosition: {x: -0, y: -7.7, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 0.33333325}
   m_Children: []
   m_Father: {fileID: 418890}
@@ -99,10 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d715e4183c97ef3418b65c7dc3c0f604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 414952, guid: 44afbcb7f6e92f94b957ceaeea306846, type: 2}
-  range: 20
   damagePerSecond: 4
-  healingPerSecond: 2
+  healingPerSecond: 6
   exitTime: 10
   rotationRate: 30
 --- !u!119 &11966688
@@ -118,7 +116,7 @@ Projector:
   m_FieldOfView: 600
   m_AspectRatio: 1
   m_Orthographic: 1
-  m_OrthographicSize: 20
+  m_OrthographicSize: 32
   m_Material: {fileID: 2100000, guid: c8c80c5b03f5c7e40b07eb2170e667e5, type: 2}
   m_IgnoreLayers:
     serializedVersion: 2
@@ -133,7 +131,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 15.5
+  m_Radius: 33.966637
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &19820776
 ParticleSystem:
@@ -1703,6 +1701,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: damagePerSecond
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: healingPerSecond
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

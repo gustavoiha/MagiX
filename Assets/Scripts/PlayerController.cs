@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour {
 	// States in animator
 	private int walkingID;
 	private int jumpingID;
+	private int skillID;
+	private int sanctuaryState;
 
     public float isGroundedRayLength = 0.1f;
     public LayerMask layerMaskForGrounded;
@@ -48,16 +50,18 @@ public class PlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		animator  		 = gameObject.GetComponentInChildren<Animator> ();
+		animator  		 = gameObject.GetComponent/*InChildren*/<Animator> ();
 		rigidBody 		 = gameObject.GetComponent<Rigidbody> ();
-		skillsController = gameObject.GetComponentInChildren<SkillsController> ();
+		skillsController = gameObject.GetComponent/*InChildren*/<SkillsController> ();
 		targetController = gameObject.GetComponent<TargetController> ();
 		//cameraBehaviour  = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraBehaviour>();
 		cameraTransform  = GameObject.FindGameObjectWithTag ("MainCamera").transform;
 		soundController  = GameObject.FindGameObjectWithTag ("Sound").GetComponent<SoundController>();
 
-		walkingID = Animator.StringToHash ("isWalking");
-		jumpingID = Animator.StringToHash ("isJumping");
+		walkingID 	   = Animator.StringToHash ("isWalking");
+		jumpingID 	   = Animator.StringToHash ("isJumping");
+		skillID  	   = Animator.StringToHash ("skill");
+		sanctuaryState = Animator.StringToHash ("Base Layer.Sanctuary");
 	}
 
 	// Update is called once per frame
@@ -69,6 +73,7 @@ public class PlayerController : MonoBehaviour {
 		// if died
 		if (GetComponent<HealthController> ().health <= 0.0f) {
 			animator.SetBool ("isDead", true);
+			return;
 		}
 
 		/**
@@ -164,7 +169,7 @@ public class PlayerController : MonoBehaviour {
 			animator.SetBool ("isJumping", false);
 
 		// Mode if animator is in walking mode
-		if (animator.GetBool (walkingID)) {
+		if (animator.GetBool (walkingID) && animator.GetCurrentAnimatorStateInfo(0).fullPathHash != sanctuaryState) {
 			
 			doTranslation ();
 			doRotation ();
