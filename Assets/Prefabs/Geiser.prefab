@@ -99,11 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 358097f209bc9194f87033c20e139919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intervalTime: 5
-  intervalTimeRandomIncrement: 2
+  intervalTime: 2
+  intervalTimeRandomIncrement: 4
   activeTime: 2
-  activeTimeRandomIncrement: 1
-  damageRate: 3
+  activeTimeRandomIncrement: 4
+  damageRate: 6
 --- !u!119 &11977312
 Projector:
   m_ObjectHideFlags: 1
@@ -1743,6 +1743,26 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IgnoreLayers.m_Bits
       value: 4294966271
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damageRate
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: intervalTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: intervalTimeRandomIncrement
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: activeTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: activeTimeRandomIncrement
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

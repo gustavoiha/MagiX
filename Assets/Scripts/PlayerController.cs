@@ -9,15 +9,15 @@ public class PlayerController : MonoBehaviour {
 	//private Rigidbody rigidBody;
 	private SkillsController skillsController;
 	private TargetController targetController;
-	private Transform cameraTransform;
+	//private Transform cameraTransform;
 	private SoundController soundController;
 
 	public GameObject particleChargeBall;
 	public GameObject particleChargeSanctuary;
 
-	public float moveSpeedFoward = 6.0f;
-	public float moveSpeedSides  = 6.0f;
-	public float turnSpeedY = 60.0f;
+	//public float moveSpeedFoward = 6.0f;
+	//public float moveSpeedSides  = 6.0f;
+	//public float turnSpeedY = 60.0f;
 	//public float turnSpeedY = 60.0f;
 
 	private int mouseInvertX = 1;
@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour {
 	private int skillID;
 	private int sanctuaryState;
 
-    public float isGroundedRayLength = 0.1f;
+    //private float isGroundedRayLength = 0.1f;
     public LayerMask layerMaskForGrounded;
 
     /*public bool isGrounded {
@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour {
 		skillsController = gameObject.GetComponent/*InChildren*/<SkillsController> ();
 		targetController = gameObject.GetComponent<TargetController> ();
 		//cameraBehaviour  = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraBehaviour>();
-		cameraTransform  = GameObject.FindGameObjectWithTag ("MainCamera").transform;
+		//cameraTransform  = GameObject.FindGameObjectWithTag ("MainCamera").transform;
 		soundController  = GameObject.FindGameObjectWithTag ("Sound").GetComponent<SoundController>();
 
 		walkingID 	   = Animator.StringToHash ("isWalking");
@@ -174,7 +174,7 @@ public class PlayerController : MonoBehaviour {
 			animator.SetBool ("isJumping", false);
 
 		// Mode if animator is in walking mode
-		FPSWalkerEnhanced.movementEnabled = animator.GetBool (walkingID) && animator.GetCurrentAnimatorStateInfo(0).fullPathHash != sanctuaryState;
+		FPSWalkerEnhanced.movementEnabled = /*animator.GetBool (walkingID) && */animator.GetCurrentAnimatorStateInfo(0).fullPathHash != sanctuaryState;
 
 		/**
 		 * Cheat !!!
@@ -205,9 +205,9 @@ public class PlayerController : MonoBehaviour {
 	 * pass "X" as argument to invert horizontal axis, and "Y" for vertical
 	 */
 	public void invertMouseDirection(string direction){
-		if (direction == "X")
+		if (direction.Equals ("X") || direction.Equals ("x"))
 			mouseInvertX *= -1;
-		else if (direction == "Y")
+		else if (direction.Equals ("Y") || direction.Equals ("y"))
 			mouseInvertY *= -1;
 	}
 

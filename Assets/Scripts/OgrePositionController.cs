@@ -8,10 +8,12 @@ public class OgrePositionController : MonoBehaviour {
 	// Ogro é o objeto a ser instanciado
 	public GameObject ogre; 
 
+	public bool hasSpawned = false;
 
-	void OnTriggerEnter(Collider collider) {
-		if(collider.gameObject.CompareTag("Player")) {
+	void OnTriggerEnter (Collider collider) {
+		if(collider.gameObject.CompareTag ("Player") && !hasSpawned) {
 			Instantiate (ogre, gameObject.transform.position, gameObject.transform.rotation);
+			hasSpawned = true;
 			Destroy (gameObject);
 		}
 	}

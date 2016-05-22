@@ -447,6 +447,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 494482}
   - 95: {fileID: 9517700}
+  - 114: {fileID: 11463588}
   m_Layer: 11
   m_Name: Ogre
   m_TagString: Untagged
@@ -1208,7 +1209,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageOnHit: 1.5
-  toBeDestroyed: 0
+  enabled: 0
+  toBeDestroyedOnHit: 0
+  disableAfterHit: 0
   tagsToReceiveDamage: Player
 --- !u!114 &11415166
 MonoBehaviour:
@@ -1351,6 +1354,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ce877cd38caa214bb4b76df4b19568f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11463588
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f5ceaad1a9b7c14a96ef0c46ceb42a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &11466500

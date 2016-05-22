@@ -8,17 +8,11 @@ public class DoDamage : MonoBehaviour {
 	/// </summary>
 	public float damageOnHit;
 
-	private new bool enabled;
-	public  bool Enabled{
-		get {
-			return enabled;
-		}
-		set {
-			this.enabled = value;
-		}
-	}
+	public new bool enabled;
 
     public bool toBeDestroyedOnHit;
+
+	public bool disableAfterHit = false;
 
 	/// <summary>
 	/// String that contains every gameobject tag you wish to take damage.
@@ -31,25 +25,37 @@ public class DoDamage : MonoBehaviour {
 	/// <summary>
 	/// Checks if collided with an enemy
 	/// </summary>
-	private bool collisionEnemy = false;
+	//private bool collisionEnemy = false;
+
+	void Start () {
+		enabled = true;
+	}
 
 	/// <summary>
 	/// Detects collision and do damage
 	/// </summary>
 	/// <param name="other">Other.</param>
-	void OnTriggerEnter(Collider collider) {
+	void OnTriggerEnter (Collider collider) {
+
+		if (!enabled)
+			return;
 
 		// Checks if tagsToReceiveDamage has tag of the object that collided
-		if(tagsToReceiveDamage.Contains(collider.gameObject.tag) && collider.gameObject.tag != "")
-		{
-			this.collisionEnemy = true;
-			HealthController enemy = collider.GetComponent<HealthController>() as HealthController;
-			if (collider.gameObject.CompareTag("Player") && !GameController.usingShield)
-				enemy.TakeDamage(damageOnHit);
-			if (collider.gameObject.CompareTag("Enemy"))
-				enemy.TakeDamage(damageOnHit);
-			if(toBeDestroyedOnHit)
-                Destroy(gameObject);
+		if(tagsToReceiveDamage.Contains(collider.gameObject.tag) && collider.gameObject.tag != "") {
+			//this.collisionEnemy = true;
+			HealthController enemy = collider.GetComponent<HealthController> () as HealthController;
+			if (collider.gameObject.CompareTag ("Player") && !GameController.usingShield) {
+				enemy.TakeDamage (damageOnHit);
+				enabled = false;
+			}
+
+			if (collider.gameObject.CompareTag ("Enemy")) {
+				enemy.TakeDamage (damageOnHit);
+				enabled = false;
+			}
+
+			if (toBeDestroyedOnHit)
+                Destroy (gameObject);
 		}
 	}
 
@@ -57,23 +63,23 @@ public class DoDamage : MonoBehaviour {
 	/// Checks if stopped colliding enemy
 	/// </summary>
 	/// <param name="collider">Collider.</param>
-	void OnTriggerExit(Collider collider){
+	/*void OnTriggerExit (Collider collider){
 		// Checks if tagsToReceiveDamage has tag of the object that collided
-		if(tagsToReceiveDamage.Contains(collider.gameObject.tag) && collider.gameObject.tag != "")
+		if (tagsToReceiveDamage.Contains(collider.gameObject.tag) && collider.gameObject.tag != "")
 		{
 			this.collisionEnemy = false;
 		}
-	}
+	}*/
 
 	/// <summary>
 	/// Sets the damage on hit.
 	/// </summary>
 	/// <param name="newDamage">New damage.</param>
-	public void setDamageOnHit(float newDamage){
+	public void setDamageOnHit (float newDamage){
 		this.damageOnHit = newDamage;
 	}
 
-	public bool collidedEnemy(){
-		return collisionEnemy;
-	}
+	//public bool collidedEnemy (){
+	//	return collisionEnemy;
+	//}
 }

@@ -24,6 +24,8 @@ public class FPSWalkerEnhanced: MonoBehaviour {
  
     // Units that player can fall before a falling damage function is run. To disable, type "infinity" in the inspector
     public float fallingDamageThreshold = 10.0f;
+
+	public float damagePerFallUnit = 0.5f;
  
     // If the player ends up on a slope which is at least the Slope Limit as set on the character controller, then he will slide down
     public bool slideWhenOverSlopeLimit = false;
@@ -58,6 +60,7 @@ public class FPSWalkerEnhanced: MonoBehaviour {
     private int jumpTimer;
 
 	private Transform cameraTransform;
+	private HealthController healthController;
  
     void Start() {
         controller = GetComponent<CharacterController>();
@@ -66,7 +69,9 @@ public class FPSWalkerEnhanced: MonoBehaviour {
         rayDistance = controller.height * .5f + controller.radius;
         slideLimit = controller.slopeLimit - .1f;
         jumpTimer = antiBunnyHopFactor;
+
 		cameraTransform  = GameObject.FindGameObjectWithTag ("MainCamera").transform;
+		healthController = GetComponent<HealthController> ();
     }
  
     void FixedUpdate() {
@@ -134,10 +139,12 @@ public class FPSWalkerEnhanced: MonoBehaviour {
 				jumping = false;
 			}
 			else if (jumpTimer >= antiBunnyHopFactor && movementEnabled) {
-                moveDirection.y = jumpSpeed;
-                jumpTimer = 0;
+				moveDirection.y = jumpSpeed;
+				jumpTimer = 0;
 				jumping = true;
-            }
+			}
+			else
+				jumping = false;
         }
         else {
             // If we stepped over a cliff or something, set the height at which we started falling
@@ -151,10 +158,17 @@ public class FPSWalkerEnhanced: MonoBehaviour {
                 //moveDirection.x = inputX * speed * inputModifyFactor;
                 //moveDirection.z = inputY * speed * inputModifyFactor;
 				//
-				if ((inputX != 0.0f || inputY != 0.0f) && movementEnabled) {
-					moveDirection.x = myTransform.forward.x * speed * inputModifyFactor;
-					moveDirection.z = myTransform.forward.z * speed * inputModifyFactor;
-					doRotation ();
+				if (movementEnabled){
+					
+					if ((inputX != 0.0f || inputY != 0.0f)) {
+						moveDirection.x = myTransform.forward.x * speed * inputModifyFactor;
+						moveDirection.z = myTransform.forward.z * speed * inputModifyFactor;
+						doRotation ();
+					}
+					else {
+						moveDirection.x = 0.0f;
+						moveDirection.z = 0.0f;
+					}
 				}
 				//
                 //moveDirection = myTransform.TransformDirection(moveDirection);
@@ -214,6 +228,7 @@ public class FPSWalkerEnhanced: MonoBehaviour {
     // If falling damage occured, this is the place to do something about it. You can make the player
     // have hitpoints and remove some of them based on the distance fallen, add sound effects, etc.
     void FallingDamageAlert (float fallDistance) {
-        print ("Ouch! Fell " + fallDistance + " units!");   
+        print ("Ouch! Fell " + fallDistance + " units!");
+		healthController.TakeDamage (fallDistance * damagePerFallUnit);
     }
 }

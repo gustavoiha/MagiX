@@ -41,13 +41,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToSpawn: {fileID: 407156, guid: 9d4e1862bf588934dab7c11c4aee98b6, type: 2}
-  spawnInterval: 10
+  spawnInterval: 8
   enableRandomInterval: 1
-  randomIncrementInSpawnInterval: 1
+  randomIncrementInSpawnInterval: 5
   SpawnRange: 50
   enableRandomRange: 1
   randomIncrementInSpawnRange: 30
-  spawnLimit: 1
+  useActivatorObject: 1
+  activatorObjectsTag: Player
+  spawnLimit: 50
 --- !u!135 &13546446
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -73,7 +75,7 @@ Prefab:
       objectReference: {fileID: 407156, guid: 9d4e1862bf588934dab7c11c4aee98b6, type: 2}
     - target: {fileID: 0}
       propertyPath: spawnInterval
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: enableRandomInterval
@@ -81,7 +83,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: randomIncrementInSpawnInterval
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: SpawnRange
@@ -97,7 +99,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: spawnLimit
-      value: 1
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
@@ -106,6 +108,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Radius
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: activatorObjectsTag
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: useActivatorObject
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

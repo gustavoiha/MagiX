@@ -3,11 +3,6 @@ using System.Collections;
 
 public class PlayerAnimatorEvents : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-
 	public void EventUseSkill(int skillID){
 		gameObject.GetComponent<SkillsController> ().UseSkill (skillID);
 	}
@@ -17,8 +12,4 @@ public class PlayerAnimatorEvents : MonoBehaviour {
 		Time.timeScale = 0.0f;
 	}
 
-	public void UsingShield(int i) {
-		GameController.usingShield = false;
-		Debug.Log ("no shield");
-	}
 }

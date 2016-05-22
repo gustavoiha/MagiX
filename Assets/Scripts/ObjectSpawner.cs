@@ -43,6 +43,13 @@ public class ObjectSpawner : MonoBehaviour {
 	/// </summary>
 	public float randomIncrementInSpawnRange;
 
+	public bool useActivatorObject;
+
+	/// <summary>
+	/// The spawner will only work if an object with this tag is inside it's colliders and useActivatorObject is true.
+	/// </summary>
+	public string activatorObjectsTag;
+
 	private float timeFromLastSpawn;
 
     public int spawnLimit;
@@ -53,57 +60,70 @@ public class ObjectSpawner : MonoBehaviour {
 	void Start () {
 
 		// Standard values
-		spawnInterval = 2.0f;
+		/*spawnInterval = 2.0f;
 		SpawnRange    = 10.0f;
 		enableRandomInterval = true;
 		enableRandomRange    = true;
 		randomIncrementInSpawnInterval = 1.0f;
-		randomIncrementInSpawnRange    = SpawnRange / 4.0f;
-        
+		randomIncrementInSpawnRange    = SpawnRange / 4.0f;*/
+
+		spawnEnabled = !useActivatorObject;
 
 		// Start the time counter
 		timeFromLastSpawn = spawnInterval;
         
-        
 	}
-
 	
-	void Update() {
+	void Update () {
         
-            if (timeFromLastSpawn > 0.0f)
-            {
-                timeFromLastSpawn -= Time.deltaTime;
-                return;
-            }
+        if (timeFromLastSpawn > 0.0f){
+            timeFromLastSpawn -= Time.deltaTime;
+            return;
+        }
 
-            if (spawnEnabled && objectToSpawn != null && spawnCounter < spawnLimit)
-            {
-                // Spawn object
-                /*Transform newObject = */
-                Instantiate(objectToSpawn, SpawnPosition(), gameObject.transform.rotation) /*as Transform*/;
-                spawnCounter++;
-            }
+		if (objectToSpawn == null || spawnCounter >= spawnLimit)
+			return;
 
-            UpdateSpawnTimeCounter();
+        if (spawnEnabled)
+        {
+            // Spawn object
+            /*Transform newObject = */
+            Instantiate (objectToSpawn, SpawnPosition(), gameObject.transform.rotation) /*as Transform*/;
+            spawnCounter++;
+			//Debug.Log ("spawning");
+        }
+
+        UpdateSpawnTimeCounter ();
         
 	}
+
+	void OnTriggerEnter (Collider collider){
+		if (activatorObjectsTag.Contains (collider.tag) && useActivatorObject)
+			spawnEnabled = true;
+	}
+
+	void OnTriggerExit (Collider collider){
+		if (activatorObjectsTag.Contains (collider.tag) && useActivatorObject)
+			spawnEnabled = false;
+	}
+
 
 	// Use this to set spawn enabled (true) or stopped (false)
-	public void setEnabled(bool newState){
+	public void setEnabled (bool newState){
 		this.spawnEnabled = newState;
 	}
 
-	private void UpdateSpawnTimeCounter(){
-		timeFromLastSpawn = spawnInterval + ((enableRandomInterval) ? 1: 0) * Random.value * randomIncrementInSpawnInterval;
+	private void UpdateSpawnTimeCounter (){
+		timeFromLastSpawn = spawnInterval + ((enableRandomInterval) ? Random.value * randomIncrementInSpawnInterval : 0);
 	}
 
-	private Vector3 SpawnPosition(){
+	private Vector3 SpawnPosition (){
 
 		// Spawn angle
 		float spawnAngle = Random.value * 360.0f;
 
 		// Spawn distance
-		float spawnDistance = SpawnRange + ((enableRandomRange) ? 1: 0) * Random.value * randomIncrementInSpawnRange;
+		float spawnDistance = SpawnRange + ((enableRandomRange) ? Random.value * randomIncrementInSpawnRange : 0);
 
 		// Parent position
 		Vector3 spawnPosition = gameObject.transform.position;

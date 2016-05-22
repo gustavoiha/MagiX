@@ -43,7 +43,7 @@ public class HealthController : MonoBehaviour {
 			return;
 
 		// To Do
-		// Do death anmation, for example
+		// Do death animation, for example
 
 		// Destroy object
 		if (destroyOnDeath) {
@@ -63,8 +63,7 @@ public class HealthController : MonoBehaviour {
 		
 		mana -= decrease;
 
-		if (mana < 0.0f)
-			mana = 0.0f;
+		mana = Mathf.Max (0.0f, Mathf.Min (mana, maxMana));
 	}
 
 	public void TakeDamage (float damage){
@@ -73,7 +72,6 @@ public class HealthController : MonoBehaviour {
 		// If damage is negative, life will increase
 		health -= damage;
 
-		if (health < 0.0f)
-			health = 0.0f;
+		health = Mathf.Max (0.0f, Mathf.Min (health, maxHealth));
 	}
 }
