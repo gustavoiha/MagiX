@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour {
 	//public Transform Saber;
 
 	private Animator animator;
-	private Rigidbody rigidBody;
+	//private Rigidbody rigidBody;
 	private SkillsController skillsController;
 	private TargetController targetController;
 	private Transform cameraTransform;
@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour {
     public float isGroundedRayLength = 0.1f;
     public LayerMask layerMaskForGrounded;
 
-    public bool isGrounded {
+    /*public bool isGrounded {
 		get {
 		     Vector3 position = transform.position;
 		     position.y = GetComponent<Collider>().bounds.min.y + 0.1f;
@@ -46,12 +46,12 @@ public class PlayerController : MonoBehaviour {
 		     bool grounded = Physics.Raycast (position, Vector3.down, length, layerMaskForGrounded.value);
 		     return grounded;
 		}
-	}
+	}*/
 
 	// Use this for initialization
 	void Start () {
 		animator  		 = gameObject.GetComponent/*InChildren*/<Animator> ();
-		rigidBody 		 = gameObject.GetComponent<Rigidbody> ();
+		//rigidBody 		 = gameObject.GetComponent<Rigidbody> ();
 		skillsController = gameObject.GetComponent/*InChildren*/<SkillsController> ();
 		targetController = gameObject.GetComponent<TargetController> ();
 		//cameraBehaviour  = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraBehaviour>();
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour {
 			
 		}
 		else {
-			animator.SetBool("isWalking", false);
+			animator.SetBool ("isWalking", false);
 		}
 
 		//else if (Input.GetKeyUp("s"){
@@ -161,21 +161,20 @@ public class PlayerController : MonoBehaviour {
 			targetController.UpdateTarget ();
 		}
 
-		if (Input.GetKeyDown ("space") && isGrounded) {
+		//if (Input.GetKeyDown ("space") && isGrounded) {
+			//animator.SetBool ("isJumping", true);
+			//gameObject.GetComponent<Rigidbody> ().AddForce (new Vector3 (0, 800.0f, 0));
+		//}
+		//else if (!isGrounded)
+			//animator.SetBool ("isJumping", false);
+
+		if (FPSWalkerEnhanced.jumping)
 			animator.SetBool ("isJumping", true);
-			gameObject.GetComponent<Rigidbody> ().AddForce (new Vector3 (0, 800.0f, 0));
-		}
-		else if (!isGrounded)
+		else
 			animator.SetBool ("isJumping", false);
 
 		// Mode if animator is in walking mode
-		if (animator.GetBool (walkingID) && animator.GetCurrentAnimatorStateInfo(0).fullPathHash != sanctuaryState) {
-			
-			doTranslation ();
-			doRotation ();
-		}
-
-		MakePerpendicular ();
+		FPSWalkerEnhanced.movementEnabled = animator.GetBool (walkingID) && animator.GetCurrentAnimatorStateInfo(0).fullPathHash != sanctuaryState;
 
 		/**
 		 * Cheat !!!
@@ -193,52 +192,6 @@ public class PlayerController : MonoBehaviour {
 
 			cheatStartBoss++;
 		}
-	}
-
-
-
-	private void doTranslation (){
-		//if (shouldMove()) {
-			//if (controler.isGrounded) {
-			//moveDirection = Vector3.zero;
-			//moveDirection += transform.forward * Input.GetAxis ("VerticalTranslation");
-			//moveDirection += transform.right   * Input.GetAxis ("HorizontalTranslation");
-
-			//Vector3 delta = moveDirection + gameObject.transform.position - cameraTransform.position;
-			//delta.Normalize ();
-
-			transform.position += transform.forward * Time.deltaTime * moveSpeedFoward;
-			//}
-		//}
-	}
-
-	private void doRotation (){
-
-		float moveX = Input.GetAxis ("HorizontalTranslation");
-		float moveZ = Input.GetAxis ("VerticalTranslation");
-
-		float extraAngleY = Mathf.Atan2 (moveX, moveZ) * Mathf.Rad2Deg;
-
-		Quaternion lookRotation = cameraTransform.rotation;
-		lookRotation.eulerAngles += new Vector3 (0, extraAngleY, 0);
-
-		//Vector3 turnDirection = new Vector3 (moveX, 0, moveZ) - transform.position;
-		//turnDirection.Normalize ();
-
-		//Quaternion turnRotation = Quaternion.LookRotation (turnDirection);
-
-		transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeedY);
-
-	}
-
-	private void MakePerpendicular (){
-
-		// Stoping player from rotating automatially because of the rigidbody component
-		rigidBody.angularVelocity = new Vector3(0,0,0);
-
-		Quaternion quaternion  = new Quaternion ();
-		quaternion.eulerAngles = new Vector3 (0, transform.rotation.eulerAngles.y, 0);
-		transform.rotation = quaternion;
 	}
 
 	// Returns true if player is in walking or running animation

@@ -8,7 +8,17 @@ public class DoDamage : MonoBehaviour {
 	/// </summary>
 	public float damageOnHit;
 
-    public bool toBeDestroyed;
+	private new bool enabled;
+	public  bool Enabled{
+		get {
+			return enabled;
+		}
+		set {
+			this.enabled = value;
+		}
+	}
+
+    public bool toBeDestroyedOnHit;
 
 	/// <summary>
 	/// String that contains every gameobject tag you wish to take damage.
@@ -38,7 +48,7 @@ public class DoDamage : MonoBehaviour {
 				enemy.TakeDamage(damageOnHit);
 			if (collider.gameObject.CompareTag("Enemy"))
 				enemy.TakeDamage(damageOnHit);
-            if(toBeDestroyed)
+			if(toBeDestroyedOnHit)
                 Destroy(gameObject);
 		}
 	}

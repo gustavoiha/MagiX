@@ -9,6 +9,8 @@ public class FPSWalkerEnhanced: MonoBehaviour {
     public float runSpeed = 11.0f;
 
 	public float turnSpeedY = 6.0f;
+
+	public static bool movementEnabled = true;
  
     // If true, diagonal speed (when strafing + moving forward or back) can't exceed normal move speed; otherwise it's about 1.4 times faster
     public bool limitDiagonalSpeed = true;
@@ -48,6 +50,7 @@ public class FPSWalkerEnhanced: MonoBehaviour {
     private RaycastHit hit;
     private float fallStartLevel;
     private bool falling;
+	public static bool jumping;
     private float slideLimit;
     private float rayDistance;
     private Vector3 contactPoint;
@@ -113,7 +116,7 @@ public class FPSWalkerEnhanced: MonoBehaviour {
                 //moveDirection = new Vector3(inputX * inputModifyFactor, -antiBumpFactor, inputY * inputModifyFactor);
 				//
 				moveDirection = Vector3.zero;
-				if (inputX != 0.0f || inputY != 0.0f) {
+				if ((inputX != 0.0f || inputY != 0.0f) && movementEnabled) {
 					moveDirection = myTransform.forward;
 					moveDirection.x *= speed * inputModifyFactor;
 					moveDirection.y = -antiBumpFactor;
@@ -126,11 +129,14 @@ public class FPSWalkerEnhanced: MonoBehaviour {
             }
  
             // Jump! But only if the jump button has been released and player has been grounded for a given number of frames
-            if (!Input.GetButton("Jump"))
-                jumpTimer++;
-            else if (jumpTimer >= antiBunnyHopFactor) {
+			if (!Input.GetButton ("Jump")) {
+				jumpTimer++;
+				jumping = false;
+			}
+			else if (jumpTimer >= antiBunnyHopFactor && movementEnabled) {
                 moveDirection.y = jumpSpeed;
                 jumpTimer = 0;
+				jumping = true;
             }
         }
         else {
@@ -145,7 +151,7 @@ public class FPSWalkerEnhanced: MonoBehaviour {
                 //moveDirection.x = inputX * speed * inputModifyFactor;
                 //moveDirection.z = inputY * speed * inputModifyFactor;
 				//
-				if (inputX != 0.0f || inputY != 0.0f) {
+				if ((inputX != 0.0f || inputY != 0.0f) && movementEnabled) {
 					moveDirection.x = myTransform.forward.x * speed * inputModifyFactor;
 					moveDirection.z = myTransform.forward.z * speed * inputModifyFactor;
 					doRotation ();
