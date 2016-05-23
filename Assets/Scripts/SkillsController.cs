@@ -45,10 +45,12 @@ public class SkillsController : MonoBehaviour {
     public float lightBallForce = 50.0f; 
 
 	//Direção em q o mouse aponta
-    Vector3 direction; 
+    private Vector3 direction; 
 
 	//localização temporária para atirar magia(colocar a mão/cajado aqui futuramente)
-    Vector3 location;
+    private Vector3 location;
+
+	public Vector3 targetPivot;
 
     // Skills cooldowns
 	private float[] timeTilNext;
@@ -158,7 +160,7 @@ public class SkillsController : MonoBehaviour {
 			direction = transform.forward;
 		}
 		else { //If there is a target, calculations will be based on the target's position
-			direction = targetController.GetTargetTransform().position - location;
+			direction = targetController.GetTargetTransform().position + targetPivot - location;
 			direction.Normalize();
 		}
 	}

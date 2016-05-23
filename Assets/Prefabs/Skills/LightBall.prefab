@@ -157,12 +157,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scale: 1
   growthRate: 4
-  radius: 5
+  radius: 20
   explosionForce: 50
   damage: 8
   particleS: {fileID: 19833692}
   forceMode: 1
   Explosion: {fileID: 143022, guid: e97bd9c5f75f55a4fa49524073681520, type: 2}
+  tagsToDamage: Enemy, Boss
 --- !u!135 &13500210
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1730,7 +1731,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: radius
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: damage
@@ -1756,6 +1757,10 @@ Prefab:
       propertyPath: Explosion
       value: 
       objectReference: {fileID: 143022, guid: e97bd9c5f75f55a4fa49524073681520, type: 2}
+    - target: {fileID: 0}
+      propertyPath: tagsToDamage
+      value: Enemy, Boss
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 120464}

@@ -168,7 +168,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageOnHit: 5
-  toBeDestroyed: 1
+  enabled: 0
+  toBeDestroyedOnHit: 0
+  disableAfterHit: 0
   tagsToReceiveDamage: Enemy, Boss
 --- !u!136 &13628710
 CapsuleCollider:
@@ -1759,6 +1761,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: tagsToReceiveDamage
       value: Enemy, Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: disableAfterHit
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Constraints
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

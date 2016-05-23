@@ -34,7 +34,7 @@ public class SoundController : MonoBehaviour {
 	public const int STORM      = 10;
 
     // vitória e derrota
-    public const int WIN    = 0;
+    public const int WIN  = 0;
     public const int LOSE = 1;
 
     //som ambiente

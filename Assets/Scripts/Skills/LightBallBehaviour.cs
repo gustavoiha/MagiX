@@ -17,6 +17,8 @@ public class LightBallBehaviour : MonoBehaviour {
     //private bool detonation;//A esfera detona quando toca algo
 	private float explosionRadius;
 
+	public string tagsToDamage;
+
     // Use this for initialization
     void Start()
     {
@@ -44,8 +46,7 @@ public class LightBallBehaviour : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
 		//Ao tocar algo, ela explode
-		if (other.gameObject.tag.Equals("Enemy") || other.gameObject.tag.Equals("Boss"))
-        	//detonation = true;
+		if (tagsToDamage.Contains (other.gameObject.tag))
 			Detonate ();
     }
 
@@ -54,16 +55,16 @@ public class LightBallBehaviour : MonoBehaviour {
 		Collider[] colliders = Physics.OverlapSphere (transform.position, explosionRadius);
 
 		foreach (Collider hit in colliders) {
-			
+
+			if (!tagsToDamage.Contains (hit.gameObject.tag))
+				continue;
+
 			Rigidbody rigidbody = hit.GetComponent<Rigidbody> ();
 
-			if (rigidbody != null && !hit.gameObject.tag.Equals("Player")) {
+			if (rigidbody != null)
 				rigidbody.AddExplosionForce (explosionForce, transform.position, explosionRadius, 1.0f, forceMode);
-				//Debug.Log ("Added force!");
-			}
 
-			if (hit.gameObject.tag.Equals ("Enemy") || hit.gameObject.tag.Equals ("Boss"))
-				hit.gameObject.GetComponent<HealthController> ().TakeDamage (damage);
+			hit.gameObject.GetComponent<HealthController> ().TakeDamage (damage);
 		}
 
 		GameObject explosion = Instantiate (Explosion, transform.position, Quaternion.identity) as GameObject;

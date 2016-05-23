@@ -682,7 +682,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2702.9226, y: -149.21, z: 3108.315}
+  m_LocalPosition: {x: 3448.0996, y: -210.54913, z: 3146.8928}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 484550}
@@ -1211,7 +1211,7 @@ MonoBehaviour:
   damageOnHit: 1.5
   enabled: 0
   toBeDestroyedOnHit: 0
-  disableAfterHit: 0
+  disableAfterHit: 1
   tagsToReceiveDamage: Player
 --- !u!114 &11415166
 MonoBehaviour:

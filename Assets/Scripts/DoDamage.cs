@@ -14,6 +14,12 @@ public class DoDamage : MonoBehaviour {
 
 	public bool disableAfterHit = false;
 
+	public bool explosionOnHit = false;
+
+	public float explosionKillTime = 5.0f;
+
+	public GameObject explosion;
+
 	/// <summary>
 	/// String that contains every gameobject tag you wish to take damage.
 	/// An example: "enemy1, enemy2, boss"
@@ -46,16 +52,21 @@ public class DoDamage : MonoBehaviour {
 			HealthController enemy = collider.GetComponent<HealthController> () as HealthController;
 			if (collider.gameObject.CompareTag ("Player") && !GameController.usingShield) {
 				enemy.TakeDamage (damageOnHit);
-				enabled = false;
+				enabled = !disableAfterHit;
 			}
 
 			if (collider.gameObject.CompareTag ("Enemy")) {
 				enemy.TakeDamage (damageOnHit);
-				enabled = false;
+				enabled = !disableAfterHit;
 			}
 
 			if (toBeDestroyedOnHit)
                 Destroy (gameObject);
+
+			if (explosionOnHit && explosion != null){
+				GameObject newExplosion = Instantiate (explosion, transform.position, Quaternion.identity) as GameObject;
+				Destroy (newExplosion, explosionKillTime);
+			}
 		}
 	}
 

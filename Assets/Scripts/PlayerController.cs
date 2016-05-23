@@ -97,13 +97,22 @@ public class PlayerController : MonoBehaviour {
 		 */
 
 		if (Input.GetKey (KeyCode.Mouse0)) {
-			if (skillsController.HasSkillMana(SkillsController.LIGHT_ARROW))
+			if (skillsController.HasSkillMana (SkillsController.LIGHT_ARROW))
 				animator.SetInteger ("skill", 2);
-			else if (skillsController.HasSkillMana(SkillsController.BASIC_ATTACK))
+			else if (skillsController.CanUseSkill (SkillsController.BASIC_ATTACK))
 				animator.SetInteger ("skill", 1);
 		}
 
-		if (Input.GetKeyUp (KeyCode.Mouse0))
+		if (Input.GetKey (KeyCode.Mouse1)) {
+			if (skillsController.CanUseSkill (SkillsController.LIGHT_BALL))
+				animator.SetInteger ("skill", 3);
+			else if (skillsController.HasSkillMana (SkillsController.LIGHT_ARROW))
+				animator.SetInteger ("skill", 2);
+			else if (skillsController.CanUseSkill (SkillsController.BASIC_ATTACK))
+				animator.SetInteger ("skill", 1);
+		}
+
+		if (Input.GetKeyUp (KeyCode.Mouse0) || Input.GetKeyUp (KeyCode.Mouse1))
 			animator.SetInteger ("skill", 0);
 
 		// Basic Attack
