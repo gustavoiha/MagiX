@@ -20,11 +20,11 @@ public class LightSanctuaryBehaviour : MonoBehaviour {
 
 		GetComponent<ParticleSystem> ().Play ();
 
-		Destroy (gameObject.transform.parent.gameObject, exitTime);
+		Destroy (gameObject.transform.root.gameObject, exitTime);
 	}
 
 	void Update(){
-		gameObject.transform.parent.gameObject.transform.Rotate (0, rotationRate * Time.deltaTime, 0);
+		gameObject.transform.root.gameObject.transform.Rotate (0, rotationRate * Time.deltaTime, 0);
 		gameObject.transform.Rotate (0, 0, - 2 *rotationRate * Time.deltaTime);
 	}
 

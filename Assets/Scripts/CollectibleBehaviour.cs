@@ -11,6 +11,6 @@ public class CollectibleBehaviour : MonoBehaviour {
 			return;
 
 		collider.gameObject.GetComponent<HealthController> ().DecreaseMana (- manaGain);
-		Destroy (gameObject);
+		Destroy (transform.root.gameObject);
 	}
 }

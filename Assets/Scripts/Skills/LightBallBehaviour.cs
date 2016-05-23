@@ -12,6 +12,8 @@ public class LightBallBehaviour : MonoBehaviour {
     public ParticleSystem particleS; //Particulas
     public ForceMode forceMode;//Tipo de força que será aplicada
 
+	public GameObject Explosion;
+
     //private bool detonation;//A esfera detona quando toca algo
 	private float explosionRadius;
 
@@ -64,6 +66,8 @@ public class LightBallBehaviour : MonoBehaviour {
 				hit.gameObject.GetComponent<HealthController> ().TakeDamage (damage);
 		}
 
+		GameObject explosion = Instantiate (Explosion, transform.position, Quaternion.identity) as GameObject;
+		Destroy (explosion, 5.0f);
 		//Destrói a esfera
 		Destroy(gameObject);
 	}

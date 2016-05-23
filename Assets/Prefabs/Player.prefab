@@ -999,6 +999,7 @@ GameObject:
   - 54: {fileID: 5442136}
   - 143: {fileID: 14332868}
   - 114: {fileID: 11433070}
+  - 114: {fileID: 11452340}
   m_Layer: 12
   m_Name: Player
   m_TagString: Player
@@ -2086,7 +2087,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageOnHit: 2
+  enabled: 0
   toBeDestroyedOnHit: 0
+  disableAfterHit: 0
   tagsToReceiveDamage: Enemy
 --- !u!114 &11433070
 MonoBehaviour:
@@ -2107,6 +2110,7 @@ MonoBehaviour:
   jumpSpeed: 16
   gravity: 50
   fallingDamageThreshold: 10
+  damagePerFallUnit: 0.5
   slideWhenOverSlopeLimit: 1
   slideOnTaggedObjects: 0
   slideSpeed: 12
@@ -2124,6 +2128,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8379aa98d0ea41e478e11c575f4fc9ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11452340
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2ba6e410570b144daa583088667aa81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TerrainObj: {fileID: 0}
 --- !u!114 &11458014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2185,10 +2201,6 @@ MonoBehaviour:
   particleChargeBall: {fileID: 102300, guid: 419d030742b52fc459e24ab49dc1e184, type: 2}
   particleChargeSanctuary: {fileID: 143014, guid: d49d6a6da8eb60b4a8556ac6405b5cb0,
     type: 2}
-  moveSpeedFoward: 20
-  moveSpeedSides: 20
-  turnSpeedY: 6
-  isGroundedRayLength: 0.1
   layerMaskForGrounded:
     serializedVersion: 2
     m_Bits: 1792

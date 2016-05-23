@@ -162,6 +162,7 @@ MonoBehaviour:
   damage: 8
   particleS: {fileID: 19833692}
   forceMode: 1
+  Explosion: {fileID: 143022, guid: e97bd9c5f75f55a4fa49524073681520, type: 2}
 --- !u!135 &13500210
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1751,6 +1752,10 @@ Prefab:
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Explosion
+      value: 
+      objectReference: {fileID: 143022, guid: e97bd9c5f75f55a4fa49524073681520, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 120464}

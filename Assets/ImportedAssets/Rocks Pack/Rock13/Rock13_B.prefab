@@ -11,6 +11,7 @@ GameObject:
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
   - 65: {fileID: 6539910}
+  - 65: {fileID: 6508898}
   m_Layer: 0
   m_Name: Rock13_B
   m_TagString: Untagged
@@ -75,6 +76,18 @@ MeshFilter:
 --- !u!1002 &3300001
 EditorExtensionImpl:
   serializedVersion: 6
+--- !u!65 &6508898
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 26.384516, y: 15.932992, z: 16.573467}
+  m_Center: {x: -2.508574, y: 2.581828, z: -1.6825814}
 --- !u!65 &6539910
 BoxCollider:
   m_ObjectHideFlags: 1

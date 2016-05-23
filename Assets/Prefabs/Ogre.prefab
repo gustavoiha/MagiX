@@ -682,7 +682,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3815.4438, y: -377.91772, z: 2024.5542}
+  m_LocalPosition: {x: 2702.9226, y: -149.21, z: 3108.315}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 484550}
@@ -1263,7 +1263,7 @@ MonoBehaviour:
   mana: 0
   destroyOnDeath: 1
   collectibleOnDeath: 1
-  collectible: {fileID: 485932, guid: 7dcd65e79a802a84c9949e680c0de02c, type: 2}
+  collectible: {fileID: 478410, guid: 1568585654ba47b44aad27efab1c4248, type: 2}
 --- !u!114 &11427726
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1395,8 +1395,8 @@ Projector:
   m_FarClipPlane: 100
   m_FieldOfView: 60
   m_AspectRatio: 1
-  m_Orthographic: 0
-  m_OrthographicSize: 10
+  m_Orthographic: 1
+  m_OrthographicSize: 4.5
   m_Material: {fileID: 2100000, guid: b05f3fd8421220943b1e224c357bd565, type: 2}
   m_IgnoreLayers:
     serializedVersion: 2
@@ -1669,7 +1669,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: collectible
       value: 
-      objectReference: {fileID: 485932, guid: 7dcd65e79a802a84c9949e680c0de02c, type: 2}
+      objectReference: {fileID: 478410, guid: 1568585654ba47b44aad27efab1c4248, type: 2}
     - target: {fileID: 0}
       propertyPath: attackRange
       value: 6

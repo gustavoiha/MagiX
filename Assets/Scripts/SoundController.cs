@@ -66,7 +66,7 @@ public class SoundController : MonoBehaviour {
                 break;
 
             case LIGHT_SANCTUARY:
-			PlayerSoundsController(playerBasicAtt, playing, true, "Player");
+			PlayerSoundsController(playerLightSanctuary, playing, true, "Player");
                 break;
 
             case DEFENCE_DOME:

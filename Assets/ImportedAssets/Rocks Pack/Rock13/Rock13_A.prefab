@@ -11,6 +11,7 @@ GameObject:
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
   - 65: {fileID: 6500644}
+  - 65: {fileID: 6591244}
   m_Layer: 0
   m_Name: Rock13_A
   m_TagString: Untagged
@@ -87,6 +88,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 17.31637, y: 37.91405, z: 16.57353}
   m_Center: {x: -3.112916, y: 13.56158, z: -1.681707}
+--- !u!65 &6591244
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 26.384516, y: 15.932992, z: 16.573467}
+  m_Center: {x: -2.508574, y: 2.581828, z: -1.6825814}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
