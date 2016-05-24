@@ -171,6 +171,9 @@ MonoBehaviour:
   enabled: 0
   toBeDestroyedOnHit: 0
   disableAfterHit: 0
+  explosionOnHit: 1
+  explosionKillTime: 5
+  explosion: {fileID: 115486, guid: 3891353e9d6d77949a2934586ecd7301, type: 2}
   tagsToReceiveDamage: Enemy, Boss
 --- !u!136 &13628710
 CapsuleCollider:
@@ -1774,6 +1777,14 @@ Prefab:
       propertyPath: m_Constraints
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: explosionOnHit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 115486, guid: 3891353e9d6d77949a2934586ecd7301, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 148554}

@@ -4,13 +4,19 @@ using System.Collections;
 public class PlayerAnimatorEvents : MonoBehaviour {
 
 	private FootStepsController footStepsController;
+	private SkillsController skillsController;
 
 	void Start (){
 		footStepsController = gameObject.GetComponent<FootStepsController> ();
+		skillsController 	= gameObject.GetComponent<SkillsController> ();
 	}
 
 	public void EventUseSkill (int skillID){
-		gameObject.GetComponent<SkillsController> ().UseSkill (skillID);
+		skillsController.UseSkill (skillID);
+	}
+
+	public void EndSkill (int skillID){
+		skillsController.EndedSkill (skillID);
 	}
 
 	public void EventDead (int a){

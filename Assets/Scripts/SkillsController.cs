@@ -17,6 +17,7 @@ public class SkillsController : MonoBehaviour {
 	private HealthController healthController;
 	private TargetController targetController;
 	private SoundController  soundController;
+	private Animator 		 animator;
 
     ///
     /// Skills' prefabs
@@ -57,9 +58,29 @@ public class SkillsController : MonoBehaviour {
     public float[]  coolDown;
 	public float[]  manaUse;
 
+	public  bool[] skillsToStopMovement;
+	public  bool[] skillsToRotateToTarget;
+	private bool[] isUsingSkill;
+	public bool[] IsUsingSkill {
+		get { 
+			return isUsingSkill;
+		}
+		set { 
+			isUsingSkill = value;
+		}
+	}
+
+	public bool autoTargetNearestEnemy = false;
+
 	//[Serializable] public class coolDown{
 	//	public float[] coolDownArray;
 	//}
+
+	public static SkillsController _instance;
+
+	void Awake (){
+		_instance = this;
+	}
 
     // Use this for initialization
     void Start () {
@@ -67,21 +88,29 @@ public class SkillsController : MonoBehaviour {
 		healthController = /*gameObject.transform.parent.*/gameObject.GetComponent<HealthController> ();
 		targetController = /*gameObject.transform.parent.*/gameObject.GetComponent<TargetController> ();
 		soundController  = GameObject.FindGameObjectWithTag ("Sound").GetComponent<SoundController> ();
+		animator  		 = gameObject.GetComponent/*InChildren*/<Animator> ();
 
-        timeTilNext = new float[5];
+        timeTilNext  = new float[5];
+		isUsingSkill = new bool[5];
 
 		for (int i = 0; i < coolDown.Length; i++) {
-            timeTilNext[i] = 0;
+            timeTilNext[i] = 0.0f;
         }
 	}
 
     // Update is called once per frame
     void Update() {
 
-		for(int i = 0; i < timeTilNext.Length; i++) {
+		for (int i = 0; i < timeTilNext.Length; i++) {
             //Resets cooldowns
             timeTilNext[i] -= Time.deltaTime;
         }
+
+		// Rotate towards target when using skills if skillsToRotateToTarget
+		if (RotateToTarget ()) {
+			FPSWalkerEnhanced._instance.RotateTowards (Direction ());
+		}
+
     }
 
 	/// <summary>
@@ -97,14 +126,17 @@ public class SkillsController : MonoBehaviour {
 		if (!CanUseSkill(skillID))
 			return;
 
-		if (!targetController.HasTarget())
-			targetController.UpdateTarget ();
+		//if (autoTargetNearestEnemy)
+		//	targetController.UpdateTarget ();
 
-		target = targetController.GetTargetTransform();
+		//target = targetController.GetTargetTransform();
 
-		location = transform.position + transform.forward * 10.0f + transform.up * 8.0f; //Coloca a posição um pouco a frente
+		//location = transform.position + transform.forward * 10.0f + transform.up * 8.0f; //Coloca a posição um pouco à frente
 
-		UpdateDirection ();
+		//direction = Direction ();
+
+		//if (target != null)
+		//	FPSWalkerEnhanced._instance.doRotation (Quaternion.LookRotation (direction));
 		
 		healthController.DecreaseMana (manaUse [skillID]);
 		timeTilNext [skillID] = coolDown [skillID];
@@ -121,7 +153,7 @@ public class SkillsController : MonoBehaviour {
 			break;
 		case LIGHT_BALL:
 			location = transform.position + transform.forward * 1.4f + transform.up * 12.2f;
-			UpdateDirection ();
+			direction = Direction ();
 			UseLightBall ();
 			soundController.PlayerSounds (SoundController.LIGHT_BALL, true);
 			break;
@@ -136,6 +168,27 @@ public class SkillsController : MonoBehaviour {
 		}
 
 		return;
+	}
+
+	public void PrepareSkill (int skillID){
+		
+		if (autoTargetNearestEnemy)
+			targetController.UpdateTarget ();
+
+		target = targetController.GetTargetTransform();
+
+		location = transform.position + transform.forward * 10.0f + transform.up * 8.0f; //Coloca a posição um pouco à frente
+
+		direction = Direction ();
+
+		FPSWalkerEnhanced.movementEnabled = !SkillsController._instance.skillsToStopMovement [skillID];
+		SkillsController._instance.IsUsingSkill [skillID] = true;
+		FPSWalkerEnhanced.movementEnabled = !SkillsController._instance.skillsToStopMovement[skillID];
+	}
+
+	public void EndedSkill (int skillID){
+		isUsingSkill [skillID] = false;
+		FPSWalkerEnhanced.movementEnabled = true;
 	}
 
 	public bool CanUseSkill (int skillID){
@@ -155,14 +208,19 @@ public class SkillsController : MonoBehaviour {
 		return healthController.HasMana (manaUse [skillID]);
 	}
 
-	private void UpdateDirection (){
+	public Vector3 Direction (){
+
+		Vector3 newDirection = new Vector3 ();
+
 		if (target == null) { //If there is no target at all, calculations will be based on the mouse position
-			direction = transform.forward;
+			newDirection = transform.forward;
 		}
 		else { //If there is a target, calculations will be based on the target's position
-			direction = targetController.GetTargetTransform().position + targetPivot - location;
-			direction.Normalize();
+			newDirection = targetController.GetTargetTransform().position + targetPivot - location;
+			newDirection.Normalize();
 		}
+
+		return newDirection;
 	}
 
 	private void UseBasicAttack(){
@@ -210,4 +268,17 @@ public class SkillsController : MonoBehaviour {
 
     }
 
+	public bool UsingSkill (int skillID){
+		return isUsingSkill [skillID];
+	}
+
+	public bool RotateToTarget () {
+		bool rotateToTarget = false;
+
+		for (int a = 0; a < isUsingSkill.Length; a++) {
+			rotateToTarget = rotateToTarget || (isUsingSkill [a] && skillsToRotateToTarget [a]);
+		}
+
+		return rotateToTarget;
+	}
 }

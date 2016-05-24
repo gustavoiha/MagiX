@@ -62,7 +62,13 @@ public class FPSWalkerEnhanced: MonoBehaviour {
 	private Transform cameraTransform;
 	private HealthController healthController;
  
-    void Start() {
+	public static FPSWalkerEnhanced _instance;
+
+	void Awake (){
+		_instance = this;
+	}
+
+    void Start () {
         controller = GetComponent<CharacterController>();
         myTransform = transform;
         speed = walkSpeed;
@@ -126,7 +132,7 @@ public class FPSWalkerEnhanced: MonoBehaviour {
 					moveDirection.x *= speed * inputModifyFactor;
 					moveDirection.y = -antiBumpFactor;
 					moveDirection.z *= speed * inputModifyFactor;
-					doRotation ();
+					DoRegularRotation ();
 				}
 				//
                 //moveDirection = myTransform.TransformDirection(moveDirection) * speed;
@@ -163,7 +169,7 @@ public class FPSWalkerEnhanced: MonoBehaviour {
 					if ((inputX != 0.0f || inputY != 0.0f)) {
 						moveDirection.x = myTransform.forward.x * speed * inputModifyFactor;
 						moveDirection.z = myTransform.forward.z * speed * inputModifyFactor;
-						doRotation ();
+						DoRegularRotation ();
 					}
 					else {
 						moveDirection.x = 0.0f;
@@ -191,7 +197,7 @@ public class FPSWalkerEnhanced: MonoBehaviour {
             speed = (speed == walkSpeed? runSpeed : walkSpeed);
     }
 
-	private void doRotation (){
+	private void DoRegularRotation (){
 
 		float moveX = Input.GetAxis ("HorizontalTranslation");
 		float moveZ = Input.GetAxis ("VerticalTranslation");
@@ -201,13 +207,15 @@ public class FPSWalkerEnhanced: MonoBehaviour {
 		Quaternion lookRotation = cameraTransform.rotation;
 		lookRotation.eulerAngles += new Vector3 (0, extraAngleY, 0);
 
-		//Vector3 turnDirection = new Vector3 (moveX, 0, moveZ) - transform.position;
-		//turnDirection.Normalize ();
+		transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeedY);
+	}
 
-		//Quaternion turnRotation = Quaternion.LookRotation (turnDirection);
+	public void RotateTowards (Vector3 direction){
+		Quaternion lookRotation = Quaternion.LookRotation (direction);
 
 		transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeedY);
 
+		MakePerpendicular ();
 	}
 
 	private void MakePerpendicular (){

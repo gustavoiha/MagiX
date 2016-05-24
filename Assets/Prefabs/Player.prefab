@@ -1000,6 +1000,7 @@ GameObject:
   - 143: {fileID: 14332868}
   - 114: {fileID: 11433070}
   - 114: {fileID: 11452340}
+  - 114: {fileID: 11433200}
   m_Layer: 12
   m_Name: Player
   m_TagString: Player
@@ -1169,8 +1170,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 199566}
-  m_LocalRotation: {x: 0, y: -0.6334974, z: 0, w: 0.7737448}
-  m_LocalPosition: {x: 3925.76, y: -383.56, z: 1967.95}
+  m_LocalRotation: {x: 0, y: -0.8682921, z: 0, w: -0.49605334}
+  m_LocalPosition: {x: 3400.87, y: -207.73, z: 3201.55}
   m_LocalScale: {x: 1.5000001, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 455880}
@@ -2090,6 +2091,9 @@ MonoBehaviour:
   enabled: 0
   toBeDestroyedOnHit: 0
   disableAfterHit: 0
+  explosionOnHit: 0
+  explosionKillTime: 5
+  explosion: {fileID: 0}
   tagsToReceiveDamage: Enemy
 --- !u!114 &11433070
 MonoBehaviour:
@@ -2107,16 +2111,41 @@ MonoBehaviour:
   turnSpeedY: 6
   limitDiagonalSpeed: 1
   toggleRun: 0
-  jumpSpeed: 16
+  jumpSpeed: 20
   gravity: 50
-  fallingDamageThreshold: 10
-  damagePerFallUnit: 0.5
+  fallingDamageThreshold: 30
+  damagePerFallUnit: 0.4
   slideWhenOverSlopeLimit: 1
   slideOnTaggedObjects: 0
-  slideSpeed: 12
+  slideSpeed: 40
   airControl: 1
   antiBumpFactor: 0.75
   antiBunnyHopFactor: 1
+--- !u!114 &11433200
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810fafe127dde8047905b799ad036055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footSteps:
+  - {fileID: 8300000, guid: 51396e7e177b9024f8532dac33e17213, type: 3}
+  - {fileID: 8300000, guid: 083101e24324a144c9913fa2e1d19402, type: 3}
+  - {fileID: 8300000, guid: cadc651491c48ab4e8bc4e0f1532b2e0, type: 3}
+  - {fileID: 8300000, guid: ea960061d2f516744b59344c4cbb96eb, type: 3}
+  - {fileID: 8300000, guid: 747698bc4be851f40aa3b8a47d304d4d, type: 3}
+  - {fileID: 8300000, guid: dd76e0065c6f2034b8c3a6dfd6b33405, type: 3}
+  - {fileID: 8300000, guid: 3ac0686674ebd23408909bb2e335f7f4, type: 3}
+  - {fileID: 8300000, guid: 1f39396ab0cc00b49867d716e3487f1e, type: 3}
+  - {fileID: 8300000, guid: cadc651491c48ab4e8bc4e0f1532b2e0, type: 3}
+  - {fileID: 8300000, guid: ea960061d2f516744b59344c4cbb96eb, type: 3}
+  - {fileID: 8300000, guid: cadc651491c48ab4e8bc4e0f1532b2e0, type: 3}
+  - {fileID: 8300000, guid: ea960061d2f516744b59344c4cbb96eb, type: 3}
+  currentStepSound: 0
 --- !u!114 &11450748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2165,16 +2194,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicAttack: 49
-  magicOne: 50
-  magicTwo: 51
-  magicThree: 52
-  magicFour: 53
+  magicOne: 113
+  magicTwo: 101
+  magicThree: 99
+  magicFour: 118
   lightArrow: {fileID: 148554, guid: 99fe8b462bbe60744a9660e9b6d864b3, type: 2}
   lightBall: {fileID: 120464, guid: be93328743a74124086b74c2df63951d, type: 2}
   lightSanctuary: {fileID: 198918, guid: f71382764563ff64f86f36eeec142a72, type: 2}
   defenseDome: {fileID: 156790, guid: be5998a6bf14ae148a6062168c4f51fc, type: 2}
   lightArrowForce: 2000
   lightBallForce: 1000
+  targetPivot: {x: 0, y: 4, z: 0}
   coolDown:
   - 0.5
   - 1
@@ -2187,6 +2217,9 @@ MonoBehaviour:
   - 5
   - 15
   - 1
+  skillsToStopMovement: 
+  skillsToRotateToTarget: 
+  autoTargetNearestEnemy: 1
 --- !u!114 &11497676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2547,7 +2580,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 4.8
   m_Radius: 0.72
-  m_SlopeLimit: 45
+  m_SlopeLimit: 60
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001

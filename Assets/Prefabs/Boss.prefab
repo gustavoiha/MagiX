@@ -765,7 +765,6 @@ GameObject:
   - 54: {fileID: 5442314}
   - 114: {fileID: 11406962}
   - 82: {fileID: 8299092}
-  - 82: {fileID: 8243846}
   m_Layer: 11
   m_Name: Boss
   m_TagString: Boss
@@ -1740,7 +1739,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169852}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2477.56, y: -202.46, z: 2024.92}
+  m_LocalPosition: {x: 2536.09, y: -192.52618, z: 2136.4333}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 444144}
@@ -1984,80 +1983,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!82 &8243846
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169852}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!82 &8299092
 AudioSource:
   m_ObjectHideFlags: 1
@@ -2234,6 +2159,9 @@ MonoBehaviour:
   enabled: 0
   toBeDestroyedOnHit: 0
   disableAfterHit: 0
+  explosionOnHit: 0
+  explosionKillTime: 5
+  explosion: {fileID: 0}
   tagsToReceiveDamage: Player
 --- !u!114 &11434696
 MonoBehaviour:
@@ -2268,14 +2196,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ab0635b8e78dc8428efce4dda4654e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 60
   maxMana: 0
   manaRecoveyRate: 0
   health: 80
   mana: 0
   destroyOnDeath: 1
   collectibleOnDeath: 0
-  collectible: {fileID: 485932, guid: 7dcd65e79a802a84c9949e680c0de02c, type: 2}
+  collectible: {fileID: 0}
 --- !u!119 &11953556
 Projector:
   m_ObjectHideFlags: 1
@@ -2288,8 +2216,8 @@ Projector:
   m_FarClipPlane: 100
   m_FieldOfView: 60
   m_AspectRatio: 1
-  m_Orthographic: 0
-  m_OrthographicSize: 10
+  m_Orthographic: 1
+  m_OrthographicSize: 4
   m_Material: {fileID: 2100000, guid: b05f3fd8421220943b1e224c357bd565, type: 2}
   m_IgnoreLayers:
     serializedVersion: 2
@@ -4019,7 +3947,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: maxHealth
-      value: 10
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: health
@@ -4056,6 +3984,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: MinDistance
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

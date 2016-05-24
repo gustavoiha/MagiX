@@ -97,19 +97,29 @@ public class PlayerController : MonoBehaviour {
 		 */
 
 		if (Input.GetKey (KeyCode.Mouse0)) {
-			if (skillsController.HasSkillMana (SkillsController.LIGHT_ARROW))
+			if (skillsController.HasSkillMana (SkillsController.LIGHT_ARROW)) {
 				animator.SetInteger ("skill", 2);
-			else if (skillsController.CanUseSkill (SkillsController.BASIC_ATTACK))
+				skillsController.PrepareSkill (SkillsController.LIGHT_ARROW);
+			}
+			else if (skillsController.CanUseSkill (SkillsController.BASIC_ATTACK)) {
 				animator.SetInteger ("skill", 1);
+				skillsController.PrepareSkill (SkillsController.BASIC_ATTACK);
+			}
 		}
 
 		if (Input.GetKey (KeyCode.Mouse1)) {
-			if (skillsController.CanUseSkill (SkillsController.LIGHT_BALL))
+			if (skillsController.CanUseSkill (SkillsController.LIGHT_BALL)) {
 				animator.SetInteger ("skill", 3);
-			else if (skillsController.HasSkillMana (SkillsController.LIGHT_ARROW))
+				skillsController.PrepareSkill (SkillsController.LIGHT_BALL);
+			}
+			else if (skillsController.HasSkillMana (SkillsController.LIGHT_ARROW)) {
 				animator.SetInteger ("skill", 2);
-			else if (skillsController.CanUseSkill (SkillsController.BASIC_ATTACK))
+				skillsController.PrepareSkill (SkillsController.LIGHT_ARROW);
+			}
+			else if (skillsController.CanUseSkill (SkillsController.BASIC_ATTACK)) {
 				animator.SetInteger ("skill", 1);
+				skillsController.PrepareSkill (SkillsController.BASIC_ATTACK);
+			}
 		}
 
 		if (Input.GetKeyUp (KeyCode.Mouse0) || Input.GetKeyUp (KeyCode.Mouse1))
@@ -119,6 +129,7 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetKey (skillsController.basicAttack) && skillsController.CanUseSkill(SkillsController.BASIC_ATTACK)) {
 			//skillsController.UseSkill (SkillsController.BASIC_ATTACK);
 			animator.SetInteger ("skill", 1);
+			skillsController.PrepareSkill (SkillsController.BASIC_ATTACK);
 		}
 
 		if (Input.GetKeyUp (skillsController.basicAttack))
@@ -127,6 +138,7 @@ public class PlayerController : MonoBehaviour {
 		// Light Arrow
 		if (Input.GetKey (skillsController.magicOne) && skillsController.CanUseSkill(SkillsController.LIGHT_ARROW)) {
 			animator.SetInteger ("skill", 2);
+			skillsController.PrepareSkill (SkillsController.LIGHT_ARROW);
 		}
 
 		if (Input.GetKeyUp (skillsController.magicOne) && !Input.GetKey (KeyCode.Mouse0))
@@ -140,6 +152,7 @@ public class PlayerController : MonoBehaviour {
 			Destroy (particleCharge, 5.0f);
 
 			animator.SetInteger ("skill", 3);
+			skillsController.PrepareSkill (SkillsController.LIGHT_BALL);
 		}
 
 		if (Input.GetKeyUp (skillsController.magicTwo))
@@ -153,6 +166,7 @@ public class PlayerController : MonoBehaviour {
 			Destroy (particleCharge, 5.0f);
 
 			animator.SetInteger ("skill", 4);
+			skillsController.PrepareSkill (SkillsController.LIGHT_SANCTUARY);
 		}
 
 		if (Input.GetKeyUp (skillsController.magicThree))
@@ -161,6 +175,7 @@ public class PlayerController : MonoBehaviour {
 		// Defense ball
 		if (Input.GetKeyDown (skillsController.magicFour) && skillsController.CanUseSkill(SkillsController.DEFENCE_DOME)) {
 			animator.SetInteger ("skill", 5);
+			skillsController.PrepareSkill (SkillsController.DEFENCE_DOME);
 		}
 
 		if (Input.GetKeyUp (skillsController.magicFour))
@@ -183,7 +198,7 @@ public class PlayerController : MonoBehaviour {
 			animator.SetBool ("isJumping", false);
 
 		// Mode if animator is in walking mode
-		FPSWalkerEnhanced.movementEnabled = /*animator.GetBool (walkingID) && */animator.GetCurrentAnimatorStateInfo(0).fullPathHash != sanctuaryState;
+		//FPSWalkerEnhanced.movementEnabled = /*animator.GetBool (walkingID) && */animator.GetCurrentAnimatorStateInfo(0).fullPathHash != sanctuaryState;
 
 		/**
 		 * Cheat !!!
@@ -213,7 +228,7 @@ public class PlayerController : MonoBehaviour {
 	 * Invert mouse directions regarding the camera's rotation
 	 * pass "X" as argument to invert horizontal axis, and "Y" for vertical
 	 */
-	public void invertMouseDirection(string direction){
+	public void invertMouseDirection (string direction){
 		if (direction.Equals ("X") || direction.Equals ("x"))
 			mouseInvertX *= -1;
 		else if (direction.Equals ("Y") || direction.Equals ("y"))

@@ -55,7 +55,7 @@ public class DoDamage : MonoBehaviour {
 				enabled = !disableAfterHit;
 			}
 
-			if (collider.gameObject.CompareTag ("Enemy")) {
+			if (collider.gameObject.CompareTag ("Enemy") || collider.gameObject.CompareTag ("Boss")) {
 				enemy.TakeDamage (damageOnHit);
 				enabled = !disableAfterHit;
 			}
