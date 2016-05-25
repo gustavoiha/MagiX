@@ -23,19 +23,19 @@ public class PlayerController : MonoBehaviour {
 	private int mouseInvertX = 1;
 	private int mouseInvertY = -1;
 
-	private Vector3 moveDirection = Vector3.zero;
+	//private Vector3 moveDirection = Vector3.zero;
 	//public float gravity = 20.0f;
 
 	private int cheatStartBoss = 0;
 
 	// States in animator
-	private int walkingID;
-	private int jumpingID;
-	private int skillID;
-	private int sanctuaryState;
+	//private int walkingID;
+	//private int jumpingID;
+	//private int skillID;
+	//private int sanctuaryState;
 
     //private float isGroundedRayLength = 0.1f;
-    public LayerMask layerMaskForGrounded;
+    //public LayerMask layerMaskForGrounded;
 
     /*public bool isGrounded {
 		get {
@@ -58,10 +58,10 @@ public class PlayerController : MonoBehaviour {
 		//cameraTransform  = GameObject.FindGameObjectWithTag ("MainCamera").transform;
 		soundController  = GameObject.FindGameObjectWithTag ("Sound").GetComponent<SoundController>();
 
-		walkingID 	   = Animator.StringToHash ("isWalking");
-		jumpingID 	   = Animator.StringToHash ("isJumping");
-		skillID  	   = Animator.StringToHash ("skill");
-		sanctuaryState = Animator.StringToHash ("Base Layer.Sanctuary");
+		//walkingID 	   = Animator.StringToHash ("isWalking");
+		//jumpingID 	   = Animator.StringToHash ("isJumping");
+		//  	   = Animator.StringToHash ("skill");
+		//sanctuaryState = Animator.StringToHash ("Base Layer.Sanctuary");
 	}
 
 	// Update is called once per frame

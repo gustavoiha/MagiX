@@ -17,7 +17,7 @@ public class SkillsController : MonoBehaviour {
 	private HealthController healthController;
 	private TargetController targetController;
 	private SoundController  soundController;
-	private Animator 		 animator;
+	//private Animator 		 animator;
 
     ///
     /// Skills' prefabs
@@ -88,7 +88,7 @@ public class SkillsController : MonoBehaviour {
 		healthController = /*gameObject.transform.parent.*/gameObject.GetComponent<HealthController> ();
 		targetController = /*gameObject.transform.parent.*/gameObject.GetComponent<TargetController> ();
 		soundController  = GameObject.FindGameObjectWithTag ("Sound").GetComponent<SoundController> ();
-		animator  		 = gameObject.GetComponent/*InChildren*/<Animator> ();
+		//animator  		 = gameObject.GetComponent/*InChildren*/<Animator> ();
 
         timeTilNext  = new float[5];
 		isUsingSkill = new bool[5];

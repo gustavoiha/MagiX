@@ -1,35 +1,33 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &144976
+--- !u!1 &128546
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 483258}
-  - 119: {fileID: 11966688}
+  - 4: {fileID: 436964}
+  - 198: {fileID: 19854404}
+  - 199: {fileID: 19909290}
   m_Layer: 13
-  m_Name: ImageProjector
+  m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &175628
+--- !u!1 &194872
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 434062}
-  - 198: {fileID: 19820776}
-  - 199: {fileID: 19953910}
-  - 114: {fileID: 11491956}
-  - 135: {fileID: 13566386}
+  - 4: {fileID: 439814}
+  - 119: {fileID: 11945902}
   m_Layer: 13
-  m_Name: LightSanctuaryParticle
+  m_Name: Projector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,7 +41,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 418890}
-  m_Layer: 13
+  - 114: {fileID: 11492056}
+  - 136: {fileID: 13635696}
+  m_Layer: 0
   m_Name: LightSanctuary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,58 +57,58 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 198918}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3907.6675, y: -385.80707, z: 1966.111}
+  m_LocalPosition: {x: 3426.3208, y: -210.54913, z: 3153.7344}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 434062}
-  - {fileID: 483258}
+  - {fileID: 439814}
+  - {fileID: 436964}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!4 &434062
+--- !u!4 &436964
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 175628}
-  m_LocalRotation: {x: -0.7071068, y: 0.000000027045767, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: -7.7, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 0.33333325}
-  m_Children: []
-  m_Father: {fileID: 418890}
-  m_RootOrder: 0
---- !u!4 &483258
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 144976}
-  m_LocalRotation: {x: 0.7071069, y: -0.000000027045768, z: -0.000000059604638, w: 0.70710677}
-  m_LocalPosition: {x: 0, y: 12, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.33333328, z: 0.49999988}
+  m_GameObject: {fileID: 128546}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 0, y: -12, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0.4}
   m_Children: []
   m_Father: {fileID: 418890}
   m_RootOrder: 1
---- !u!114 &11491956
+--- !u!4 &439814
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194872}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 0, y: 8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 418890}
+  m_RootOrder: 0
+--- !u!114 &11492056
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 175628}
+  m_GameObject: {fileID: 198918}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d715e4183c97ef3418b65c7dc3c0f604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damagePerSecond: 4
-  healingPerSecond: 6
+  healingPerSecond: 4
   exitTime: 20
   rotationRate: 30
---- !u!119 &11966688
+--- !u!119 &11945902
 Projector:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 144976}
+  m_GameObject: {fileID: 194872}
   m_Enabled: 1
   serializedVersion: 2
   m_NearClipPlane: 0.1
@@ -121,24 +121,25 @@ Projector:
   m_IgnoreLayers:
     serializedVersion: 2
     m_Bits: 4294966271
---- !u!135 &13566386
-SphereCollider:
+--- !u!136 &13635696
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 175628}
+  m_GameObject: {fileID: 198918}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 33.966637
+  m_Radius: 32
+  m_Height: 800
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!198 &19820776
+--- !u!198 &19854404
 ParticleSystem:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 175628}
+  m_GameObject: {fileID: 128546}
   serializedVersion: 2
   lengthInSec: 5
   startDelay:
@@ -1622,12 +1623,12 @@ ParticleSystem:
     subEmitterCollision1: {fileID: 0}
     subEmitterDeath: {fileID: 0}
     subEmitterDeath1: {fileID: 0}
---- !u!199 &19953910
+--- !u!199 &19909290
 ParticleSystemRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 175628}
+  m_GameObject: {fileID: 128546}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -1676,7 +1677,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.y
-      value: -3.5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Radius
@@ -1704,7 +1705,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: healingPerSecond
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Layer
@@ -1717,6 +1718,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Center.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

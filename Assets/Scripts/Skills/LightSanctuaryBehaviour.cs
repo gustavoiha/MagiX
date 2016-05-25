@@ -15,24 +15,28 @@ public class LightSanctuaryBehaviour : MonoBehaviour {
 	// Rotation in degrees per second
 	public float rotationRate = 10.0f;
 
+	private GameObject particlesOBJ;
+
 	// Use this for initialization
 	void Start () {
 
-		GetComponent<ParticleSystem> ().Play ();
+		gameObject.GetComponentInChildren<ParticleSystem> ().Play ();
 
-		Destroy (gameObject.transform.root.gameObject, exitTime);
+		particlesOBJ = gameObject.GetComponentInChildren<ParticleSystem> ().gameObject;
+
+		Destroy (gameObject, exitTime);
 	}
 
 	void Update(){
-		gameObject.transform.root.gameObject.transform.Rotate (0, rotationRate * Time.deltaTime, 0);
-		gameObject.transform.Rotate (0, 0, - 2 *rotationRate * Time.deltaTime);
+		particlesOBJ.transform.Rotate (0, 0, rotationRate * Time.deltaTime);
+		gameObject.transform.Rotate (0, - 2 *rotationRate * Time.deltaTime, 0);
 	}
 
 	void OnTriggerStay(Collider collider){
 
-		if (collider.gameObject.tag.Equals ("Enemy") || collider.gameObject.tag.Equals ("Boss"))
+		if (collider.gameObject.CompareTag ("Enemy") || collider.gameObject.CompareTag ("Boss"))
 			collider.gameObject.GetComponent<HealthController> ().TakeDamage ( damagePerSecond  * Time.deltaTime);
-		else if (collider.gameObject.tag.Equals ("Player"))
+		else if (collider.gameObject.CompareTag ("Player"))
 			collider.gameObject.GetComponent<HealthController> ().TakeDamage (-healingPerSecond * Time.deltaTime);
 
 	}
