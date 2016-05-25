@@ -111,7 +111,29 @@ public class SkillsController : MonoBehaviour {
 			FPSWalkerEnhanced._instance.RotateTowards (Direction ());
 		}
 
+		// For safety:
+		/*bool usingAnySkill = false;
+
+		foreach (bool skill in isUsingSkill) {
+			usingAnySkill = usingAnySkill || skill;
+		}
+
+		if (!usingAnySkill)
+			FPSWalkerEnhanced.movementEnabled = true;*/
+
     }
+
+	void FixedUpdate (){
+		// For safety:
+		bool usingAnySkill = false;
+
+		foreach (bool skill in isUsingSkill) {
+			usingAnySkill = usingAnySkill || skill;
+		}
+
+		if (!usingAnySkill)
+			FPSWalkerEnhanced.movementEnabled = true;
+	}
 
 	/// <summary>
 	/// Call his method to use a desired skill

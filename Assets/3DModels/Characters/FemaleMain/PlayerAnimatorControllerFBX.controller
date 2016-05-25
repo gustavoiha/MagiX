@@ -1541,16 +1541,16 @@ AnimatorStateMachine:
     m_Position: {x: 708, y: -96, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110254930}
-    m_Position: {x: 840, y: 192, z: 0}
+    m_Position: {x: 936, y: 204, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110284142}
     m_Position: {x: 840, y: 432, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110280520}
-    m_Position: {x: 816, y: 120, z: 0}
+    m_Position: {x: 780, y: 48, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110209108}
-    m_Position: {x: 888, y: 360, z: 0}
+    m_Position: {x: 840, y: 324, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110259884}
     m_Position: {x: 840, y: 552, z: 0}
