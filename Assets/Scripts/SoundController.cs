@@ -142,4 +142,8 @@ public class SoundController : MonoBehaviour {
 			break;
 		}
 	}
+
+	public void AdjustVolumeGlobal (float newVolume){
+		AudioListener.volume = newVolume;
+	}
 }

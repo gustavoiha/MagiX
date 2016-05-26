@@ -91,8 +91,8 @@ public class PauseMenu : MonoBehaviour {
 
 		GUILayout.BeginVertical ("box");
 
-		GUILayout.Label ("Master Volume - (" + AudioListener.volume.ToString("f2") + ")");
-		AudioListener.volume = GUILayout.HorizontalSlider (AudioListener.volume, 0.0f, 1.0f);
+		GUILayout.Label ("Master Volume: " + AudioListener.volume.ToString("f2"));
+		//AudioListener.volume = GUILayout.HorizontalSlider (AudioListener.volume, 0.0f, 1.0f);
 
 		int currentQuality = QualitySettings.GetQualityLevel ();
 		string qualityName = QualitySettings.names [currentQuality];
