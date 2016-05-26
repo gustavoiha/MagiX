@@ -13,6 +13,8 @@ TagManager:
   - Boss
   - Nova
   - Shield
+  - Bridge
+  - Rock
   layers:
   - Default
   - TransparentFX

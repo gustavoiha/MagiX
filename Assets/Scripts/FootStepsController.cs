@@ -1,9 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 public class FootStepsController : MonoBehaviour {
 
-	public AudioClip[] footSteps;
+	public AudioClip[] footsteps;
+
+	public string[] tagsToFootsteps;
+
+	public AudioClip[] footstepsFromTags;
 
 	private AudioSource audioSource;
 
@@ -42,6 +47,34 @@ public class FootStepsController : MonoBehaviour {
 		}
 	}
 
+	private string standingOnTag = "";
+
+	public bool isOnObject {
+		get {
+			RaycastHit raycastHit;
+
+			Vector3 position = transform.position;
+			position.y = GetComponent<CharacterController> ().bounds.min.y + 0.1f;
+			float length = isGroundedRayLength + 0.1f;
+
+			/*Physics.Raycast (position, Vector3.down, out raycastHit, length);
+
+			if (raycastHit.transform.gameObject != null) {
+				standingOnTag = raycastHit.transform.gameObject.tag;
+				return true;
+			}*/
+
+			if (Physics.Raycast (position, Vector3.down, out raycastHit, length)) {
+				if (!string.IsNullOrEmpty (raycastHit.transform.gameObject.tag)) {
+					standingOnTag = raycastHit.transform.gameObject.tag;
+					return true;
+				}
+			}
+
+			return false;
+		}
+	}
+
 	// Use this for initialization
 	void Start () {
 		audioSource = gameObject.AddComponent<AudioSource> () as AudioSource;
@@ -50,10 +83,19 @@ public class FootStepsController : MonoBehaviour {
 	public  void PlayNextStep (){
 
 		// Footstep sounds will only play when walking on terrain
+
+		if (isOnObject && tagsToFootsteps.Contains (standingOnTag)) {
+			audioSource.clip = footstepsFromTags[System.Array.IndexOf (tagsToFootsteps, standingOnTag) * 2 + stepCounter];
+			audioSource.Play ();
+
+			stepCounter = (stepCounter == 0) ? 1 : 0;
+			return;
+		}
+
 		if (!isOnTerrain)
 			return;
 
-		audioSource.clip = footSteps[currentStepSound + stepCounter];
+		audioSource.clip = footsteps[currentStepSound + stepCounter];
 		audioSource.Play ();
 
 		stepCounter = (stepCounter == 0) ? 1 : 0;
