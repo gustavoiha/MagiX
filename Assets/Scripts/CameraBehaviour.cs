@@ -19,13 +19,20 @@ public class CameraBehaviour : MonoBehaviour {
 	public float CameraDistance = 9.5f;
 
 	// Camera's rotation speed in the X axis
-	public float turnSpeedX = 80.0f;
-	public float turnSpeedY = 80.0f;
+	//public float turnSpeedX = 80.0f;
+	//public float turnSpeedY = 80.0f;
+
+	public float minTurnSpeed = 20.0f;
+	public float maxTurnSpeed = 100.0f;
+
+	private float turnSpeed;
 
 	public bool isStatic = false;
 
 	// Use this for initialization
 	void Start () {
+
+		turnSpeed = (minTurnSpeed + maxTurnSpeed) / 2.0f;
 
 		float[] distances = gameObject.GetComponent<Camera>().layerCullDistances;
 
@@ -54,7 +61,7 @@ public class CameraBehaviour : MonoBehaviour {
 
 		transform.rotation = Quaternion.LookRotation (- transform.localPosition);
 
-		transform.RotateAround (transform.parent.transform.position, Vector3.up, turnSpeedY * Input.GetAxis ("HorizontalRotation") * Time.deltaTime);
+		transform.RotateAround (transform.parent.transform.position, Vector3.up, turnSpeed * Input.GetAxis ("HorizontalRotation") * Time.deltaTime);
 
 		//if ((Input.GetAxis ("VerticalRotation") < 0 || transform.rotation.eulerAngles.x < CameraAngleLimitUpper)
 		//	&&
@@ -64,10 +71,12 @@ public class CameraBehaviour : MonoBehaviour {
 			(Input.GetAxis ("VerticalRotation") < 0 && transform.rotation.eulerAngles.x <= 360.0f + CameraAngleLimitLower && transform.rotation.eulerAngles.x >= 180.0f))
 			return;
 
-		transform.RotateAround (transform.parent.transform.position, - transform.right, - turnSpeedX * Input.GetAxis ("VerticalRotation") * Time.deltaTime);
+		transform.RotateAround (transform.parent.transform.position, - transform.right, - turnSpeed * Input.GetAxis ("VerticalRotation") * Time.deltaTime);
 
+	}
 
-
+	public void AdjustTurnSpeed (float newSpeedPercent){
+		turnSpeed = minTurnSpeed + newSpeedPercent * (maxTurnSpeed - minTurnSpeed);
 	}
 
 	/*private void UpdateCameraCoordinatesRotate (Vector3 playerPosition, Vector3 playerRotation){
