@@ -764,7 +764,7 @@ GameObject:
   - 114: {fileID: 11490378}
   - 54: {fileID: 5442314}
   - 114: {fileID: 11406962}
-  - 82: {fileID: 8299092}
+  - 114: {fileID: 11466382}
   m_Layer: 11
   m_Name: Boss
   m_TagString: Boss
@@ -1983,80 +1983,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!82 &8299092
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169852}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 0.5
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  Priority: 34
-  DopplerLevel: 1
-  MinDistance: 10
-  MaxDistance: 800
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!95 &9526940
 Animator:
   serializedVersion: 3
@@ -2143,7 +2069,7 @@ MonoBehaviour:
   gravityIncrement: 2
   intervalBetweenSkills: 8
   randomIncrementRange: 5
-  StormSpeedGain: 20
+  StormSpeedGain: 15
 --- !u!114 &11418572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2185,6 +2111,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74555244d0ce8174ea987a444a40fe90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11466382
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3512966e65b745d4b9569f91053fd10d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: 7a83a1a3a9637fc47b142e8cd4dcf5be, type: 3}
+  - {fileID: 8300000, guid: 6a7e169d6f74d304dbb3f1b00d5c810b, type: 3}
+  - {fileID: 8300000, guid: ba8fc622950335840b3846cdc7490de7, type: 3}
+  - {fileID: 8300000, guid: 9b762c88cb5326a4383c9947ddabdea1, type: 3}
+  is3D: 1
+  minDistance: 30
 --- !u!114 &11490378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2204,6 +2148,7 @@ MonoBehaviour:
   destroyOnDeath: 1
   collectibleOnDeath: 0
   collectible: {fileID: 0}
+  Invincible: 0
 --- !u!119 &11953556
 Projector:
   m_ObjectHideFlags: 1
@@ -3946,6 +3891,10 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: audioClips.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: maxHealth
       value: 60
       objectReference: {fileID: 0}
@@ -3988,6 +3937,34 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: audioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7a83a1a3a9637fc47b142e8cd4dcf5be, type: 3}
+    - target: {fileID: 0}
+      propertyPath: audioClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6a7e169d6f74d304dbb3f1b00d5c810b, type: 3}
+    - target: {fileID: 0}
+      propertyPath: audioClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: ba8fc622950335840b3846cdc7490de7, type: 3}
+    - target: {fileID: 0}
+      propertyPath: audioClips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9b762c88cb5326a4383c9947ddabdea1, type: 3}
+    - target: {fileID: 0}
+      propertyPath: is3D
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: minDistance
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: StormSpeedGain
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

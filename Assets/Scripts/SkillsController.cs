@@ -16,7 +16,7 @@ public class SkillsController : MonoBehaviour {
 
 	private HealthController healthController;
 	private TargetController targetController;
-	private SoundController  soundController;
+	private SoundManager 	 soundManager;
 	//private Animator 		 animator;
 
     ///
@@ -55,6 +55,12 @@ public class SkillsController : MonoBehaviour {
 
     // Skills cooldowns
 	private float[] timeTilNext;
+	public float[] TimeTilNext {
+		get { 
+			return timeTilNext;
+		}
+	}
+
     public float[]  coolDown;
 	public float[]  manaUse;
 
@@ -72,10 +78,6 @@ public class SkillsController : MonoBehaviour {
 
 	public bool autoTargetNearestEnemy = false;
 
-	//[Serializable] public class coolDown{
-	//	public float[] coolDownArray;
-	//}
-
 	public static SkillsController _instance;
 
 	void Awake (){
@@ -87,7 +89,7 @@ public class SkillsController : MonoBehaviour {
 
 		healthController = /*gameObject.transform.parent.*/gameObject.GetComponent<HealthController> ();
 		targetController = /*gameObject.transform.parent.*/gameObject.GetComponent<TargetController> ();
-		soundController  = GameObject.FindGameObjectWithTag ("Sound").GetComponent<SoundController> ();
+		soundManager     = gameObject.GetComponent<SoundManager> ();
 		//animator  		 = gameObject.GetComponent/*InChildren*/<Animator> ();
 
         timeTilNext  = new float[5];
@@ -103,7 +105,8 @@ public class SkillsController : MonoBehaviour {
 
 		for (int i = 0; i < timeTilNext.Length; i++) {
             //Resets cooldowns
-            timeTilNext[i] -= Time.deltaTime;
+			if (timeTilNext[i] >= 0.0f)
+            	timeTilNext[i] -= Time.deltaTime;
         }
 
 		// Rotate towards target when using skills if skillsToRotateToTarget
@@ -167,24 +170,24 @@ public class SkillsController : MonoBehaviour {
 
 		case BASIC_ATTACK:
 			UseBasicAttack ();
-			soundController.PlayerSounds (SoundController.BASIC_ATTACK, true);
+			soundManager.PlaySound (0);
 			break;
 		case LIGHT_ARROW:
 			UseLightArrow();
-			soundController.PlayerSounds (SoundController.LIGHT_ARROW, true);
+			soundManager.PlaySound (1);
 			break;
 		case LIGHT_BALL:
 			location = transform.position + transform.forward * 1.4f + transform.up * 12.2f;
 			direction = Direction ();
 			UseLightBall ();
-			soundController.PlayerSounds (SoundController.LIGHT_BALL, true);
+			soundManager.PlaySound (2);
 			break;
 		case LIGHT_SANCTUARY:
 			UseLightSanctuary ();
-			soundController.PlayerSounds (SoundController.LIGHT_SANCTUARY, true);
+			soundManager.PlaySound (3);
 			break;
 		case DEFENCE_DOME:
-			soundController.PlayerSounds (SoundController.DEFENCE_DOME, true);
+			soundManager.PlaySound (4);
 			UseDefenceDome ();
 			break;
 		}
@@ -279,8 +282,6 @@ public class SkillsController : MonoBehaviour {
     private void UseDefenceDome() {
 
 		GameObject newDefenseDome = Instantiate(defenseDome, gameObject.transform.position, Quaternion.identity) as GameObject;
-
-		GameController.usingShield = true;
 
 		newDefenseDome.transform.localScale *= 3;
 

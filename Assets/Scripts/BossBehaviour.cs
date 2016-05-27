@@ -5,7 +5,7 @@ public class BossBehaviour : MonoBehaviour {
 
 	private Animator animator;
 	private Rigidbody rigidBody;
-	private SoundController soundController;
+	private SoundManager soundManager;
 
 	//Objeto que o inimigo irá seguir
 	private Transform target;
@@ -49,7 +49,7 @@ public class BossBehaviour : MonoBehaviour {
 		animator        = gameObject.GetComponentInChildren<Animator> ();
 		rigidBody       = gameObject.GetComponent<Rigidbody> ();
 		swordTrail      = gameObject.GetComponentInChildren<TrailRenderer> ();
-		soundController = GameObject.FindGameObjectWithTag ("Sound").GetComponent<SoundController> ();
+		soundManager    = gameObject.GetComponent<SoundManager> ();
 
 		target = GameObject.FindGameObjectWithTag ("Player").transform;
 
@@ -69,7 +69,7 @@ public class BossBehaviour : MonoBehaviour {
 			RotateTowardsTarget ();
 
 			UseSkill (MEELE_ATTACK);
-			soundController.BossSounds (SoundController.BOSS_BASIC_ATTACK);
+			soundManager.PlaySound (0);
 
 		}
 		else if (GetDistance () <= middleSkillAttackRange) {
@@ -126,15 +126,15 @@ public class BossBehaviour : MonoBehaviour {
 
 		switch (skillID) {
 		case SKILL_PULL:
-			soundController.BossSounds (SoundController.IMPLOSION);
+			soundManager.PlaySound (2);
 			Instantiate (SkillPull, transform.position, transform.rotation);
 			break;
 		case SKILL_RING:
-			soundController.BossSounds (SoundController.EXPLOSION);
+			soundManager.PlaySound (1);
 			Instantiate (SkillRing, transform.position, transform.rotation);
 			break;
 		case SKILL_STORM:
-			soundController.BossSounds (SoundController.STORM);
+			soundManager.PlaySound (3);
 			GameObject particle = Instantiate (SkillStorm, transform.position, transform.rotation) as GameObject;
 			Destroy (particle, 8.0f);
 			break;

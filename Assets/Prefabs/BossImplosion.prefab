@@ -80,7 +80,7 @@ MonoBehaviour:
   scale: 1
   growthRate: 40
   radius: 1
-  implosionForce: 120
+  implosionForce: 1000
   rotationSpeed: 40
   timeLeft: 0.5
 --- !u!135 &13598506
@@ -104,7 +104,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: implosionForce
-      value: 120
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: growthRate

@@ -28,8 +28,8 @@ public class LightSanctuaryBehaviour : MonoBehaviour {
 	}
 
 	void Update(){
-		particlesOBJ.transform.Rotate (0, 0, rotationRate * Time.deltaTime);
-		gameObject.transform.Rotate (0, - 2 *rotationRate * Time.deltaTime, 0);
+		particlesOBJ.transform.Rotate (0, 0, - 2 * rotationRate * Time.deltaTime);
+		gameObject.transform.Rotate (0, rotationRate * Time.deltaTime, 0);
 	}
 
 	void OnTriggerStay(Collider collider){

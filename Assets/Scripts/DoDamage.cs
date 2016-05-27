@@ -50,12 +50,17 @@ public class DoDamage : MonoBehaviour {
 		if(tagsToReceiveDamage.Contains(collider.gameObject.tag) && collider.gameObject.tag != "") {
 			//this.collisionEnemy = true;
 			HealthController enemy = collider.GetComponent<HealthController> () as HealthController;
-			if (collider.gameObject.CompareTag ("Player") && !GameController.usingShield) {
+			/*if (collider.gameObject.CompareTag ("Player") && !GameController.usingShield) {
 				enemy.TakeDamage (damageOnHit);
 				enabled = !disableAfterHit;
 			}
 
 			if (collider.gameObject.CompareTag ("Enemy") || collider.gameObject.CompareTag ("Boss")) {
+				enemy.TakeDamage (damageOnHit);
+				enabled = !disableAfterHit;
+			}*/
+
+			if (tagsToReceiveDamage.Contains (collider.tag)) {
 				enemy.TakeDamage (damageOnHit);
 				enabled = !disableAfterHit;
 			}

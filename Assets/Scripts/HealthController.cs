@@ -28,6 +28,8 @@ public class HealthController : MonoBehaviour {
 
 	public Transform collectible;
 
+	public bool Invincible = false;
+
 	void Start(){
 		health = maxHealth;
 		mana   = maxMana;
@@ -67,6 +69,9 @@ public class HealthController : MonoBehaviour {
 	}
 
 	public void TakeDamage (float damage){
+
+		if (Invincible)
+			return;
 
 		// Reduce from health the value of damage
 		// If damage is negative, life will increase

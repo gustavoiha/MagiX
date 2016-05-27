@@ -45,7 +45,7 @@ public class BossPullBehaviour : MonoBehaviour {
 
 				if (rigidbody != null) {
 					rigidbody.AddExplosionForce (-implosionForce, transform.position, radius, 1.0f, forceMode); //Implodes for every rigidbody close to the sphere
-					//Debug.Log ("Added force!");
+					Debug.Log ("Added force!");
 				}
 			}
         }

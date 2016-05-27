@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour {
 	private SkillsController skillsController;
 	private TargetController targetController;
 	//private Transform cameraTransform;
-	private SoundController soundController;
 
 	public GameObject particleChargeBall;
 	public GameObject particleChargeSanctuary;
@@ -56,7 +55,6 @@ public class PlayerController : MonoBehaviour {
 		targetController = gameObject.GetComponent<TargetController> ();
 		//cameraBehaviour  = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraBehaviour>();
 		//cameraTransform  = GameObject.FindGameObjectWithTag ("MainCamera").transform;
-		soundController  = GameObject.FindGameObjectWithTag ("Sound").GetComponent<SoundController>();
 
 		//walkingID 	   = Animator.StringToHash ("isWalking");
 		//jumpingID 	   = Animator.StringToHash ("isJumping");

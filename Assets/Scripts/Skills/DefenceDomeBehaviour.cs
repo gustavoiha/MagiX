@@ -7,9 +7,13 @@ public class DefenceDomeBehaviour : MonoBehaviour {
 
 	public float duration = 8.0f;
 
+	private HealthController healthController;
+
 	void Start(){
 		Destroy(gameObject, duration);
-		GameController.usingShield = true;
+
+		healthController = transform.root.gameObject.GetComponent<HealthController> ();
+		healthController.Invincible = true;
 	}
 
 	// Update is called once per frame
@@ -18,6 +22,6 @@ public class DefenceDomeBehaviour : MonoBehaviour {
 	}
 
 	void OnDestroy () {
-		GameController.usingShield = false;
+		healthController.Invincible = false;
 	}
 }
