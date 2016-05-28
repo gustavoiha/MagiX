@@ -80,24 +80,12 @@ public class DoDamage : MonoBehaviour {
 			
 			HealthController enemy = collider.GetComponent<HealthController> () as HealthController;
 
-			//if (tagsToReceiveDamage.Contains (collider.tag)) {
-			//	enemy.TakeDamage (damageContinuous * Time.deltaTime);
-			//}
+			if (tagsToReceiveDamage.Contains (collider.tag)) {
+				enemy.TakeDamage (damageContinuous * Time.deltaTime);
+			}
 		}
 	}
-
-	/// <summary>
-	/// Checks if stopped colliding enemy
-	/// </summary>
-	/// <param name="collider">Collider.</param>
-	/*void OnTriggerExit (Collider collider){
-		// Checks if tagsToReceiveDamage has tag of the object that collided
-		if (tagsToReceiveDamage.Contains(collider.gameObject.tag) && collider.gameObject.tag != "")
-		{
-			this.collisionEnemy = false;
-		}
-	}*/
-
+		
 	/// <summary>
 	/// Sets the damage on hit.
 	/// </summary>
