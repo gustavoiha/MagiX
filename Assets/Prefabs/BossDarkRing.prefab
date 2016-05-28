@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11446590}
   - 114: {fileID: 11456084}
   m_Layer: 0
-  m_Name: DarkRing
+  m_Name: BossDarkRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,8 +103,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b09f2e88aa87364eab2eadd8a801fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageOnHit: 5
-  toBeDestroyed: 0
+  damageOnHit: 0
+  damageContinuous: 4
+  enabled: 1
+  toBeDestroyedOnHit: 0
+  disableAfterHit: 0
+  explosionOnHit: 0
+  explosionKillTime: 5
+  explosion: {fileID: 0}
   tagsToReceiveDamage: Player
 --- !u!1001 &100100000
 Prefab:
@@ -119,7 +125,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: damageOnHit
-      value: 5
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damageContinuous
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

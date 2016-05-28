@@ -8,7 +8,12 @@ public class DoDamage : MonoBehaviour {
 	/// </summary>
 	public float damageOnHit;
 
-	public new bool enabled;
+	/// <summary>
+	/// Damage per second
+	/// </summary>
+	public float damageContinuous = 0.0f;
+
+	public new bool enabled = true;
 
     public bool toBeDestroyedOnHit;
 
@@ -27,15 +32,6 @@ public class DoDamage : MonoBehaviour {
 	/// an script called HealthController in the enemy.
 	/// </summary>
 	public string tagsToReceiveDamage = "Enemy";
-
-	/// <summary>
-	/// Checks if collided with an enemy
-	/// </summary>
-	//private bool collisionEnemy = false;
-
-	void Start () {
-		enabled = true;
-	}
 
 	/// <summary>
 	/// Detects collision and do damage
@@ -72,6 +68,21 @@ public class DoDamage : MonoBehaviour {
 				GameObject newExplosion = Instantiate (explosion, transform.position, Quaternion.identity) as GameObject;
 				Destroy (newExplosion, explosionKillTime);
 			}
+		}
+	}
+
+	void OnTriggerStay (Collider collider){
+		if (!enabled)
+			return;
+
+		// Checks if tagsToReceiveDamage has tag of the object that collided
+		if(tagsToReceiveDamage.Contains(collider.gameObject.tag) && collider.gameObject.tag != "") {
+			
+			HealthController enemy = collider.GetComponent<HealthController> () as HealthController;
+
+			//if (tagsToReceiveDamage.Contains (collider.tag)) {
+			//	enemy.TakeDamage (damageContinuous * Time.deltaTime);
+			//}
 		}
 	}
 

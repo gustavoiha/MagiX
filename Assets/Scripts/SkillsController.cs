@@ -208,7 +208,6 @@ public class SkillsController : MonoBehaviour {
 
 		FPSWalkerEnhanced.movementEnabled = !SkillsController._instance.skillsToStopMovement [skillID];
 		SkillsController._instance.IsUsingSkill [skillID] = true;
-		FPSWalkerEnhanced.movementEnabled = !SkillsController._instance.skillsToStopMovement[skillID];
 	}
 
 	public void EndedSkill (int skillID){
