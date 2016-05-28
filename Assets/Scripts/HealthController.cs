@@ -70,7 +70,7 @@ public class HealthController : MonoBehaviour {
 
 	public void TakeDamage (float damage){
 
-		if (Invincible)
+		if (Invincible && damage >= 0.0f)
 			return;
 
 		// Reduce from health the value of damage
