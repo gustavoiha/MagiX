@@ -59,7 +59,7 @@ public class LightBallBehaviour : MonoBehaviour {
 			if (!tagsToDamage.Contains (hit.gameObject.tag))
 				continue;
 
-			Rigidbody rigidbody = hit.GetComponent<Rigidbody> ();
+			Rigidbody rigidbody = hit.gameObject.GetComponent<Rigidbody> ();
 
 			if (rigidbody != null)
 				rigidbody.AddExplosionForce (explosionForce, transform.position, explosionRadius, 1.0f, forceMode);

@@ -44,6 +44,8 @@ public class BossBehaviour : MonoBehaviour {
 
 	private bool isUsingSkill = false;
 
+	public bool movementEnabled = true;
+
 	void Start (){
 
 		animator        = gameObject.GetComponentInChildren<Animator> ();
@@ -60,25 +62,20 @@ public class BossBehaviour : MonoBehaviour {
 
 	void Update (){
 
-		//Debug.Log (GetDistance ());
-		MakePerpendicular ();
+		// States
 
 		if (GetDistance () <= meeleAttackRange) {
-			
-			FollowPlayer ();
-			RotateTowardsTarget ();
 
+			animator.SetBool("isRunning", false);
 			UseSkill (MEELE_ATTACK);
 
 		}
 		else if (GetDistance () <= middleSkillAttackRange) {
-			FollowPlayer ();
-			RotateTowardsTarget ();
 
 			if (timeLeftToSkill <= 0.0f) {
+				animator.SetBool("isRunning", false);
 				UseSkillSort (SKILL_STORM, SKILL_RING);
 				timeLeftToSkill = intervalBetweenSkills + Random.value * randomIncrementRange;
-				Debug.Log ("girando");
 			}
 			else {
 				animator.SetBool ("isRunning", true);
@@ -88,18 +85,18 @@ public class BossBehaviour : MonoBehaviour {
 		else if (GetDistance () <= followRange) {
 			
 			if (timeLeftToSkill <= 0.0f) {
-				
+
+				animator.SetBool("isRunning", false);
 				UseSkill (SKILL_PULL);
 				timeLeftToSkill = intervalBetweenSkills + Random.value * randomIncrementRange;
-				animator.SetBool("isRunning", false);
 			}
 			else {
 				animator.SetBool("isRunning", true);
 				animator.SetInteger ("Skill", 0);
-				FollowPlayer ();
 			}
 		}
 		else {
+			animator.SetBool("isRunning", false);
 			animator.SetBool ("Idle", true);
 		}
 
@@ -107,7 +104,16 @@ public class BossBehaviour : MonoBehaviour {
 	}
 
 	void FixedUpdate (){
+
 		rigidBody.AddForce (Physics.gravity * rigidBody.mass * gravityIncrement);
+
+		if (movementEnabled) {
+			FollowPlayer ();
+			RotateTowardsTarget ();
+		}
+
+		//Debug.Log (GetDistance ());
+		MakePerpendicular ();
 	}
 
 	private void UseSkillSort (int skillID1, int skillID2){
@@ -126,7 +132,8 @@ public class BossBehaviour : MonoBehaviour {
 		switch (skillID) {
 		case SKILL_PULL:
 			soundManager.PlaySound (2);
-			Instantiate (SkillPull, transform.position, transform.rotation);
+			GameObject skillPull = Instantiate (SkillPull, transform.position, transform.rotation) as GameObject;
+			skillPull.transform.parent = transform;
 			break;
 		case SKILL_RING:
 			soundManager.PlaySound (1);

@@ -2137,7 +2137,7 @@ MonoBehaviour:
   SkillRing: {fileID: 188804, guid: 6de589b8d11a5314e914cc22bcb1545f, type: 2}
   SkillPull: {fileID: 168308, guid: 518f96491793fe64b85cbf76817c1790, type: 2}
   SkillStorm: {fileID: 100008, guid: 01603b7302bd34f379cc7d1ef6b55a15, type: 2}
-  moveSpeed: 16
+  moveSpeed: 12
   rotateSpeed: 8
   followRange: 500
   meeleAttackRange: 10
@@ -2145,7 +2145,8 @@ MonoBehaviour:
   gravityIncrement: 2
   intervalBetweenSkills: 8
   randomIncrementRange: 5
-  StormSpeedGain: 15
+  StormSpeedGain: 10
+  movementEnabled: 1
 --- !u!114 &11418572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4033,7 +4034,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: audioClips.Array.data[0]
@@ -4061,7 +4062,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: StormSpeedGain
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
@@ -4094,6 +4095,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Constraints
       value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: moveSpeed
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

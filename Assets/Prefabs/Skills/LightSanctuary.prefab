@@ -189,9 +189,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d715e4183c97ef3418b65c7dc3c0f604, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePerSecond: 4
-  healingPerSecond: 4
-  exitTime: 20
+  damagePerSecond: 3
+  healingPerSecond: 3
+  exitTime: 15
   rotationRate: 30
 --- !u!119 &11945902
 Projector:
@@ -6311,11 +6311,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: damagePerSecond
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: healingPerSecond
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Layer
@@ -6323,7 +6323,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: exitTime
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
