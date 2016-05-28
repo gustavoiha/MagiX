@@ -238,5 +238,6 @@ public class FPSWalkerEnhanced: MonoBehaviour {
     void FallingDamageAlert (float fallDistance) {
         print ("Ouch! Fell " + fallDistance + " units!");
 		healthController.TakeDamage (fallDistance * damagePerFallUnit);
+		gameObject.GetComponent<SoundManager> ().PlaySound (6);
     }
 }

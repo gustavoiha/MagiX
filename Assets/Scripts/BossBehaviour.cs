@@ -69,7 +69,6 @@ public class BossBehaviour : MonoBehaviour {
 			RotateTowardsTarget ();
 
 			UseSkill (MEELE_ATTACK);
-			soundManager.PlaySound (0);
 
 		}
 		else if (GetDistance () <= middleSkillAttackRange) {
