@@ -195,7 +195,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   Priority: 94
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 30
   MaxDistance: 500
   Pan2D: 0
@@ -7807,6 +7807,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: SizeModule.curve.scalar
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: DopplerLevel
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

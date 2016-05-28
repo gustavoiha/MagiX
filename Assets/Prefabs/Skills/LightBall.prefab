@@ -159,7 +159,7 @@ MonoBehaviour:
   growthRate: 4
   radius: 20
   explosionForce: 50
-  damage: 8
+  damage: 10
   particleS: {fileID: 19833692}
   forceMode: 1
   Explosion: {fileID: 143022, guid: e97bd9c5f75f55a4fa49524073681520, type: 2}
@@ -1735,7 +1735,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: damage
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[0]
