@@ -134,7 +134,8 @@ public class BossBehaviour : MonoBehaviour {
 			break;
 		case SKILL_STORM:
 			soundManager.PlaySound (3);
-			GameObject particle = Instantiate (SkillStorm, transform.position, transform.rotation) as GameObject;
+			GameObject particle = Instantiate (SkillStorm, transform.position + 2.0f * Vector3.up, transform.rotation) as GameObject;
+			particle.transform.parent = gameObject.transform;
 			Destroy (particle, 8.0f);
 			break;
 		}

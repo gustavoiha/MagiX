@@ -1983,7 +1983,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!82 &8211440
 AudioSource:
@@ -2136,7 +2136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillRing: {fileID: 188804, guid: 6de589b8d11a5314e914cc22bcb1545f, type: 2}
   SkillPull: {fileID: 168308, guid: 518f96491793fe64b85cbf76817c1790, type: 2}
-  SkillStorm: {fileID: 155226, guid: 3d4e8c42ed9e3e64aa57dd5fd160611f, type: 2}
+  SkillStorm: {fileID: 100008, guid: 01603b7302bd34f379cc7d1ef6b55a15, type: 2}
   moveSpeed: 16
   rotateSpeed: 8
   followRange: 500
@@ -4087,6 +4087,14 @@ Prefab:
       propertyPath: sounds.Array.data[1]
       value: 
       objectReference: {fileID: 8300000, guid: 533df06702f969744b5967f81d2a6dbf, type: 3}
+    - target: {fileID: 0}
+      propertyPath: SkillStorm
+      value: 
+      objectReference: {fileID: 100008, guid: 01603b7302bd34f379cc7d1ef6b55a15, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 169852}
