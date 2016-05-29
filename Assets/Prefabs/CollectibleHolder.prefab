@@ -74,7 +74,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagsToFollow: Player
   useTrigger: 1
-  moveSpeed: 18
+  moveSpeed: 20
   wobbleAmplitude: {x: 1, y: 1, z: 1}
   wobbleFrequency: {x: 8, y: 6, z: 7}
   targetPivot: {x: 0, y: 5, z: 0}
@@ -1667,7 +1667,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: moveSpeed
-      value: 18
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: wobbleAmplitude.x

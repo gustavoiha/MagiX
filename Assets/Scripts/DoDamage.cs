@@ -19,6 +19,10 @@ public class DoDamage : MonoBehaviour {
 
 	public bool disableAfterHit = false;
 
+	public bool hitSound = false;
+
+	public int hitSoundIndex = 1;
+
 	public bool explosionOnHit = false;
 
 	public float explosionKillTime = 5.0f;
@@ -32,6 +36,18 @@ public class DoDamage : MonoBehaviour {
 	/// an script called HealthController in the enemy.
 	/// </summary>
 	public string tagsToReceiveDamage = "Enemy";
+
+	private SoundManager soundManager;
+
+	void Start (){
+		if (!hitSound)
+			return;
+		
+		soundManager = transform.root.GetComponent<SoundManager> ();
+
+		if (soundManager == null)
+			soundManager = transform.root.GetComponentInChildren<SoundManager> ();
+	}
 
 	/// <summary>
 	/// Detects collision and do damage
@@ -61,13 +77,16 @@ public class DoDamage : MonoBehaviour {
 				enabled = !disableAfterHit;
 			}
 
-			if (toBeDestroyedOnHit)
-                Destroy (gameObject);
+			if (hitSound)
+				soundManager.PlaySound (hitSoundIndex);
 
 			if (explosionOnHit && explosion != null){
 				GameObject newExplosion = Instantiate (explosion, transform.position, Quaternion.identity) as GameObject;
 				Destroy (newExplosion, explosionKillTime);
 			}
+
+			if (toBeDestroyedOnHit)
+				Destroy (gameObject);
 		}
 	}
 

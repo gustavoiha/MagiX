@@ -526,6 +526,7 @@ GameObject:
   - 4: {fileID: 476074}
   - 135: {fileID: 13528710}
   - 114: {fileID: 11400394}
+  - 114: {fileID: 11494152}
   m_Layer: 11
   m_Name: Lower_Arm.R.001_end
   m_TagString: Untagged
@@ -682,7 +683,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3448.0996, y: -210.54913, z: 3146.8928}
+  m_LocalPosition: {x: 2413.174, y: -180.29694, z: 2130.3665}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 484550}
@@ -1210,9 +1211,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageOnHit: 1.5
   damageContinuous: 0
-  enabled: 1
+  enabled: 0
   toBeDestroyedOnHit: 0
   disableAfterHit: 1
+  hitSound: 1
+  hitSoundIndex: 1
   explosionOnHit: 0
   explosionKillTime: 5
   explosion: {fileID: 0}
@@ -1388,6 +1391,22 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &11494152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3512966e65b745d4b9569f91053fd10d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: 2793862da203cf842a5de17f72fceeba, type: 3}
+  - {fileID: 8300000, guid: 3ffe95ac1f412b04cb101fd3f86f1250, type: 3}
+  is3D: 1
+  minDistance: 10
 --- !u!119 &11947148
 Projector:
   m_ObjectHideFlags: 1
