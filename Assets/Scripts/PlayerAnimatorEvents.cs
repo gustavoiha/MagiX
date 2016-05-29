@@ -27,4 +27,8 @@ public class PlayerAnimatorEvents : MonoBehaviour {
 	public void PlayFootstep (int a){
 		footStepsController.PlayNextStep ();
 	}
+
+	public void DoMeeleDamage (int a){
+		gameObject.GetComponentInChildren<DoDamage> ().enabled = true;
+	}
 }
