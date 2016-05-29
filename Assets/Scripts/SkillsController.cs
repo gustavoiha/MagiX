@@ -115,14 +115,16 @@ public class SkillsController : MonoBehaviour {
 		}
 
 		// For safety:
-		/*bool usingAnySkill = false;
+		if (!FPSWalkerEnhanced.movementEnabled) {
+			bool usingAnySkill = false;
 
-		foreach (bool skill in isUsingSkill) {
-			usingAnySkill = usingAnySkill || skill;
+			foreach (bool skill in isUsingSkill) {
+				usingAnySkill = usingAnySkill || skill;
+			}
+
+			if (!usingAnySkill)
+				FPSWalkerEnhanced.movementEnabled = true;
 		}
-
-		if (!usingAnySkill)
-			FPSWalkerEnhanced.movementEnabled = true;*/
 
     }
 

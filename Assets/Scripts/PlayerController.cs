@@ -65,9 +65,6 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetKeyDown (KeyCode.Escape))
-			PauseMenu.isPaused = !PauseMenu.isPaused;
-
 		// if died
 		if (GetComponent<HealthController> ().health <= 0.0f) {
 			animator.SetBool ("isDead", true);
