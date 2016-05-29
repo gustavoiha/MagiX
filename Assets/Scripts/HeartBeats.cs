@@ -91,8 +91,6 @@ public class HeartBeats : MonoBehaviour {
 
 	public void PlayNextBeat (){
 
-		Debug.Log ("playing");
-
 		audioSource [stepCounter].Play ();
 
 		stepCounter = (stepCounter == 0) ? 1 : 0;
