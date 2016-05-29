@@ -1209,9 +1209,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageOnHit: 1.5
-  enabled: 0
+  damageContinuous: 0
+  enabled: 1
   toBeDestroyedOnHit: 0
   disableAfterHit: 1
+  explosionOnHit: 0
+  explosionKillTime: 5
+  explosion: {fileID: 0}
   tagsToReceiveDamage: Player
 --- !u!114 &11415166
 MonoBehaviour:
@@ -1264,6 +1268,7 @@ MonoBehaviour:
   destroyOnDeath: 1
   collectibleOnDeath: 1
   collectible: {fileID: 478410, guid: 1568585654ba47b44aad27efab1c4248, type: 2}
+  Invincible: 0
 --- !u!114 &11427726
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1304,7 +1309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 12
   rotateSpeed: 3
-  followRange: 100
+  followRange: 150
   attackRange: 10
   gravityIncrement: 1
 --- !u!114 &11448794
@@ -1632,7 +1637,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: followRange
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: moveSpeed

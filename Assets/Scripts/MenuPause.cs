@@ -14,7 +14,8 @@ public class MenuPause : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+
+		Cursor.visible = false;
 		pausePanel.SetActive(false);
 	}
 	
@@ -24,6 +25,7 @@ public class MenuPause : MonoBehaviour {
 		{
 			if(pausePanel.activeSelf == false)
 			{
+				Cursor.visible = true;
 				pausePanel.SetActive(true);
 				pauseselectionPanel.SetActive(true);
 				optionsPanel.SetActive(false);
@@ -31,7 +33,8 @@ public class MenuPause : MonoBehaviour {
 				Time.timeScale = 0;
 			}
 			else
-			{ 
+			{
+				Cursor.visible = false;
 				pausePanel.SetActive(false);
 				Time.timeScale = 1;
 			}

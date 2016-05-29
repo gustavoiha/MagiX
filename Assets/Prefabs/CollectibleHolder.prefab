@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dfff9d289e26224f95237327b3b4450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manaGain: 1
+  manaGain: 1.8
 --- !u!135 &13522996
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1696,6 +1696,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: manaGain
+      value: 1.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

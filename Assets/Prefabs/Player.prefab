@@ -2017,7 +2017,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 40
   maxMana: 40
-  manaRecoveyRate: 0.7
+  manaRecoveyRate: 0.2
   health: 40
   mana: 0
   destroyOnDeath: 0
@@ -2057,7 +2057,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageOnHit: 2
-  enabled: 0
+  damageContinuous: 0
+  enabled: 1
   toBeDestroyedOnHit: 0
   disableAfterHit: 0
   explosionOnHit: 0
@@ -2220,7 +2221,7 @@ MonoBehaviour:
   lightBall: {fileID: 120464, guid: be93328743a74124086b74c2df63951d, type: 2}
   lightSanctuary: {fileID: 198918, guid: f71382764563ff64f86f36eeec142a72, type: 2}
   defenseDome: {fileID: 156790, guid: be5998a6bf14ae148a6062168c4f51fc, type: 2}
-  lightArrowForce: 2000
+  lightArrowForce: 2500
   lightBallForce: 1000
   targetPivot: {x: 0, y: 4, z: 0}
   coolDown:
