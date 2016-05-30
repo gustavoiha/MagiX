@@ -49,12 +49,14 @@ public class MenuPause : MonoBehaviour {
 
 	public void ResumeGame()
 	{
+		Cursor.visible = false;
 		pausePanel.SetActive(false);
 		Time.timeScale = 1;
 	}
 
 	public void RestartGame()
 	{
+		Cursor.visible = false;
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 		Time.timeScale = 1;
 	}

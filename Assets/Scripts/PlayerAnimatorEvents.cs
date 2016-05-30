@@ -21,6 +21,7 @@ public class PlayerAnimatorEvents : MonoBehaviour {
 
 	public void EventDead (int a){
 		GameObject.FindGameObjectWithTag ("HealthBar").GetComponent<ProgressBarController> ().SetDeadMenuState (true);
+		Cursor.visible = true;
 		Time.timeScale = 0.0f;
 	}
 

@@ -58,6 +58,7 @@ public class ProgressBarController : MonoBehaviour {
 
 			if (percent <= 0.0f) {
 				WinPanel.SetActive (true);
+				Cursor.visible = true;
 				Time.timeScale = 0.0f;
 			}
 
