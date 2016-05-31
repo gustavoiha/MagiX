@@ -57,6 +57,7 @@ public class ProgressBarController : MonoBehaviour {
 			percent = bossHealthController.health / bossHealthController.maxHealth;
 
 			if (percent <= 0.0f) {
+				GameManager.levelCleared = true;
 				WinPanel.SetActive (true);
 				Cursor.visible = true;
 				Time.timeScale = 0.0f;

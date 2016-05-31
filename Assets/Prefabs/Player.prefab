@@ -2031,7 +2031,7 @@ MonoBehaviour:
   explosionOnHit: 0
   explosionKillTime: 5
   explosion: {fileID: 0}
-  tagsToReceiveDamage: Enemy
+  tagsToReceiveDamage: Enemy, Boss
 --- !u!114 &11433070
 MonoBehaviour:
   m_ObjectHideFlags: 1

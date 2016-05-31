@@ -21,6 +21,10 @@ public class MenuPause : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (GameManager.levelCleared)
+			return;
+
 		if(Input.GetKeyDown("escape"))
 		{
 			if(pausePanel.activeSelf == false)
@@ -34,9 +38,7 @@ public class MenuPause : MonoBehaviour {
 			}
 			else
 			{
-				Cursor.visible = false;
-				pausePanel.SetActive(false);
-				Time.timeScale = 1;
+				ResumeGame ();
 			}
 		}
 			
@@ -48,7 +50,7 @@ public class MenuPause : MonoBehaviour {
 	}
 
 	public void ResumeGame()
-	{
+	{		
 		Cursor.visible = false;
 		pausePanel.SetActive(false);
 		Time.timeScale = 1;
@@ -56,6 +58,7 @@ public class MenuPause : MonoBehaviour {
 
 	public void RestartGame()
 	{
+		GameManager.levelCleared = false;
 		Cursor.visible = false;
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 		Time.timeScale = 1;
