@@ -13,7 +13,7 @@ public class ItemBehaviour : MonoBehaviour {
 			GameController.aquiredItem ();
 			Destroy (gameObject.transform.parent.gameObject);
 			GameObject clone = Instantiate(guide, transform.position, Quaternion.LookRotation(Vector3.forward)) as GameObject;
-            Destroy(clone, 10);
+            //Destroy(clone, 10);
 			//clone.GetComponent<NovaBehaviour> ().ShowNextText ();
 		}
 	}
