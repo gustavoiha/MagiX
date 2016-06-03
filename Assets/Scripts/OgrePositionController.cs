@@ -8,7 +8,7 @@ public class OgrePositionController : MonoBehaviour {
 	// Ogro é o objeto a ser instanciado
 	public GameObject ogre; 
 
-	public bool hasSpawned = false;
+	private bool hasSpawned = false;
 
 	void OnTriggerEnter (Collider collider) {
 		if(collider.gameObject.CompareTag ("Player") && !hasSpawned) {
